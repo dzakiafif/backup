@@ -76,6 +76,9 @@ class AppController implements ControllerProviderInterface
         $controller->match('/printReport', [$this, 'printReportBeforeAction'])
             ->bind('printReportAllBefore');
 
+        $controller->get('/reviewAll',[$this,'reviewAllAction'])
+            ->bind('reviewAll');
+
         $controller->get('/printReportAfter',[$this, 'printReportAction'])
             ->bind('printReportAllAfter');
 
@@ -227,7 +230,7 @@ class AppController implements ControllerProviderInterface
 
             return $this->app->redirect($this->app['url_generator']->generate('listFormDocAfter'));
         }
-        $siteList = $this->app['site.repository']->findAll();
+        $siteList = $this->app['engineerdua.repository']->findAll();
         return $this->app['twig']->render('Vd/siteSelect.twig', ['listSite' => $siteList]);
     }
 
@@ -809,6 +812,30 @@ class AppController implements ControllerProviderInterface
         }
 
         return $this->app['twig']->render('printReportBefore.twig', ['infoSite' => $siteInfo]);
+    }
+
+    public function reviewAllAction()
+    {
+        if ($this->app['session']->get('siteSelect')['value'] == null) {
+            return $this->app->redirect($this->app['url_generator']->generate('printReportAllBefore'));
+        }
+
+        $engineerInfo = $this->app['engineer.repository']->findByFormId($this->app['session']->get('siteSelect')['value']);
+
+        $engineerDuaInfo = $this->app['engineerdua.repository']->findByFormId($this->app['session']->get('siteSelect')['value']);
+
+        $docInfo = $this->app['documentation.repository']->findByFormId($this->app['session']->get('siteSelect')['value']);
+
+        $siteInfo = $this->app['site.repository']->findBySiteName($engineerInfo->getSiteName());
+
+        return $this->app['twig']->render('printReport.twig',
+            [
+                'formState' => unserialize($engineerInfo->getFormState()),
+                'infoEngineerDua' => unserialize($engineerDuaInfo->getFormState()),
+                'revDoc' => unserialize($docInfo->getFormState()),
+                'infoSite' => $siteInfo
+            ]
+        );
     }
 
     public function printReportAction()
