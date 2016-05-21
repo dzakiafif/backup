@@ -1,0 +1,10 @@
+/.idea
+vendor/
+app/cache/
+app/logs/
+app/config.php
+public/photo/
+/nbproject/private/
+/.vagrant/
+nbproject/
+Homestead.yaml

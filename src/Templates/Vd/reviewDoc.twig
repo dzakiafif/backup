@@ -1,0 +1,307 @@
+{% extends 'layouts/head.twig' %}
+{% block content %}
+    <section id="content" class="table-layout animated fadeIn borderedBackground">
+        <div id="printed-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-11 center-block">
+                        <p><strong>M-BTS PHOTO CHECKLIST (2G) INDOOR</strong></p>
+                    </div>
+                </div>
+                <br/>
+                <form enctype='application/json' id="myForm" action="siteDocumentation" method="post">
+                    <div class="padding:30px 10px 10px 10px;background-color: #fff;margin-top: 10px;border:6px solid rgba(204, 204, 204,0.5)">
+                        <div class="panel panel-visible" id="spy2">
+                            <table class="table table-hover table-bordered" id="datatable2" cellspacing="0" width="100%">
+                                <thead>
+                                <tr>
+                                    <th style="text-align: center;">Point</th>
+                                    <th style="text-align: center;">Item</th>
+                                    <th style="text-align: center;">2G</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Site Location</td>
+                                    {% if revDoc[1] is defined %}
+                                        {% if (revDoc[1] == 1) %}
+                                            <td class="rd"><i class="fa fa-check"></i></td>
+                                        {% else %}
+                                            <td class="rd">&nbsp;</td>
+                                        {% endif %}
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>GPS Coordinate</td>
+                                    {% if revDoc[2] is defined %}
+                                        {% if (revDoc[2] == 1) %}
+                                            <td class="rd"><i class="fa fa-check"></i></td>
+                                        {% else %}
+                                            <td class="rd"></td>
+                                        {% endif %}
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Shelter View</td>
+                                    {% if revDoc[3] is defined %}
+                                        {% if (revDoc[3] == 1) %}
+                                            <td class="rd"><i class="fa fa-check"></i></td>
+                                        {% else %}
+                                            <td class="rd"></td>
+                                        {% endif %}
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Overview of inside the cabinet</td>
+                                    {% if revDoc[4] is defined %}
+                                        {% if (revDoc[4] == 1) %}
+                                            <td class="rd"><i class="fa fa-check"></i></td>
+                                        {% else %}
+                                            <td class="rd"></td>
+                                        {% endif %}
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>FEP Indoor View</td>
+                                    {% if revDoc[5] is defined %}
+                                        {% if (revDoc[5] == 1) %}
+                                            <td class="rd"><i class="fa fa-check"></i></td>
+                                        {% else %}
+                                            <td class="rd">&nbsp;</td>
+                                        {% endif %}
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>FEP Outdoor View</td>
+                                    {% if revDoc[6] is defined %}
+                                        {% if (revDoc[6] == 1) %}
+                                            <td class="rd"><i class="fa fa-check"></i></td>
+                                        {% else %}
+                                            <td class="rd"></td>
+                                        {% endif %}
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>Feeder Indoor Installation</td>
+                                    {% if revDoc[7] is defined %}
+                                        {% if (revDoc[7] == 1) %}
+                                            <td class="rd"><i class="fa fa-check"></i></td>
+                                        {% else %}
+                                            <td class="rd"></td>
+                                        {% endif %}
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>Feeder Bending</td>
+                                    {% if revDoc[8] is defined %}
+                                        {% if (revDoc[8] == 1) %}
+                                            <td class="rd"><i class="fa fa-check"></i></td>
+                                        {% else %}
+                                            <td class="rd"></td>
+                                        {% endif %}
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>Internal Grounding Bar(IGB)</td>
+                                    {% if revDoc[9] is defined %}
+                                        {% if (revDoc[9] == 1) %}
+                                            <td class="rd"><i class="fa fa-check"></i></td>
+                                        {% else %}
+                                            <td class="rd"></td>
+                                        {% endif %}
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>External GB at Shelter</td>
+                                    {% if revDoc[10] is defined %}
+                                        {% if (revDoc[10] == 1) %}
+                                            <td class="rd"><i class="fa fa-check"></i></td>
+                                        {% else %}
+                                            <td class="rd"></td>
+                                        {% endif %}
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td>11</td>
+                                    <td>Alarm Box</td>
+                                    {% if revDoc[11] is defined %}
+                                        {% if (revDoc[11] == 1) %}
+                                            <td class="rd"><i class="fa fa-check"></i></td>
+                                        {% else %}
+                                            <td class="rd"></td>
+                                        {% endif %}
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td>12</td>
+                                    <td>ACPDB Internal View</td>
+                                    {% if revDoc[12] is defined %}
+                                        {% if (revDoc[12] == 1) %}
+                                            <td class="rd"><i class="fa fa-check"></i></td>
+                                        {% else %}
+                                            <td class="rd"></td>
+                                        {% endif %}
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td>13</td>
+                                    <td>MCB at DCPDB</td>
+                                    {% if revDoc[13] is defined %}
+                                        {% if (revDoc[13] == 1) %}
+                                            <td class="rd"><i class="fa fa-check"></i></td>
+                                        {% else %}
+                                            <td class="rd"></td>
+                                        {% endif %}
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td>14</td>
+                                    <td>Rectifler Cabinet</td>
+                                    {% if revDoc[14] is defined %}
+                                        {% if (revDoc[14] == 1) %}
+                                            <td class="rd"><i class="fa fa-check"></i></td>
+                                        {% else %}
+                                            <td class="rd"></td>
+                                        {% endif %}
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td>15</td>
+                                    <td>MCB at Rectifler Cabinet</td>
+                                    {% if revDoc[15] is defined %}
+                                        {% if (revDoc[15] == 1) %}
+                                            <td class="rd"><i class="fa fa-check"></i></td>
+                                        {% else %}
+                                            <td class="rd"></td>
+                                        {% endif %}
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td>16</td>
+                                    <td>Rack 19</td>
+                                    {% if revDoc[16] is defined %}
+                                        {% if (revDoc[16] == 1) %}
+                                            <td class="rd"><i class="fa fa-check"></i></td>
+                                        {% else %}
+                                            <td class="rd"></td>
+                                        {% endif %}
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td>17</td>
+                                    <td>Antenna Mechanical & Electrical Tilting Sector 1</td>
+                                    {% if revDoc[17] is defined %}
+                                        {% if (revDoc[17] == 1) %}
+                                            <td class="rd"><i class="fa fa-check"></i></td>
+                                        {% else %}
+                                            <td class="rd"></td>
+                                        {% endif %}
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td>18</td>
+                                    <td>Antenna Mechanical & Electrical Tilting Sector 2</td>
+                                    {% if revDoc[18] is defined %}
+                                        {% if (revDoc[18] == 1) %}
+                                            <td class="rd"><i class="fa fa-check"></i></td>
+                                        {% else %}
+                                            <td class="rd"></td>
+                                        {% endif %}
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td>19</td>
+                                    <td>Antenna Mechanical & Electrical Tilting Sector 3</td>
+                                    {% if revDoc[19] is defined %}
+                                        {% if (revDoc[19] == 1) %}
+                                            <td class="rd"><i class="fa fa-check"></i></td>
+                                        {% else %}
+                                            <td class="rd"></td>
+                                        {% endif %}
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td>20</td>
+                                    <td>Azimuth & Panoramic Sector 1</td>
+                                    {% if revDoc[20] is defined %}
+                                        {% if (revDoc[20] == 1) %}
+                                            <td class="rd"><i class="fa fa-check"></i></td>
+                                        {% else %}
+                                            <td class="rd"></td>
+                                        {% endif %}
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td>21</td>
+                                    <td>Azimuth & Panoramic Sector 2</td>
+                                    {% if revDoc[21] is defined %}
+                                        {% if (revDoc[21] == 1) %}
+                                            <td class="rd"><i class="fa fa-check"></i></td>
+                                        {% else %}
+                                            <td class="rd"></td>
+                                        {% endif %}
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td>22</td>
+                                    <td>Azimuth & Panoramic Sector 3</td>
+                                    {% if revDoc[22] is defined %}
+                                        {% if (revDoc[22] == 1) %}
+                                            <td class="rd"><i class="fa fa-check"></i></td>
+                                        {% else %}
+                                            <td class="rd"></td>
+                                        {% endif %}
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td>23</td>
+                                    <td>Labelling of CPRI</td>
+                                    {% if revDoc[23] is defined %}
+                                        {% if (revDoc[23] == 1) %}
+                                            <td class="rd"><i class="fa fa-check"></i></td>
+                                        {% else %}
+                                            <td class="rd"></td>
+                                        {% endif %}
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td>24</td>
+                                    <td>Connection of CPRI Cable to RRU Sec 1&2</td>
+                                    {% if revDoc[24] is defined %}
+                                        {% if (revDoc[24] == 1) %}
+                                            <td class="rd"><i class="fa fa-check"></i></td>
+                                        {% else %}
+                                            <td class="rd"></td>
+                                        {% endif %}
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td>25</td>
+                                    <td>Connection of CPRI Cable to RRU Sec 3&Busbar</td>
+                                    {% if revDoc[25] is defined %}
+                                        {% if (revDoc[25] == 1) %}
+                                            <td class="rd"><i class="fa fa-check"></i></td>
+                                        {% else %}
+                                            <td class="rd"></td>
+                                        {% endif %}
+                                    {% endif %}
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+{% endblock %}

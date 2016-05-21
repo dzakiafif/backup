@@ -1,0 +1,4728 @@
+{% extends 'layouts/head.twig' %}
+{% block customCSS %}
+{% endblock %}
+{% block content %}
+	<section id="content" class="table-layout animated fadeIn borderedBackground">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-11 center-block">
+					<div class="col-md-12">
+						<br>
+						<button type="button" onclick="print('printed-area')" class="btn btn-success hidden-print" style="vertical-align: middle;position:fixed;right:20px;border-radius: 0;"><i class="fa fa-print"></i></button>
+						<a href="#top" title="back to top" style="position:fixed;right:20px; bottom:75px" class="btn btn-primary"><i class="fa fa-chevron-up"></i></a>
+						<div class="col-md-2 pull-right">
+
+						</div>
+						<br>
+						<br>
+						{#{{ dump(formState) }}#}
+						<div style="padding:30px 10px 10px 10px;background-color: #fff;margin-top: 10px;border:6px solid rgba(204, 204, 204,0.5)">
+							<div class="panel panel-visible" id="spy2">
+								<div class="panel-body pn">
+									<div id="printed-area">
+										<div id="">
+											<style type="text/css">
+												#proses {
+													border:1px solid #000;
+												}
+												.b1{
+													border:1px solid #000;
+												}
+												.logo-kanan{
+													float:right;
+													margin:50px 100px 0 0;
+												}
+												.logo-kiri{
+													float:left;
+													margin:50px 0 0 100px;
+												}
+												.f1{
+													font-size: 4em;
+												}
+												.secPrint {
+													min-width: 793.700787402px;
+													min-height: 1122.51px;
+													max-height: 1122.51px;
+													border:1px solid #000;
+												}
+												.confirmed {
+													margin-top: 100px;
+													margin-left: 100px;
+												}
+												.confirmed th, .confirmed td{
+													padding:5px;
+												}
+												.sign td{
+													font-weight: 700;
+													font-size: 1.2em;
+												}
+												#tabel3 th{
+													text-align: center;
+													font-weight: 600;
+													padding:5px;
+												}
+												#tabel3 td, #tabel7 td{
+													padding:0 5px;
+												}
+												#tabel7 th{
+													padding:5px 5px;
+												}
+												#BOQ th {
+													text-align: center;
+												}
+												#BOQ th, #BOQ td {
+													padding:0 5px;
+												}
+												.center-table td,
+												.center-table th{
+													padding:5px;
+													text-align: center;
+												}
+												.left-table {
+													text-align: left;
+												}
+												table.paddingTable th, table.paddingTable td{
+													padding:5px;
+												}
+												table.remarkTable th {
+													height:40px;
+												}
+												table.sidePadding th, table.sidePadding td {
+													padding:0 5px;
+												}
+											</style>
+											<section class="secPrint" id="1">
+												<img src="{{ app.request.basepath }}/assets/dist/img/xl-logo.png" alt="" class="logo-kiri" height="64">
+
+												<img src="{{ app.request.basepath }}/assets/dist/img/huawei-logo.png" alt="" class="logo-kanan" height="64">
+												<h1 class="center f1" style="padding-top:300px">
+													<strong>Site Binder</strong>
+												</h1>
+												<h2 class="center">
+													2G XL Modernization Balomsum Project {{ "now"|date("Y") }}
+												</h2>
+												<br>
+												<table style="width:600px;margin-left: 180px;font-size:2em;font-weight: 700;margin-top:100px;">
+													<tbody>
+													<tr>
+														<td>Site ID</td>
+														<td> : &nbsp;</td>
+														<td>{{ infoSite[0].siteId }}</td>
+													</tr>
+													<tr>
+														<td>Site Name</td>
+														<td> : &nbsp;</td>
+														<td>{{ infoSite[0].siteName }}</td>
+													</tr>
+													<tr>
+														<td>Prodef</td>
+														<td> : &nbsp;</td>
+														<td>{{ infoSite[0].prodef }}</td>
+													</tr>
+													<tr>
+														<td>Site Type</td>
+														<td> : &nbsp;</td>
+														<td>
+															{% if (infoSite[0].stats == 0) %}
+																INDOOR
+															{% elseif (infoSite[0].stats == 1) %}
+																OUTDOOR
+															{% else %}
+																OUTDOOR (Enclosure)
+															{% endif %}
+														</td>
+													</tr>
+													<tr>
+														<td>BTS Type</td>
+														<td> : &nbsp;</td>
+														<td>-</td>
+													</tr>
+													</tbody>
+												</table>
+												<br>
+												<div class="confirmed">
+													<h4><strong>Document confirmed by :</strong></h4>
+													<table border="1" width="600" style="margin-right: 100px">
+														<thead>
+														<tr>
+															<th></th>
+															<th class="center">Name</th>
+															<th class="center">Phone</th>
+															<th class="center">Signature</th>
+														</tr>
+														</thead>
+														<tbody style="padding:2px">
+														<tr>
+															<td><strong>PT. HUAWEI SERVICE</strong></td>
+															<td></td>
+															<td></td>
+															<td></td>
+														</tr>
+														<tr>
+															<td><strong>PT. HUAWEI TECH INVESTMENT</strong></td>
+															<td></td>
+															<td></td>
+															<td></td>
+														</tr>
+														</tbody>
+													</table>
+												</div>
+											</section>
+											<p style="margin-bottom:50px"></p>
+											{# Page 2 #}
+											<section class="secPrint" id="2">
+												<img src="{{ app.request.basepath }}/assets/dist/img/xl-logo.png" alt="" class="logo-kiri" height="64">
+												<img src="{{ app.request.basepath }}/assets/dist/img/huawei-logo.png" alt="" class="logo-kanan" height="64">
+												<p style="margin-top:150px;"></p>
+												<h1 class="center f1"><strong>CERTIFICATE</strong></h1>
+												<h2 class="center">of</h2>
+												<h1 class="center">Preliminary Acceptance</h1>
+												<br>
+												<h4 style="margin-left:100px;margin-right: 100px;font-weight: 500;line-height: 2">
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;It is agreed that, from to , the preliminary acceptance test for site
+													B603_KARANG BARU(BTS) has been successfully held by both the PT.
+													XL Axiata expert and Huawei’s Engineer.<br>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;It also had been proved by both parties that Huawei’s
+													BTSequipments can fully satisfy the need of PT. XL Axiata under the
+													contract and can be rightly put into full service.
+												</h4>
+												{# Signature #}
+												<div class="sign"  style="margin-top:300px;margin-left: 80px;">
+													<table width="700">
+														<tbody>
+														<tr>
+															<td>&nbsp;&nbsp;PT. Huawei Service</td>
+															<td width="100"></td>
+															<td>&nbsp;&nbsp;PT. Huawei Tech Investment</td>
+														</tr>
+														<tr>
+															<td colspan="3" height="120">&nbsp;</td>
+														</tr>
+														<tr>
+															<td><u>
+																	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+																</u></td>
+															<td></td>
+															<td>
+																<u>
+																	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+																</u>
+															</td>
+														</tr>
+														<tr>
+															<td>Date :</td>
+															<td></td>
+															<td>Date :</td>
+														</tr>
+														</tbody>
+													</table>
+													{# End of Signature #}
+												</div>
+											</section>
+											<p style="margin-bottom:50px"></p>
+											{# Page 3 #}
+											<section class="secPrint" id="3">
+												<img src="{{ app.request.basepath }}/assets/dist/img/xl-logo.png" alt="" class="logo-kiri" height="64"/>
+												<img src="{{ app.request.basepath }}/assets/dist/img/huawei-logo.png" alt="" class="logo-kanan" height="64"/>
+												<p style="margin-top:100px"></p>
+												<h3 class="center">SITE ACCEPTANCE DOCUMENT CHECKLIST</h3>
+												<br>
+												<table width="600" style="margin-left:100px;font-weight: 600">
+													<tbody>
+													<tr>
+														<td>SITE ID/Name</td>
+														<td> : &nbsp;</td>
+														<td>{{ infoSite[0].siteId }} / {{ infoSite[0].siteName }}</td>
+													</tr>
+													<tr>
+														<td>Region/Area</td>
+														<td> : &nbsp;</td>
+														<td>{% if (infoSite[0].regional == 0) %}
+																BALI
+															{% elseif (infoSite[0].regional == 1) %}
+																LOMBOK
+															{% else %}
+																JAWA
+															{% endif %}
+															/ {{ infoSite[0].poc }}
+														</td>
+													</tr>
+													<tr>
+														<td>Site Type</td>
+														<td> : &nbsp;</td>
+														<td>
+															{% if (infoSite[0].stats == 0) %}
+																INDOOR
+															{% elseif (infoSite[0].stats == 1) %}
+																OUTDOOR
+															{% else %}
+																OUTDOOR (Enclosure)
+															{% endif %}
+														</td>
+													</tr>
+													<tr>
+														<td>BTS Type</td>
+														<td> : &nbsp;</td>
+														<td>-</td>
+													</tr>
+													</tbody>
+												</table>
+												<br>
+												<p style="margin-left: 100px;font-size:14px;">
+													&nbsp;&nbsp;&nbsp;&nbsp;Hereby stated description and item below refer to the documents attached have been
+													approved for construction:
+												</p>
+												<table border="1" id="tabel3" width="600" style="margin-left: 100px">
+													<thead>
+													<tr>
+														<th rowspan="2">No.</th>
+														<th rowspan="2">Table of Contents</th>
+														<th colspan="2">Checked</th>
+														<th rowspan="2">Remarks</th>
+													</tr>
+													<tr>
+														<th>HTI</th>
+														<th>HS</th>
+													</tr>
+													</thead>
+													<tbody>
+													<tr>
+														<td class="center">1</td>
+														<td><strong>BOQ for BTS </strong></td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">&nbsp;</td>
+														<td>BOQ 2G</td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">2</td>
+														<td><strong>Acceptance Test Procedure</strong></td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center"></td>
+														<td>Acceptance Test</td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">2.1</td>
+														<td><strong>Installation Checklist</strong></td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">2.1.1</td>
+														<td>Indoor Installation Checklist</td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">2.1.2</td>
+														<td>Outdoor Installation Checklist</td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">2.2</td>
+														<td><strong>Environment Monitoring Functional Test</strong></td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">2.2.1</td>
+														<td>External Environment Monitoring</td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">2.3</td>
+														<td><strong>BTS VSWR Test</strong></td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">2.3.1</td>
+														<td>Feeder System Test</td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">2.4</td>
+														<td><strong>BTS Commissioning Record</strong></td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">2.4.1</td>
+														<td>Network Parameter Checklist</td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">2.5</td>
+														<td><strong>Basic Service Items</strong></td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">2.6</td>
+														<td><strong>Integration Test</strong></td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">2.6.1</td>
+														<td>Call Test</td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">2.6.2</td>
+														<td>Handover Test Inside Site</td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">2.6.3</td>
+														<td>Handover Test Between Sites</td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">2.6.4</td>
+														<td>24 Hours Stability Test</td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">2.6.5</td>
+														<td>Alarm Query Test</td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">2.7</td>
+														<td><strong>Punch List Summary</strong></td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">3</td>
+														<td><strong>Site Documentation</strong></td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">4</td>
+														<td><strong>LMT Test Capture</strong></td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">5</td>
+														<td><strong>Self Inspection Report (SIR)</strong></td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td class="center"><i class="fa fa-square-o"></i></td>
+														<td></td>
+													</tr>
+													</tbody>
+												</table>
+												<table width="600" style="margin-top: 100px;margin-left: 100px;">
+													<tbody>
+													<tr>
+														<td class="center">PT. HUAWEI SERVICE</td>
+														<td  width="100"></td>
+														<td class="center">PT. HUAWEI TECH INVESTMENT</td>
+													</tr>
+													<tr>
+														<td colspan="3"  height="100">&nbsp;</td>
+													</tr>
+													<tr>
+														<td class="center">
+															<u>
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+															</u>
+														</td>
+														<td></td>
+														<td class="center">
+															<u>
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+															</u>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+											</section>
+											<p style="margin-bottom:50px"></p>
+
+											{# Page 4 #}
+											<section class="secPrint" id="4">
+												<img src="{{ app.request.basepath }}/assets/dist/img/xl-logo.png" alt="" class="logo-kiri" height="64"/>
+												<img src="{{ app.request.basepath }}/assets/dist/img/huawei-logo.png" alt="" class="logo-kanan" height="64"/>
+												<p style="margin-top:100px"></p>
+												<h3 class="center">1. BOQFORBTS (2G)</h3>
+												<br>
+												<table width="400" style="margin-left:100px;font-weight: 600">
+													<tbody>
+													<tr>
+														<td>Project Name</td>
+														<td> : &nbsp;</td>
+														<td>2G XL Modernization Balomsum Project 2015</td>
+													</tr>
+													<tr>
+														<td>Customer</td>
+														<td> : &nbsp;</td>
+														<td>PT. XL AXIATA</td>
+													</tr>
+													<tr>
+														<td>Site ID</td>
+														<td> : &nbsp;</td>
+														<td>{{ infoSite[0].siteId }}</td>
+													</tr>
+													<tr>
+														<td>Site Name</td>
+														<td> : &nbsp;</td>
+														<td>{{ infoSite[0].siteName }}</td>
+													</tr>
+													<tr>
+														<td>Site Type</td>
+														<td> : &nbsp;</td>
+														<td>
+															{% if (infoSite[0].stats == 0) %}
+																INDOOR
+															{% elseif (infoSite[0].stats == 1) %}
+																OUTDOOR
+															{% else %}
+																OUTDOOR (Enclosure)
+															{% endif %}
+														</td>
+													</tr>
+													<tr>
+														<td>Config System</td>
+														<td> : &nbsp;</td>
+														<td>{{ infoSite[0].existingSystem }}</td>
+													</tr>
+													<tr>
+														<td>Date</td>
+														<td> : &nbsp;</td>
+														<td>{{ "now"|date("d M Y") }}</td>
+													</tr>
+													</tbody>
+												</table>
+												<br>
+												<table id="BOQ" border="1" width="600" style="margin-left: 100px">
+													<thead>
+													<tr>
+														<th colspan="8">Type BTS 3900A BOQ</th>
+													</tr>
+													<tr>
+														<th rowspan="2">Material</th>
+														<th rowspan="2">No.</th>
+														<th rowspan="2">Code</th>
+														<th rowspan="2">Description</th>
+														<th rowspan="2">UOM</th>
+														<th colspan="2">BOQ</th>
+														<th rowspan="2">Remark</th>
+													</tr>
+													<tr>
+														<th>As Plan</th>
+														<th>As Built</th>
+													</tr>
+													<tr style="background-color: blue">
+														<th>>>></th>
+														<th>A1/1</th>
+														<th colspan="2">BTS3900A GSM, DC -48V</th>
+														<th>PAC</th>
+														<th>&nbsp;</th>
+														<th>&nbsp;</th>
+														<th>&nbsp;</th>
+													</tr>
+													</thead>
+													<tbody>
+													<tr>
+														<td>BTS3900L</td>
+														<td></td>
+														<td>02113719</td>
+														<td>BTS3900L Cabinet (DC -48V)</td>
+														<td>unit</td>
+														<td>1</td>
+														<td>1</td>
+														<td>New</td>
+													</tr>
+													<tr>
+														<td>BBU</td>
+														<td></td>
+														<td>02315848</td>
+														<td>BBU3900A, QWLM1BBU2 Distributed Base Station Base
+															Band Unit (-48V)
+														</td>
+														<td>unit</td>
+														<td>1</td>
+														<td>1</td>
+														<td>New</td>
+													</tr>
+													<tr>
+														<td>MRFU900</td>
+														<td></td>
+														<td>02310KBU</td>
+														<td>RF Unit V2 for Multi-Mode 900MHz PGSM</td>
+														<td>unit</td>
+														<td>0</td>
+														<td>0</td>
+														<td>N/A</td>
+													</tr>
+													<tr>
+														<td>MRFU1800</td>
+														<td></td>
+														<td>02310KBH</td>
+														<td>RF Unit V2 for Multi-Mode 1800MHz</td>
+														<td>unit</td>
+														<td>1</td>
+														<td>1</td>
+														<td>N/A</td>
+													</tr>
+													<tr>
+														<td>MRFUd1800</td>
+														<td></td>
+														<td>02310CEU</td>
+														<td>MRFUd for Multi-Mode 1800MHz</td>
+														<td>unit</td>
+														<td>1</td>
+														<td>1</td>
+														<td>New</td>
+													</tr>
+													<tr>
+														<td>GTMU</td>
+														<td></td>
+														<td>03030LPM</td>
+														<td>Main Control and Transport unit(4E1&amp;1 electrical FE&amp;1
+															optical FE)</td>
+														<td>unit</td>
+														<td>1</td>
+														<td>1</td>
+														<td></td>
+													</tr>
+													<tr>
+														<td>UMPT</td>
+														<td></td>
+														<td>3054887</td>
+														<td>Universal Main Processing &amp; Transmission Unit (4
+															E1&amp;1 Electrical FE/GE&amp;1 Optical FE/GE,UMPTb1)</td>
+														<td>unit</td>
+														<td>0</td>
+														<td>0</td>
+														<td></td>
+													</tr>
+													</tbody>
+												</table>
+												<br>
+												<p style="margin-left: 150px"><strong>* Site BOQ will base on the actual material installed</strong></p>
+											</section>
+											<p style="margin-bottom:50px"></p>
+											{# Page 5 #}
+											<section class="secPrint" id="5">
+												<img src="{{ app.request.basepath }}/assets/dist/img/xl-logo.png" alt="" class="logo-kiri" height="64">
+
+												<img src="{{ app.request.basepath }}/assets/dist/img/huawei-logo.png" alt="" class="logo-kanan" height="64">
+												<h1 class="center f1" style="padding-top:250px">
+													<strong>ATP BTS 2G</strong>
+												</h1>
+												<br>
+												<table style="width:600px;margin-left: 180px;font-size:2em;font-weight: 700;margin-top:100px;">
+													<tbody>
+													<tr>
+														<td>Regional</td>
+														<td> : &nbsp;</td>
+														<td>{% if (infoSite[0].regional == 0) %}
+																BALI
+															{% elseif (infoSite[0].regional == 1) %}
+																LOMBOK
+															{% else %}
+																JAWA
+															{% endif %}</td>
+													</tr>
+													<tr>
+														<td>Site ID</td>
+														<td> : &nbsp;</td>
+														<td>{{ infoSite[0].siteId }}</td>
+													</tr>
+													<tr>
+														<td>Site Name</td>
+														<td> : &nbsp;</td>
+														<td>{{ infoSite[0].siteName }}</td>
+													</tr>
+													<tr>
+														<td>Prodef</td>
+														<td> : &nbsp;</td>
+														<td>{{ infoSite[0].prodef }}</td>
+													</tr>
+													<tr>
+														<td>Site Type</td>
+														<td> : &nbsp;</td>
+														<td>{% if (infoSite[0].stats == 0) %}
+																INDOOR
+															{% elseif (infoSite[0].stats == 1) %}
+																OUTDOOR
+															{% else %}
+																OUTDOOR (Enclosure)
+															{% endif %}</td>
+													</tr>
+													<tr>
+														<td>BTS Type</td>
+														<td> : &nbsp;</td>
+														<td>-</td>
+													</tr>
+													</tbody>
+												</table>
+												<br>
+												<table width="600" style="margin-top: 230px;margin-left: 100px;">
+													<tbody>
+													<tr>
+														<td class="center">PT. HUAWEI SERVICE</td>
+														<td  width="100"></td>
+														<td class="center">PT. HUAWEI TECH INVESTMENT</td>
+													</tr>
+													<tr>
+														<td colspan="3"  height="100">&nbsp;</td>
+													</tr>
+													<tr>
+														<td class="center">
+															<u>
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+															</u>
+														</td>
+														<td></td>
+														<td class="center">
+															<u>
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+															</u>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+											</section>
+											<p style="margin-bottom:50px"></p>
+											{# Page 6 #}
+											<section class="secPrint" id="6">
+												<img src="{{ app.request.basepath }}/assets/dist/img/xl-logo.png" alt="" class="logo-kiri" height="64">
+												<img src="{{ app.request.basepath }}/assets/dist/img/huawei-logo.png" alt="" class="logo-kanan" height="64">
+												<p style="margin-top:100px"></p>
+												<h3 class="center">SITE ACCEPTANCE DOCUMENT CHECKLIST</h3>
+												<br>
+												<div style="margin-left: 100px; line-height: 1">
+													<h3>2.1. Installation Checklist</h3>
+													<div style="margin-left: 50px">
+														<h3>2.1.1.Indoor</h3>
+														<h3>2.1.2.Outdoor</h3>
+													</div>
+													<h3>2.2. Environment Monitoring Functional Test</h3>
+													<div style="margin-left: 50px">
+														<h3>2.2.1 External Environment Monitoring</h3>
+													</div>
+													<h3>2.3.BTSVSWR Test</h3>
+													<div style="margin-left: 50px">
+														<h3>2.3.1.Feeder System Test</h3>
+													</div>
+													<h3>2.4. BTS Commissioning Record</h3>
+													<div style="margin-left: 50px">
+														<h3>2.4.1. Network Parameter Checklist</h3>
+													</div>
+													<h3>2.5 Basic Service Items</h3>
+													<h3>2.6. Integration Test</h3>
+													<div style="margin-left: 50px">
+														<h3>2.6.1 Call Test</h3>
+														<h3>2.6.2 Handover Test Inside Sites</h3>
+														<h3>2.6.3 Handover Test Between Sites</h3>
+														<h3>2.6.4 24 Hours Stability Test</h3>
+														<h3>2.6.5 Alarm Query Test</h3>
+													</div>
+													<h3>2.7 Punch List Summary</h3>
+												</div>
+											</section>
+											<p style="margin-bottom:50px"></p>
+											{# Page 7 #}
+											<section class="secPrint" id="7">
+												<img src="{{ app.request.basepath }}/assets/dist/img/xl-logo.png" alt="" class="logo-kiri" height="64">
+												<img src="{{ app.request.basepath }}/assets/dist/img/huawei-logo.png" alt="" class="logo-kanan" height="64">
+												<p style="margin-top:80px"></p>
+												<h3 class="center">2.1 Installation Checklist</h3>
+												<h3 style="margin-left: 100px">2.1.1 Indoor Installation Checklist</h3>
+												<table border="1" style="margin-left: 50px" width="700" id="tabel7">
+													<thead>
+													<tr>
+														<th colspan="3">SITE : {{ infoSite[0].siteName }}</th>
+														<th colspan="3">SITE CONFIG : </th>
+														<th colspan="1">DATE : {{ "now"|date("d M Y") }}</th>
+													</tr>
+													<tr>
+														<th colspan="7" style="text-align: center;background:#e9e9e9">Equipment Overall Condition</th>
+													</tr>
+													<tr>
+														<th colspan="3" class="center">Procedure</th>
+														<th class="center">Pass</th>
+														<th class="center">Fail</th>
+														<th class="center">N/A</th>
+														<th style="width:200px" class="center">Remarks</th>
+													</tr>
+													</thead>
+													<tbody>
+													<tr>
+														<td class="center">1</td>
+														<td colspan="2">
+															Visually Inspect the cabinets for any damage.
+														</td>
+														{% if formState[0] is defined %}
+															{% if (formState[0] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[0] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">2</td>
+														<td colspan="2">
+															Check that the cabinet doors and locks operate correctly.
+														</td>
+														{% if formState[1] is defined %}
+															{% if (formState[1] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[1] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td rowspan="2">Remarks</td>
+														<td colspan="6" rowspan="2"></td>
+													</tr>
+													</tbody>
+													{# Item 2 #}
+													<thead>
+													<tr>
+														<th colspan="7" style="text-align: center;background:#e9e9e9">Site Documentation</th>
+													</tr>
+													<tr>
+														<th colspan="3" class="center">Procedure</th>
+														<th class="rd">Pass</th>
+														<th class="rd">Fail</th>
+														<th class="rd">N/A</th>
+														<th class="center">Remarks</th>
+													</tr>
+													</thead>
+													<tbody>
+													<tr>
+														<td class="center">3</td>
+														<td colspan="2">
+															Check that the equipment is installed according to the as plan site design package.
+														</td>
+														{% if formState[2] is defined %}
+															{% if (formState[2] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[2] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">4</td>
+														<td colspan="2">
+															Check that the indoor cable ladder is installed according to the as plan side design package (applicable for Indoor Equipment)
+														</td>
+														{% if formState[3] is defined %}
+															{% if (formState[3] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[3] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td rowspan="2">Remarks</td>
+														<td colspan="6" rowspan="2"></td>
+													</tr>
+													</tbody>
+													{# Item 3 #}
+													<thead>
+													<tr>
+														<th colspan="7" style="text-align: center;background:#e9e9e9">Civil Works Check</th>
+													</tr>
+													<tr>
+														<th colspan="3" class="center">Procedure</th>
+														<th class="center">Pass</th>
+														<th class="center">Fail</th>
+														<th class="center">N/A</th>
+														<th style="width:200px" class="center">Remarks</th>
+													</tr>
+													</thead>
+													<tbody>
+													<tr>
+														<td class="center">5</td>
+														<td colspan="2">
+															Check that the cabinets have been securely fastened and are leveled correctly
+														</td>
+														{% if formState[4] is defined %}
+															{% if (formState[4] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[4] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">6</td>
+														<td colspan="2">
+															Check that indoor cable ladder above the cabinet has been installed correctly(applicable for indoor Equipment)
+														</td>
+														{% if formState[5] is defined %}
+															{% if (formState[5] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[5] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">7</td>
+														<td colspan="2">
+															Check that the DDF are grounded to the main grounding bus bar
+														</td>
+														{% if formState[6] is defined %}
+															{% if (formState[6] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[6] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td rowspan="2">Remarks</td>
+														<td colspan="6" rowspan="2"></td>
+													</tr>
+													</tbody>
+													{# Item 4 #}
+													<thead>
+													<tr>
+														<th colspan="7" style="text-align: center;background:#e9e9e9">Equipment Specific Checks</th>
+													</tr>
+													<tr>
+														<th colspan="3" class="center">Procedure</th>
+														<th class="center">Pass</th>
+														<th class="center">Fail</th>
+														<th class="center">N/A</th>
+														<th style="width:200px" class="center">Remarks</th>
+													</tr>
+													</thead>
+													<tbody>
+													<tr>
+														<td class="center">8</td>
+														<td colspan="2">
+															Check that all equipment internal cables are correctly installed and labeled
+														</td>
+														{% if formState[7] is defined %}
+															{% if (formState[7] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[7] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">9</td>
+														<td colspan="2">
+															Check that the cabinet blanking panels have been installed
+														</td>
+														{% if formState[8] is defined %}
+															{% if (formState[8] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[8] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td rowspan="2">Remarks</td>
+														<td colspan="6" rowspan="2"></td>
+													</tr>
+													</tbody>
+												</table>
+												<table width="600" style="margin-top: 20px;margin-left: 100px;">
+													<tbody>
+													<tr>
+														<td class="center">PT. HUAWEI SERVICE</td>
+														<td  width="100"></td>
+														<td class="center">PT. HUAWEI TECH INVESTMENT</td>
+													</tr>
+													<tr>
+														<td colspan="3"  height="100">&nbsp;</td>
+													</tr>
+													<tr>
+														<td class="center">
+															<u>
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+															</u>
+														</td>
+														<td></td>
+														<td class="center">
+															<u>
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+															</u>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+											</section>
+											<p style="margin-bottom:50px"></p>
+											{# Page 8 #}
+											<section class="secPrint">
+												<img src="{{ app.request.basepath }}/assets/dist/img/xl-logo.png" alt="" class="logo-kiri" height="64">
+												<img src="{{ app.request.basepath }}/assets/dist/img/huawei-logo.png" alt="" class="logo-kanan" height="64">
+												<p style="margin-top:200px"></p>
+												<br>
+												<table border="1" style="margin-left: 50px" width="700" id="tabel7">
+													<thead>
+													<tr>
+														<th colspan="7" style="text-align: center;background:#e9e9e9">Cabinet External Cabling Check</th>
+													</tr>
+													<tr>
+														<th colspan="3" class="center">Procedure</th>
+														<th class="center">Pass</th>
+														<th class="center">Fail</th>
+														<th class="center">N/A</th>
+														<th style="width:200px" class="center">Remarks</th>
+													</tr>
+													</thead>
+													<tbody>
+													<tr>
+														<td class="center">10</td>
+														<td colspan="2">
+															Check each the equipment rack is grounded to the main grounding bus bar and labeled
+														</td>
+														{% if formState[9] is defined %}
+															{% if (formState[9] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[9] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">11</td>
+														<td colspan="2">
+															Check that the A-Bis and A PCM cables are connected to the correct position of DDF
+														</td>
+														{% if formState[10] is defined %}
+															{% if (formState[10] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[10] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">12</td>
+														<td colspan="2">
+															Check that the alarm cabling has been connected from the BTS to the DDF
+														</td>
+														{% if formState[11] is defined %}
+															{% if (formState[11] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[11] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">13</td>
+														<td colspan="2">
+															Check that the extension cabinet cables are correctly connected and labeled
+														</td>
+														{% if formState[12] is defined %}
+															{% if (formState[12] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[12] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">14</td>
+														<td colspan="2">
+															Check that the feeder jumper cables are tightened all the BTS
+														</td>
+														{% if formState[13] is defined %}
+															{% if (formState[13] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[13] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">15</td>
+														<td colspan="2">
+															Check that the external cabinet cabling has been cable tied to the cable ladder
+														</td>
+														{% if formState[14] is defined %}
+															{% if (formState[14] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[14] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">16</td>
+														<td colspan="2">
+															Check that the indoor feeder cable labelling is correct
+														</td>
+														{% if formState[15] is defined %}
+															{% if (formState[15] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[15] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">17</td>
+														<td colspan="2">
+															Check that the DC power cable is the correct size and is terminated correctly
+														</td>
+														{% if formState[16] is defined %}
+															{% if (formState[16] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[16] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">18</td>
+														<td colspan="2">
+															Check the transmission cables, DC Cables and feeder jumpers are be correctly labeled
+														</td>
+														{% if formState[17] is defined %}
+															{% if (formState[17] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[17] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">19</td>
+														<td colspan="2">
+															Check that Accessory equipment is installed correctly
+														</td>
+														{% if formState[18] is defined %}
+															{% if (formState[18] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[18] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td rowspan="2">Remarks</td>
+														<td colspan="6" rowspan="2"></td>
+													</tr>
+													</tbody>
+													{# Item 6 #}
+													<thead>
+													<tr>
+														<th colspan="7" style="text-align: center;background:#e9e9e9">Final Checks</th>
+													</tr>
+													<tr>
+														<th colspan="3" class="center">Procedure</th>
+														<th class="center">Pass</th>
+														<th class="center">Fail</th>
+														<th class="center">N/A</th>
+														<th style="width:200px" class="center">Remarks</th>
+													</tr>
+													</thead>
+													<tbody>
+													<tr>
+														<td class="center">20</td>
+														<td colspan="2">
+															Check that all installation and packing materials have been removed from the site
+														</td>
+														{% if formState[19] is defined %}
+															{% if (formState[19] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[19] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td rowspan="2">Remarks</td>
+														<td colspan="6" rowspan="2"></td>
+													</tr>
+													</tbody>
+												</table>
+												<table width="600" style="margin-top: 80px;margin-left: 100px;">
+													<tbody>
+													<tr>
+														<td class="center">PT. HUAWEI SERVICE</td>
+														<td  width="100"></td>
+														<td class="center">PT. HUAWEI TECH INVESTMENT</td>
+													</tr>
+													<tr>
+														<td colspan="3"  height="100">&nbsp;</td>
+													</tr>
+													<tr>
+														<td class="center">
+															<u>
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+															</u>
+														</td>
+														<td></td>
+														<td class="center">
+															<u>
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+															</u>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+											</section>
+											<p style="margin-bottom:50px"></p>
+											{# Page 9 #}
+											<section class="secPrint" id="9">
+												<img src="{{ app.request.basepath }}/assets/dist/img/xl-logo.png" alt="" class="logo-kiri" height="64">
+												<img src="{{ app.request.basepath }}/assets/dist/img/huawei-logo.png" alt="" class="logo-kanan" height="64">
+												<p style="margin-top:120px"></p>
+												{# <h3 class="center">2.1 Installation Checklist</h3> #}
+												<h3 style="margin-left: 100px">2.1.1 Indoor Installation Checklist</h3>
+												<table border="1" style="margin-left: 50px" width="700" id="tabel7">
+													<thead>
+													<tr>
+														<th colspan="7" style="text-align: center;background:#e9e9e9">Equipment Overall Condition</th>
+													</tr>
+													<tr>
+														<th colspan="3" class="center">Procedure</th>
+														<th class="rd">Pass</th>
+														<th class="rd">Fail</th>
+														<th class="rd">N/A</th>
+														<th class="center">Remarks</th>
+													</tr>
+													</thead>
+													<tbody>
+													<tr>
+														<td class="center">21</td>
+														<td colspan="2">
+															Visually the antennas and feeders for any installation damage
+														</td>
+														{% if formState[20] is defined %}
+															{% if (formState[20] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[20] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">22</td>
+														<td colspan="2">
+															Check that the correct type of antenna has been installed
+														</td>
+														{% if formState[21] is defined %}
+															{% if (formState[21] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[21] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td rowspan="2">Remarks</td>
+														<td colspan="6" rowspan="2"></td>
+													</tr>
+													</tbody>
+													{#Outdoor item2#}
+													<thead>
+													<tr>
+														<th colspan="7" style="text-align: center;background:#e9e9e9">Feeders</th>
+													</tr>
+													<tr>
+														<th colspan="3" class="center">Procedure</th>
+														<th class="rd">Pass</th>
+														<th class="rd">Fail</th>
+														<th class="rd">N/A</th>
+														<th class="center">Remarks</th>
+													</tr>
+													</thead>
+													<tbody>
+													<tr>
+														<td class="center">23</td>
+														<td colspan="2">
+															Check that the banding radius of all feeders is greater than 20 x
+														</td>
+														{% if formState[22] is defined %}
+															{% if (formState[22] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[22] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">24</td>
+														<td colspan="2">
+															Check that outdoor feeder labeling is correct at the top and the bottom of the tower
+														</td>
+														{% if formState[23] is defined %}
+															{% if (formState[23] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[23] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">25</td>
+														<td colspan="2">
+															Check that all top jumpers to antenna connections are tight
+														</td>
+														{% if formState[24] is defined %}
+															{% if (formState[24] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[24] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td rowspan="2">Remarks</td>
+														<td colspan="6" rowspan="2"></td>
+													</tr>
+													</tbody>
+													{# Outdoor item3 #}
+													<thead>
+													<tr>
+														<th colspan="7" style="text-align: center;background:#e9e9e9">Connectors</th>
+													</tr>
+													<tr>
+														<th colspan="3" class="center">Procedure</th>
+														<th class="rd">Pass</th>
+														<th class="rd">Fail</th>
+														<th class="rd">N/A</th>
+														<th class="center">Remarks</th>
+													</tr>
+													</thead>
+													<tbody>
+													<tr>
+														<td class="center">26</td>
+														<td colspan="2">
+															Check that all top feeder connectors are tight
+														</td>
+														{% if formState[25] is defined %}
+															{% if (formState[25] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[25] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">27</td>
+														<td colspan="2">
+															Check that all top feeders to jumper connections are tight
+														</td>
+														{% if formState[26] is defined %}
+															{% if (formState[26] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[26] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">28</td>
+														<td colspan="2">
+															Check that all top jumpers to antenna connections are tight
+														</td>
+														{% if formState[19] is defined %}
+															{% if (formState[27] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[27] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td rowspan="2">Remarks</td>
+														<td colspan="6" rowspan="2"></td>
+													</tr>
+													</tbody>
+													{# Outdoor item4 #}
+													<thead>
+													<tr>
+														<th colspan="7" style="text-align: center;background:#e9e9e9">Weather sealing</th>
+													</tr>
+													<tr>
+														<th colspan="3" class="center">Procedure</th>
+														<th class="rd">Pass</th>
+														<th class="rd">Fail</th>
+														<th class="rd">N/A</th>
+														<th class="center">Remarks</th>
+													</tr>
+													</thead>
+													<tbody>
+													<tr>
+														<td class="center">29</td>
+														<td colspan="2">
+															Check all top grounding kits are weather-sealed correctly
+														</td>
+														{% if formState[28] is defined %}
+															{% if (formState[28] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[28] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">30</td>
+														<td colspan="2">
+															Check all feeders to jumper connections are weather-sealed correctly
+														</td>
+														{% if formState[29] is defined %}
+															{% if (formState[29] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[29] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													</tbody>
+												</table>
+												<table width="600" style="margin-top: 140px;margin-left: 100px;">
+													<tbody>
+													<tr>
+														<td class="center">PT. HUAWEI SERVICE</td>
+														<td  width="100"></td>
+														<td class="center">PT. HUAWEI TECH INVESTMENT</td>
+													</tr>
+													<tr>
+														<td colspan="3"  height="100">&nbsp;</td>
+													</tr>
+													<tr>
+														<td class="center">
+															<u>
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+															</u>
+														</td>
+														<td></td>
+														<td class="center">
+															<u>
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+															</u>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+											</section>
+											<p style="margin-bottom:50px"></p>
+											{# Page 10 #}
+											<section class="secPrint">
+												<img src="{{ app.request.basepath }}/assets/dist/img/xl-logo.png" alt="" class="logo-kiri" height="64">
+												<img src="{{ app.request.basepath }}/assets/dist/img/huawei-logo.png" alt="" class="logo-kanan" height="64">
+												<p style="margin-top:140px"></p>
+												<br>
+												<table border="1" style="margin-left: 50px" width="700" id="tabel7">
+													<tbody>
+													<tr>
+														<td class="center">31</td>
+														<td colspan="2">
+															Check all jumpers to antenna connections are weather-sealed correctly
+														</td>
+														{% if formState[30] is defined %}
+															{% if (formState[30] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[30] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td rowspan="2">Remarks</td>
+														<td colspan="6" rowspan="2"></td>
+													</tr>
+													{# Outdoor item5 #}
+													<thead>
+													<tr>
+														<th colspan="7" style="text-align: center;background:#e9e9e9">Antenna Stellwork</th>
+													</tr>
+													<tr>
+														<th colspan="3" class="center">Procedure</th>
+														<th class="rd">Pass</th>
+														<th class="rd">Fail</th>
+														<th class="rd">N/A</th>
+														<th class="center">Remarks</th>
+													</tr>
+													</thead>
+													<tbody>
+													<tr>
+														<td class="center">32</td>
+														<td colspan="2">
+															Check that the antenna suporting steelwork is correctly installed
+														</td>
+														{% if formState[32] is defined %}
+															{% if (formState[32] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[32] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">33</td>
+														<td colspan="2">
+															Check all antenna mounting clamps and brackets have been tightened
+														</td>
+														{% if formState[32] is defined %}
+															{% if (formState[32] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[32] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td rowspan="2">Remarks</td>
+														<td colspan="6" rowspan="2"></td>
+													</tr>
+													</tbody>
+													{# Outdoor item6 #}
+													<thead>
+													<tr>
+														<th colspan="7" style="text-align: center;background:#e9e9e9">Antenna Stellwork</th>
+													</tr>
+													<tr>
+														<th colspan="3" class="center">Procedure</th>
+														<th class="rd">Pass</th>
+														<th class="rd">Fail</th>
+														<th class="rd">N/A</th>
+														<th class="center">Remarks</th>
+													</tr>
+													</thead>
+													<tbody>
+													<tr>
+														<td class="center">34</td>
+														<td colspan="2">
+															Check that the antennas are mounted at the correct height
+														</td>
+														{% if formState[33] is defined %}
+															{% if (formState[33] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[33] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">35</td>
+														<td colspan="2">
+															Check that the direction of all antennas in all sectors is correct
+														</td>
+														{% if formState[34] is defined %}
+															{% if (formState[34] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[34] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td rowspan="2">Remarks</td>
+														<td colspan="6" rowspan="2"></td>
+													</tr>
+													</tbody>
+													{# Outdoor item7 #}
+													<thead>
+													<tr>
+														<th colspan="7" style="text-align: center;background:#e9e9e9">Antenna Stellwork</th>
+													</tr>
+													<tr>
+														<th colspan="1">Antenna</th>
+														<th colspan="2">Sector 1</th>
+														<th colspan="2">Sector 2</th>
+														<th colspan="2">Sector 3</th>
+													</tr>
+													</thead>
+													<tbody>
+													<tr>
+														<td colspan="1">Height</td>
+														<td colspan="2"></td>
+														<td colspan="2"></td>
+														<td colspan="2"></td>
+													</tr>
+													<tr>
+														<td colspan="1">Direction</td>
+														<td colspan="2"></td>
+														<td colspan="2"></td>
+														<td colspan="2"></td>
+													</tr>
+													<tr>
+														<td colspan="1">Downtiit M/E</td>
+														<td colspan="2"></td>
+														<td colspan="2"></td>
+														<td colspan="2"></td>
+													</tr>
+													<tr>
+														<td rowspan="2">Remarks</td>
+														<td colspan="6" rowspan="2"></td>
+													</tr>
+													</tbody>
+													{# Outdoor item8 #}
+													<thead>
+													<tr>
+														<th colspan="7" style="text-align: center;background:#e9e9e9">Outdoor Site Documentation</th>
+													</tr>
+													<tr>
+														<th colspan="3" class="center">Procedure</th>
+														<th class="rd">Pass</th>
+														<th class="rd">Fail</th>
+														<th class="rd">N/A</th>
+														<th class="center">Remarks</th>
+													</tr>
+													</thead>
+													<tbody>
+													<tr>
+														<td class="center">36</td>
+														<td colspan="2">
+															Check that the antenna layout is according to the site drawing
+														</td>
+														{% if formState[35] is defined %}
+															{% if (formState[35] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[35] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">37</td>
+														<td colspan="2">
+															Check that the feeder cable ladder is installed as per the site drawing
+														</td>
+														{% if formState[36] is defined %}
+															{% if (formState[36] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[36] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">38</td>
+														<td colspan="2">
+															Check that the feeder gland plate is installed as per the site drawing(applicable for Indoor Equipment)
+														</td>
+														{% if formState[37] is defined %}
+															{% if (formState[37] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[37] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td rowspan="2">Remarks</td>
+														<td colspan="6" rowspan="2"></td>
+													</tr>
+													</tbody>
+													</tbody>
+												</table>
+												<table width="600" style="margin-top: 110px;margin-left: 100px;">
+													<tbody>
+													<tr>
+														<td class="center">PT. HUAWEI SERVICE</td>
+														<td  width="100"></td>
+														<td class="center">PT. HUAWEI TECH INVESTMENT</td>
+													</tr>
+													<tr>
+														<td colspan="3"  height="100">&nbsp;</td>
+													</tr>
+													<tr>
+														<td class="center">
+															<u>
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+															</u>
+														</td>
+														<td></td>
+														<td class="center">
+															<u>
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+															</u>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+											</section>
+											<p style="margin-bottom:50px"></p>
+											{# Page 11 #}
+											<section class="secPrint" id="11">
+												<img src="{{ app.request.basepath }}/assets/dist/img/xl-logo.png" alt="" class="logo-kiri" height="64">
+												<img src="{{ app.request.basepath }}/assets/dist/img/huawei-logo.png" alt="" class="logo-kanan" height="64">
+												<p style="margin-top:140px"></p>
+												<br>
+												<table border="1" style="margin-left: 50px" width="700" id="tabel7">
+													<tbody>
+													<tr>
+														<td class="center">39</td>
+														<td colspan="2">
+															Check that the feeder cable ladder is correctly
+														</td>
+														{% if formState[38] is defined %}
+															{% if (formState[38] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[38] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">40</td>
+														<td colspan="2">
+															Check that the fedder grand plate has been correctly installed (applicable for indoor Equipment)
+														</td>
+														{% if formState[39] is defined %}
+															{% if (formState[39] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[39] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td rowspan="2">Remarks</td>
+														<td colspan="6" rowspan="2"></td>
+													</tr>
+													</tbody>
+													{# Outdoor item9 #}
+													<thead>
+													<tr>
+														<th colspan="7" style="text-align: center;background:#e9e9e9">Feeder Grounding</th>
+													</tr>
+													<tr>
+														<th colspan="3" class="center">Procedure</th>
+														<th class="center">Pass</th>
+														<th class="center">Fail</th>
+														<th class="center">N/A</th>
+														<th style="width:200px" class="center">Remarks</th>
+													</tr>
+													</thead>
+													<tbody>
+													<tr>
+														<td class="center">41</td>
+														<td colspan="2">
+															Check number/location of feeder grounding kits
+														</td>
+														{% if formState[40] is defined %}
+															{% if (formState[40] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[40] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">42</td>
+														<td colspan="2">
+															Check all buttom grounding are correctly terminated
+														</td>
+														{% if formState[41] is defined %}
+															{% if (formState[41] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[41] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td class="center">43</td>
+														<td colspan="2">
+															Check all bottom grounding kits are weather sealed correctly
+														</td>
+														{% if formState[42] is defined %}
+															{% if (formState[42] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[42] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td rowspan="2">Remarks</td>
+														<td colspan="6" rowspan="2"></td>
+													</tr>
+													</tbody>
+													{# Outdoor item 10#}
+													<thead>
+													<tr>
+														<th colspan="7" style="text-align: center;background:#e9e9e9">Concluding Checks</th>
+													</tr>
+													<tr>
+														<th colspan="3" class="center">Procedure</th>
+														<th class="center">Pass</th>
+														<th class="center">Fail</th>
+														<th class="center">N/A</th>
+														<th style="width:200px" class="center">Remarks</th>
+													</tr>
+													</thead>
+													<tbody>
+													<tr>
+														<td class="center">44</td>
+														<td colspan="2">
+															Check that all Installation and packing materials have been removed and packing materials have been removed from the site
+														</td>
+														{% if formState[43] is defined %}
+															{% if (formState[43] == 2) %}
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% elseif (formState[43] == 1) %}
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+																<td class="rd"></td>
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"><i class="fa fa-check"></i></td>
+															{% endif %}
+														{% else %}
+															<td class="rd"></td>
+															<td class="rd"></td>
+															<td class="rd"> </td>
+														{% endif %}
+														<td></td>
+													</tr>
+													<tr>
+														<td rowspan="2">Remarks</td>
+														<td colspan="6" rowspan="2"></td>
+													</tr>
+													</tbody>
+												</table>
+												<table width="600" style="margin-top: 350px;margin-left: 100px;">
+													<tbody>
+													<tr>
+														<td class="center">PT. HUAWEI SERVICE</td>
+														<td  width="100"></td>
+														<td class="center">PT. HUAWEI TECH INVESTMENT</td>
+													</tr>
+													<tr>
+														<td colspan="3"  height="100">&nbsp;</td>
+													</tr>
+													<tr>
+														<td class="center">
+															<u>
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+															</u>
+														</td>
+														<td></td>
+														<td class="center">
+															<u>
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+															</u>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+											</section>
+											<p style="margin-bottom:50px"></p>
+											{# Page 12 #}
+											<section class="secPrint">
+												<img src="{{ app.request.basepath }}/assets/dist/img/xl-logo.png" alt="" class="logo-kiri" height="64">
+												<img src="{{ app.request.basepath }}/assets/dist/img/huawei-logo.png" alt="" class="logo-kanan" height="64">
+												<p style="margin-top:140px"></p>
+												<div style="margin-left: 50px">
+													<h3>2.2 Environment Monitoring Functional Test</h3>
+													<h3>2.2.1 External Environment Monitoring Functional Test</h3>
+													<br>
+													<table border="1" width="700" id="tabel7">
+														<thead>
+														<tr>
+															<th colspan="3">
+																SITE: {{ infoSite[0].siteName }} <br>
+																Site Type : {% if (infoSite[0].stats == 0) %}
+																	INDOOR
+																{% elseif (infoSite[0].stats == 1) %}
+																	OUTDOOR
+																{% else %}
+																	OUTDOOR (Enclosure)
+																{% endif %}
+															</th>
+															<th colspan="3">SITE CONFIG : </th>
+															<th colspan="4">DATE : {{ "now"|date("d M Y") }}</th>
+														</tr>
+														<tr>
+															<th>External Alarm Number</th>
+															<th>External Alarm Port No. in EMUA</th>
+															<th>External Alarm ID in M2000</th>
+															<th>External Alarm Number Name</th>
+															<th>Severity</th>
+															<th>Polarity Valid Level</th>
+															<th>Pass</th>
+															<th>Fail</th>
+															<th>N/A</th>
+															<th>Remark</th>
+														</tr>
+														</thead>
+														<tbody>
+														<tr>
+															<th>1</th>
+															<th>1</th>
+															<th>65033</th>
+															<th>L1</th>
+															<th>&nbsp;</th>
+															<th>Open</th>
+															{% if infoEngineerDua[0] is defined %}
+																{% if (infoEngineerDua[0] == 2) %}
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																	<td class="rd"></td>
+																	<td class="rd"></td>
+																{% elseif (infoEngineerDua[0] == 1) %}
+																	<td class="rd"></td>
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																	<td class="rd"></td>
+																{% else %}
+																	<td class="rd"></td>
+																	<td class="rd"></td>
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																{% endif %}
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% endif %}
+															<th>&nbsp;</th>
+														</tr>
+														<tr>
+															<th>2</th>
+															<th>2</th>
+															<th>65035</th>
+															<th>L1</th>
+															<th>&nbsp;</th>
+															<th>Open</th>
+															{% if infoEngineerDua[1] is defined %}
+																{% if (infoEngineerDua[1] == 2) %}
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																	<td class="rd"></td>
+																	<td class="rd"></td>
+																{% elseif (infoEngineerDua[1] == 1) %}
+																	<td class="rd"></td>
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																	<td class="rd"></td>
+																{% else %}
+																	<td class="rd"></td>
+																	<td class="rd"></td>
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																{% endif %}
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% endif %}
+															<th>&nbsp;</th>
+														</tr>
+														<tr>
+															<th>3</th>
+															<th>3</th>
+															<th>65037</th>
+															<th>L1</th>
+															<th>&nbsp;</th>
+															<th>Open</th>
+															{% if infoEngineerDua[2] is defined %}
+																{% if (infoEngineerDua[2] == 2) %}
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																	<td class="rd"></td>
+																	<td class="rd"></td>
+																{% elseif (infoEngineerDua[2] == 1) %}
+																	<td class="rd"></td>
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																	<td class="rd"></td>
+																{% else %}
+																	<td class="rd"></td>
+																	<td class="rd"></td>
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																{% endif %}
+															{% else %}
+																<td class="rd"></td>
+																<td class="rd"></td>
+																<td class="rd"></td>
+															{% endif %}
+															<th>&nbsp;</th>
+														</tr>
+														<tr>
+															<th>4</th>
+															<th>4</th>
+															<th>65039</th>
+															<th>L1</th>
+															<th>&nbsp;</th>
+															<th>Open</th>
+															{% if infoEngineerDua[3] is defined %}
+																{% if (infoEngineerDua[3] == 2) %}
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																	<td class="rd"></td>
+																	<td class="rd"></td>
+																{% elseif (infoEngineerDua[3] == 1) %}
+																	<td class="rd"></td>
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																	<td class="rd"></td>
+																{% else %}
+																	<td class="rd"></td>
+																	<td class="rd"></td>
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																{% endif %}
+																{% else %}
+																	<td class="rd"></td>
+																	<td class="rd"></td>
+																	<td class="rd"></td>
+															{% endif %}
+															<th>&nbsp;</th>
+														</tr>
+														</tbody>
+													</table>
+													<p>&nbsp;</p>
+													<p>Notes :</p>
+													<div style="margin-left:10px">
+														<p>1. The Alarm items from the 1th to 5th need be provided and tested,</p>
+														<p>2. The 6th and 7th alarm will be test if there is Gunset and the alarm port is be provided and is available.</p>
+														<p>3. The other actual Items of External alarms depend on the how many items that could be provided by PT. XL AXIATA</p>
+														<p>4. The "N/A" will be filled if the signal of alarms is not be provided or it is not be available in the current network.</p>
+													</div>
+												</div>
+											</section>
+											<p style="margin-bottom:50px"></p>
+											{# Page 13 #}
+											<section class="secPrint" id="13">
+												<img src="{{ app.request.basepath }}/assets/dist/img/xl-logo.png" alt="" class="logo-kiri" height="64">
+												<img src="{{ app.request.basepath }}/assets/dist/img/huawei-logo.png" alt="" class="logo-kanan" height="64">
+												<p style="margin-top:140px"></p>
+
+												<div style="margin-left: 100px">
+													<h3>2.3 BTS VSWR Test</h3>
+													<h3>2.3.1 Feeder System List</h3>
+													<style type="text/css">
+
+													</style>
+													<table width="600" border="1" class="center-table">
+														<thead>
+														<tr>
+															<th colspan="3" class="left-table">SITE : {{ infoSite[0].siteName }}</th>
+															<th colspan="3" class="left-table">SITE CONFIG : </th>
+															<th class="left-table">DATE : {{ "now"|date("d M Y") }}</th>
+														</tr>
+														<tr style="background:#e9e9e9">
+															<th>No.</th>
+															<th>Cell</th>
+															<th>Feeder</th>
+															<th>VSWR</th>
+															<th>DTF</th>
+															<th>Feeder Length(m)</th>
+															<th>Remark</th>
+														</tr>
+														</thead>
+														<tbody>
+														<tr>
+															<td rowspan="2">1</td>
+															<td rowspan="2">Sector 1</td>
+															<td>TRX11</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>RXD12</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td rowspan="2">1</td>
+															<td rowspan="2">Sector 2</td>
+															<td>TRX21</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>RXD22</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td rowspan="2">1</td>
+															<td rowspan="2">Sector 3</td>
+															<td>TRX31</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>RXD32</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														</tbody>
+													</table>
+													<p>&nbsp;</p>
+													<p>Notes :</p>
+													<div style="margin-left:10px">
+														<p>1. For the new site : VSWR 12</p>
+														<p>2. For the swap site: Only test and record the value of VSWR by LMT Capture</p>
+														<p>3. The VSWR test capture will be attached</p>
+
+													</div>
+												</div>
+											</section>
+											<p style="margin-bottom:50px"></p>
+											{# Page 14 #}
+											<section class="secPrint" id="13">
+												<img src="{{ app.request.basepath }}/assets/dist/img/xl-logo.png" alt="" class="logo-kiri" height="64">
+												<img src="{{ app.request.basepath }}/assets/dist/img/huawei-logo.png" alt="" class="logo-kanan" height="64">
+												<p style="margin-top:140px"></p>
+												<div style="margin-left: 100px">
+													<p>&nbsp;</p>
+													<h3>2.4 BTS Commisioning Record</h3>
+													<h3>2.4.1 Network Parameter Checklist</h3>
+													<style type="text/css" media="screen">
+
+													</style>
+													<table border="1" width="600" class="paddingTable">
+														<thead>
+														<tr>
+															<th colspan="2">SITE : {{ infoSite[0].siteName }}</th>
+															<th colspan="2">SITE CONFIG : </th>
+															<th>DATE : {{ "now"|date("d M Y") }}</th>
+														</tr>
+														<tr style="background:#e9e9e9">
+															<th colspan="2">Cell Parameter</th>
+															<th class="center">
+																Plan
+															</th>
+															<th class="center">Actual</th>
+															<th class="center">Remark</th>
+														</tr>
+														</thead>
+														<tbody>
+														{# Sector 1 #}
+														<tr>
+															<td rowspan="5">Sector 1</td>
+															<td>BCCH</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>Cell ID</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>BSIC</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>Antenna direction (Azimuth)</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>Antenna Tilt (M+E) (Degree)</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														{# Sector 2 #}
+														<tr>
+															<td rowspan="5">Sector 2</td>
+															<td>BCCH</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>Cell ID</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>BSIC</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>Antenna direction (Azimuth)</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>Antenna Tilt (M+E) (Degree)</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														{# Sector 3 #}
+														<tr>
+															<td rowspan="5">Sector 3</td>
+															<td>BCCH</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>Cell ID</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>BSIC</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>Antenna direction (Azimuth)</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>Antenna Tilt (M+E) (Degree)</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														</tbody>
+													</table>
+												</div>
+											</section>
+											<p style="margin-bottom:50px"></p>
+											{# Page 15 #}
+											<section class="secPrint" id="13">
+												<img src="{{ app.request.basepath }}/assets/dist/img/xl-logo.png" alt="" class="logo-kiri" height="64">
+												<img src="{{ app.request.basepath }}/assets/dist/img/huawei-logo.png" alt="" class="logo-kanan" height="64">
+												<p style="margin-top:140px"></p>
+												<div style="margin-left: 100px">
+													<h3><strong>2.5 Basic Service Items</strong></h3>
+													<table border="1" width="600" class="paddingTable">
+														<thead>
+														<tr>
+															<th colspan="2">SITE : {{ infoSite[0].siteName }}</th>
+															<th colspan="2">SITE CONFIG : </th>
+															<th>DATE : {{ "now"|date("d M Y") }}</th>
+														</tr>
+														<tr>
+															<th colspan="5">Basic Service Test</th>
+														</tr>
+														<tr>
+															<th>Cell No.</th>
+															<th>Test Item</th>
+															<th>Pass</th>
+															<th>Fail</th>
+															<th>Remark</th>
+														</tr>
+														</thead>
+														<tbody>
+														{# Part 1 #}
+														<tr>
+															<td rowspan="4">Cell 1</td>
+															<td>Incoming Call</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>Outgoing Call</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>SMS</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>GPRS</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														{# Part 1 #}
+														<tr>
+															<td rowspan="4">Cell 2</td>
+															<td>Incoming Call</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>Outgoing Call</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>SMS</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>GPRS</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														{# Part 1 #}
+														<tr>
+															<td rowspan="4">Cell 3</td>
+															<td>Incoming Call</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>Outgoing Call</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>SMS</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>GPRS</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														</tbody>
+													</table>
+												</div>
+											</section>
+											<p style="margin-bottom:50px"></p>
+											{# Page 16 #}
+											<section class="secPrint" id="13">
+												<img src="{{ app.request.basepath }}/assets/dist/img/xl-logo.png" alt="" class="logo-kiri" height="64">
+												<img src="{{ app.request.basepath }}/assets/dist/img/huawei-logo.png" alt="" class="logo-kanan" height="64">
+												<p style="margin-top:140px"></p>
+												<div style="margin-left: 100px">
+													<h3>2.6 Integration Test</h3>
+													<h3>2.6.1 Call Test</h3>
+													<table border="1" width="600" class="paddingTable">
+														<thead>
+														<tr>
+															<th colspan="4">SITE : {{ infoSite[0].siteName }}</th>
+															<th colspan="3">SITE CONFIG : </th>
+															<th colspan="3">DATE : {{ "now"|date("d M Y") }}</th>
+														</tr>
+														<tr>
+															<th colspan="10">Call Test</th>
+														</tr>
+														<tr>
+															<th>Cell No.</th>
+															<th>TRX No.</th>
+															<th>TS0</th>
+															<th>TS1</th>
+															<th>TS2</th>
+															<th>TS3</th>
+															<th>TS4</th>
+															<th>TS5</th>
+															<th>TS6</th>
+															<th>TS7</th>
+														</tr>
+														</thead>
+														<tbody>
+														{# CELL 1 #}
+														<tr>
+															<td rowspan="8">Cell 1</td>
+															<td>0</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>1</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>2</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>3</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>4</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>5</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>6</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>7</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														{# CELL 2 #}
+														<tr>
+															<td rowspan="8">Cell 2</td>
+															<td>0</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>1</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>2</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>3</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>4</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>5</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>6</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>7</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														{# CELL 3 #}
+														<tr>
+															<td rowspan="8">Cell 3</td>
+															<td>0</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>1</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>2</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>3</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>4</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>5</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>6</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>7</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														</tbody>
+													</table>
+												</div>
+											</section>
+											<p style="margin-bottom:50px"></p>
+											{# Page 17 #}
+											<section class="secPrint" id="13">
+												<img src="{{ app.request.basepath }}/assets/dist/img/xl-logo.png" alt="" class="logo-kiri" height="64">
+												<img src="{{ app.request.basepath }}/assets/dist/img/huawei-logo.png" alt="" class="logo-kanan" height="64">
+												<p style="margin-top:140px"></p>
+												<div style="margin-left:100px">
+													<h3>2.6.2 Handover TestInsideSite</h3>
+													<table border="1" width="600" class="paddingTable">
+														<thead>
+														<tr>
+															<th colspan="2">SITE : {{ infoSite[0].siteName }}</th>
+															<th colspan="2">SITE CONFIG :</th>
+															<th colspan="1">DATE : {{ "now"|date("d M Y") }}</th>
+														</tr>
+														<tr>
+															<th colspan="5">Handover Test in Internal Site</th>
+														</tr>
+														<tr>
+															<th>Origin Cell</th>
+															<th>Target Cell</th>
+															<th>Pass</th>
+															<th>Fail</th>
+															<th>Remark</th>
+														</tr>
+														</thead>
+														<tbody>
+														<tr>
+															<td rowspan="2">Cell 1</td>
+															<td>Cell 2</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>Cell 3</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td rowspan="2">Cell 2</td>
+															<td>Cell 1</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>Cell 3</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td rowspan="2">Cell 3</td>
+															<td>Cell 1</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>Cell 2</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														</tbody>
+													</table>
+													<p>&nbsp;</p>
+													<p>&nbsp;</p>
+													<h3>2.6.3 Handover TestBetween the Sites</h3>
+													<table border="1" width="600" class="paddingTable">
+														<thead>
+														<tr>
+															<th colspan="2">SITE : {{ infoSite[0].siteName }}</th>
+															<th colspan="4">SITE CONFIG : </th>
+															<th>DATE : {{ "now"|date("d M Y") }}</th>
+														</tr>
+														<tr>
+															<th colspan="7">Handover Test Between the Sites</th>
+														</tr>
+														<tr>
+															<th>Origin Cell</th>
+															<th colspan="2">Target Cell</th>
+															<th>Pass</th>
+															<th>Fail</th>
+															<th colspan="2">Remark</th>
+														</tr>
+														</thead>
+														<tbody>
+														<tr>
+															<td>Cell of Neighbor Site</td>
+															<td colspan="2">Cell of Site</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td colspan="2">&nbsp;</td>
+														</tr>
+														<tr>
+															<td>Cell of Site</td>
+															<td colspan="2">Cell of Neighbor Site</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td colspan="2">&nbsp;</td>
+														</tr>
+														</tbody>
+													</table>
+												</div>
+											</section>
+											<p style="margin-bottom:50px"></p>
+											{# Page 18 #}
+											<section class="secPrint" id="13">
+												<img src="{{ app.request.basepath }}/assets/dist/img/xl-logo.png" alt="" class="logo-kiri" height="64">
+												<img src="{{ app.request.basepath }}/assets/dist/img/huawei-logo.png" alt="" class="logo-kanan" height="64">
+												<p style="margin-top:140px"></p>
+												<div style="margin-left: 100px">
+													<h3>2.6.4_24 Hours Stability Test</h3>
+													<div style="margin-left: 10px">
+														<h5>Site Name : {{ infoSite[0].siteName }}</h5>
+														<h5>Check Result</h5>
+														<table border="1">
+															<thead>
+															<tr>
+																<th style="padding:10px"><strong>OK</strong></th>
+															</tr>
+															</thead>
+														</table>
+													</div>
+													<h5><strong>This is to be confirmed that the BTS 2G has been running at least 24 hours without any related self Fault</strong></h5>
+													<p>&nbsp;</p>
+													<table border="1" width="600" class="remarkTable">
+														<caption style="font-size:1.5em"><strong><i>Remarks</i></strong></caption>
+														<thead>
+														<tr>
+															<th>&nbsp;</th>
+														</tr>
+														<tr>
+															<th>&nbsp;</th>
+														</tr>
+														<tr>
+															<th>&nbsp;</th>
+														</tr>
+														<tr>
+															<th>&nbsp;</th>
+														</tr>
+														<tr>
+															<th>&nbsp;</th>
+														</tr>
+														<tr>
+															<th>&nbsp;</th>
+														</tr>
+														<tr>
+															<th>&nbsp;</th>
+														</tr>
+														<tr>
+															<th>&nbsp;</th>
+														</tr>
+														<tr>
+															<th>&nbsp;</th>
+														</tr>
+														<tr>
+															<th>&nbsp;</th>
+														</tr>
+														</thead>
+													</table>
+													<p style="margin-left: 5px;font-size: .8em">
+														Notes : The 24 Hours is to be done in TOC/NOC, which will be pass if BTS is normal operation and no alarm.
+													</p>
+												</div>
+											</section>
+											<p style="margin-bottom:50px"></p>
+											{# Page 19 #}
+											<section class="secPrint" id="13">
+												<img src="{{ app.request.basepath }}/assets/dist/img/xl-logo.png" alt="" class="logo-kiri" height="64">
+												<img src="{{ app.request.basepath }}/assets/dist/img/huawei-logo.png" alt="" class="logo-kanan" height="64">
+												<p style="margin-top:140px"></p>
+												<div style="margin-left: 100px">
+													<h3>2.6.5 Alarm Query Test</h3>
+													<div style="margin-left: 10px">
+														<h5>Site Name : {{ infoSite[0].siteName }}</h5>
+														<h5>Check Result</h5>
+														<table border="1">
+															<thead>
+															<tr>
+																<th style="padding:10px"><strong>OK</strong></th>
+															</tr>
+															</thead>
+														</table>
+													</div>
+													<h5><strong>1. This test will be done from OM ( Region TOC )</strong></h5>
+													<h5><strong>2. This is to be confirmed that the BTS alarm is visible and there are no active alarms.</strong></h5>
+													<p>&nbsp;</p>
+													<table border="1" width="600" class="remarkTable">
+														<caption style="font-size:1.5em"><strong><i>Remarks</i></strong></caption>
+														<thead>
+														<tr>
+															<th>&nbsp;</th>
+														</tr>
+														<tr>
+															<th>&nbsp;</th>
+														</tr>
+														<tr>
+															<th>&nbsp;</th>
+														</tr>
+														<tr>
+															<th>&nbsp;</th>
+														</tr>
+														<tr>
+															<th>&nbsp;</th>
+														</tr>
+														<tr>
+															<th>&nbsp;</th>
+														</tr>
+														<tr>
+															<th>&nbsp;</th>
+														</tr>
+														<tr>
+															<th>&nbsp;</th>
+														</tr>
+														<tr>
+															<th>&nbsp;</th>
+														</tr>
+														<tr>
+															<th>&nbsp;</th>
+														</tr>
+														</thead>
+													</table>
+													<p style="margin-left: 5px;font-size: .8em">
+														Notes : if the site is no active alarms then write "OK, no active alarm", otherwise record the alarm information in detail
+													</p>
+												</div>
+											</section>
+											<p style="margin-bottom:50px"></p>
+											{# Page 20 #}
+											<section class="secPrint" id="13">
+												<img src="{{ app.request.basepath }}/assets/dist/img/xl-logo.png" alt="" class="logo-kiri" height="64">
+												<img src="{{ app.request.basepath }}/assets/dist/img/huawei-logo.png" alt="" class="logo-kanan" height="64">
+												<p style="margin-top:140px"></p>
+												<div style="margin-left: 100px">
+													<h3>2.7 Punch List Summary</h3>
+													<p>&nbsp;</p>
+													<div style="margin-left:20px">
+														<h4>Site Name : {{ infoSite[0].siteName }}</h4>
+														<h4>Check Result</h4>
+													</div>
+													<p>&nbsp;</p>
+													<h5>Note:
+														<br>
+														Please record the items and detail description if there is any items that can not be complete the test or check.
+													</h5>
+													<p>&nbsp;</p>
+													<table border="1" width="600" class="paddingTable">
+														<thead>
+														<tr style="background:#e9e9e9">
+															<th rowspan="2" class="center">No.</th>
+															<th rowspan="2" class="center">Items</th>
+															<th rowspan="2" class="center">Description</th>
+															<th colspan="2" class="center">Recified By</th>
+															<th rowspan="2" class="center">Remark</th>
+														</tr>
+														<tr>
+															<th class="center">HUAWEI</th>
+															<th class="center">XL</th>
+														</tr>
+														</thead>
+														<tbody>
+														<tr>
+															<td>1</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+														</tr>
+														<tr>
+															<td>2</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+
+														</tr>
+														<tr>
+															<td>3</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+
+														</tr>
+														<tr>
+															<td>4</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+
+														</tr>
+														<tr>
+															<td>5</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+
+														</tr>
+														<tr>
+															<td>6</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+
+														</tr>
+														<tr>
+															<td>7</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+															<td>&nbsp;</td>
+
+														</tr>
+														</tbody>
+													</table>
+												</div>
+											</section>
+											<p style="margin-bottom:50px"></p>
+											{# Page 21 #}
+											<section class="secPrint" id="13">
+												<img src="{{ app.request.basepath }}/assets/dist/img/xl-logo.png" alt="" class="logo-kiri" height="64">
+												<img src="{{ app.request.basepath }}/assets/dist/img/huawei-logo.png" alt="" class="logo-kanan" height="64">
+												<p style="margin-top:140px"></p>
+												<div style="margin-left: 100px">
+													<h3>3. Site Documentation</h3>
+													<p>&nbsp;</p>
+													<h3>M-BTS PHOTO CHECKLIST (2G) INDOOR</h3>
+													<p>&nbsp;</p>
+													<table border="1" width="600" class="sidePadding">
+														<thead>
+														<tr style="background:#e9e9e9">
+															<th class="center">Point</th>
+															<th>Item</th>
+															<th class="center">2G</th>
+														</tr>
+														</thead>
+														<tbody>
+														<tr>
+															<td>1</td>
+															<td>Site Location</td>
+															{% if revDoc[1] is defined %}
+																{% if (revDoc[1] == 1) %}
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																{% else %}
+																	<td class="rd">&nbsp;</td>
+																{% endif %}
+																{% else %}
+																	<td class="rd">&nbsp;</td>
+															{% endif %}
+														</tr>
+														<tr>
+															<td>2</td>
+															<td>GPS Coordinate</td>
+															{% if revDoc[2] is defined %}
+																{% if (revDoc[2] == 1) %}
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																{% else %}
+																	<td class="rd"></td>
+																{% endif %}
+															{% else %}
+																<td class="rd">&nbsp;</td>
+															{% endif %}
+														</tr>
+														<tr>
+															<td>3</td>
+															<td>Shelter View</td>
+															{% if revDoc[3] is defined %}
+																{% if (revDoc[3] == 1) %}
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																{% else %}
+																	<td class="rd"></td>
+																{% endif %}
+															{% else %}
+																<td class="rd">&nbsp;</td>
+															{% endif %}
+														</tr>
+														<tr>
+															<td>4</td>
+															<td>Overview of inside the cabinet</td>
+															{% if revDoc[4] is defined %}
+																{% if (revDoc[4] == 1) %}
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																{% else %}
+																	<td class="rd"></td>
+																{% endif %}
+															{% else %}
+																<td class="rd">&nbsp;</td>
+															{% endif %}
+														</tr>
+														<tr>
+															<td>5</td>
+															<td>FEP Indoor View</td>
+															{% if revDoc[5] is defined %}
+																{% if (revDoc[5] == 1) %}
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																{% else %}
+																	<td class="rd">&nbsp;</td>
+																{% endif %}
+															{% else %}
+																<td class="rd">&nbsp;</td>
+															{% endif %}
+														</tr>
+														<tr>
+															<td>6</td>
+															<td>FEP Outdoor View</td>
+															{% if revDoc[6] is defined %}
+																{% if (revDoc[6] == 1) %}
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																{% else %}
+																	<td class="rd"></td>
+																{% endif %}
+															{% else %}
+																<td class="rd">&nbsp;</td>
+															{% endif %}
+														</tr>
+														<tr>
+															<td>7</td>
+															<td>Feeder Indoor Installation</td>
+															{% if revDoc[7] is defined %}
+																{% if (revDoc[7] == 1) %}
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																{% else %}
+																	<td class="rd"></td>
+																{% endif %}
+															{% else %}
+																<td class="rd">&nbsp;</td>
+															{% endif %}
+														</tr>
+														<tr>
+															<td>8</td>
+															<td>Feeder Bending</td>
+															{% if revDoc[8] is defined %}
+																{% if (revDoc[8] == 1) %}
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																{% else %}
+																	<td class="rd"></td>
+																{% endif %}
+															{% else %}
+																<td class="rd">&nbsp;</td>
+															{% endif %}
+														</tr>
+														<tr>
+															<td>9</td>
+															<td>Internal Grounding Bar(IGB)</td>
+															{% if revDoc[9] is defined %}
+																{% if (revDoc[9] == 1) %}
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																{% else %}
+																	<td class="rd"></td>
+																{% endif %}
+															{% else %}
+																<td class="rd">&nbsp;</td>
+															{% endif %}
+														</tr>
+														<tr>
+															<td>10</td>
+															<td>External GB at Shelter</td>
+															{% if revDoc[10] is defined %}
+																{% if (revDoc[10] == 1) %}
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																{% else %}
+																	<td class="rd"></td>
+																{% endif %}
+															{% else %}
+																<td class="rd">&nbsp;</td>
+															{% endif %}
+														</tr>
+														<tr>
+															<td>11</td>
+															<td>Alarm Box</td>
+															{% if revDoc[11] is defined %}
+																{% if (revDoc[11] == 1) %}
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																{% else %}
+																	<td class="rd"></td>
+																{% endif %}
+															{% else %}
+																<td class="rd">&nbsp;</td>
+															{% endif %}
+														</tr>
+														<tr>
+															<td>12</td>
+															<td>ACPDB Internal View</td>
+															{% if revDoc[12] is defined %}
+																{% if (revDoc[12] == 1) %}
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																{% else %}
+																	<td class="rd"></td>
+																{% endif %}
+															{% else %}
+																<td class="rd">&nbsp;</td>
+															{% endif %}
+														</tr>
+														<tr>
+															<td>13</td>
+															<td>MCB at DCPDB</td>
+															{% if revDoc[13] is defined %}
+																{% if (revDoc[13] == 1) %}
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																{% else %}
+																	<td class="rd"></td>
+																{% endif %}
+															{% else %}
+																<td class="rd">&nbsp;</td>
+															{% endif %}
+														</tr>
+														<tr>
+															<td>14</td>
+															<td>Rectifler Cabinet</td>
+															{% if revDoc[14] is defined %}
+																{% if (revDoc[14] == 1) %}
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																{% else %}
+																	<td class="rd"></td>
+																{% endif %}
+															{% else %}
+																<td class="rd">&nbsp;</td>
+															{% endif %}
+														</tr>
+														<tr>
+															<td>15</td>
+															<td>MCB at Rectifler Cabinet</td>
+															{% if revDoc[15] is defined %}
+																{% if (revDoc[15] == 1) %}
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																{% else %}
+																	<td class="rd"></td>
+																{% endif %}
+															{% else %}
+																<td class="rd">&nbsp;</td>
+															{% endif %}
+														</tr>
+														<tr>
+															<td>16</td>
+															<td>Rack 19</td>
+															{% if revDoc[16] is defined %}
+																{% if (revDoc[16] == 1) %}
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																{% else %}
+																	<td class="rd"></td>
+																{% endif %}
+															{% else %}
+																<td class="rd">&nbsp;</td>
+															{% endif %}
+														</tr>
+														<tr>
+															<td>17</td>
+															<td>Antenna Mechanical & Electrical Tilting Sector 1</td>
+															{% if revDoc[17] is defined %}
+																{% if (revDoc[17] == 1) %}
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																{% else %}
+																	<td class="rd"></td>
+																{% endif %}
+															{% else %}
+																<td class="rd">&nbsp;</td>
+															{% endif %}
+														</tr>
+														<tr>
+															<td>18</td>
+															<td>Antenna Mechanical & Electrical Tilting Sector 2</td>
+															{% if revDoc[18] is defined %}
+																{% if (revDoc[18] == 1) %}
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																{% else %}
+																	<td class="rd"></td>
+																{% endif %}
+															{% else %}
+																<td class="rd">&nbsp;</td>
+															{% endif %}
+														</tr>
+														<tr>
+															<td>19</td>
+															<td>Antenna Mechanical & Electrical Tilting Sector 3</td>
+															{% if revDoc[19] is defined %}
+																{% if (revDoc[19] == 1) %}
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																{% else %}
+																	<td class="rd"></td>
+																{% endif %}
+															{% else %}
+																<td class="rd">&nbsp;</td>
+															{% endif %}
+														</tr>
+														<tr>
+															<td>20</td>
+															<td>Azimuth & Panoramic Sector 1</td>
+															{% if revDoc[20] is defined %}
+																{% if (revDoc[20] == 1) %}
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																{% else %}
+																	<td class="rd"></td>
+																{% endif %}
+															{% else %}
+																<td class="rd">&nbsp;</td>
+															{% endif %}
+														</tr>
+														<tr>
+															<td>21</td>
+															<td>Azimuth & Panoramic Sector 2</td>
+															{% if revDoc[21] is defined %}
+																{% if (revDoc[21] == 1) %}
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																{% else %}
+																	<td class="rd"></td>
+																{% endif %}
+															{% else %}
+																<td class="rd">&nbsp;</td>
+															{% endif %}
+														</tr>
+														<tr>
+															<td>22</td>
+															<td>Azimuth & Panoramic Sector 3</td>
+															{% if revDoc[22] is defined %}
+																{% if (revDoc[22] == 1) %}
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																{% else %}
+																	<td class="rd"></td>
+																{% endif %}
+															{% else %}
+																<td class="rd">&nbsp;</td>
+															{% endif %}
+														</tr>
+														<tr>
+															<td>23</td>
+															<td>Labelling of CPRI</td>
+															{% if revDoc[23] is defined %}
+																{% if (revDoc[23] == 1) %}
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																{% else %}
+																	<td class="rd"></td>
+																{% endif %}
+															{% else %}
+																<td class="rd">&nbsp;</td>
+															{% endif %}
+														</tr>
+														<tr>
+															<td>24</td>
+															<td>Connection of CPRI Cable to RRU Sec 1&2</td>
+															{% if revDoc[24] is defined %}
+																{% if (revDoc[24] == 1) %}
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																{% else %}
+																	<td class="rd"></td>
+																{% endif %}
+															{% else %}
+																<td class="rd">&nbsp;</td>
+															{% endif %}
+														</tr>
+														<tr>
+															<td>25</td>
+															<td>Connection of CPRI Cable to RRU Sec 3&Busbar</td>
+															{% if revDoc[25] is defined %}
+																{% if (revDoc[25] == 1) %}
+																	<td class="rd"><i class="fa fa-check"></i></td>
+																{% else %}
+																	<td class="rd"></td>
+																{% endif %}
+															{% else %}
+																<td class="rd">&nbsp;</td>
+															{% endif %}
+														</tr>
+														</tbody>
+													</table>
+												</div>
+											</section>
+											<p style="margin-bottom:50px"></p>
+											{# Page 22 #}
+											<section class="secPrint" id="13">
+												<img src="{{ app.request.basepath }}/assets/dist/img/xl-logo.png" alt="" class="logo-kiri" height="64">
+												<img src="{{ app.request.basepath }}/assets/dist/img/huawei-logo.png" alt="" class="logo-kanan" height="64">
+												<p style="margin-top:140px"></p>
+												<div style="margin-left: 100px">
+													{# SINGLE TAB #}
+													<table border="2"  width="600">
+														<thead>
+														<tr style="height:300px">
+															<th>&nbsp;</th>
+														</tr>
+														</thead>
+													</table>
+													<p>&nbsp;</p>
+													<table border="1" width="600">
+														<thead>
+														<tr style="background:#e9e9e9">
+															<th class="center">No.</th>
+															<th class="center">Photo File Name</th>
+															<th class="center">Description</th>
+														</tr>
+														</thead>
+														<tbody>
+														<tr>
+															<td class="center">1</td>
+															<td class="center">Site Location</td>
+															<td class="center">Photo of Overral Site View ( Zoom Out )</td>
+														</tr>
+														</tbody>
+													</table>
+													<p>&nbsp;</p>
+													{# DUAL TAB #}
+													<table border="2"  width="600">
+														<thead>
+														<tr style="height:300px">
+															<th style="width:50%">&nbsp;</th>
+															<th style="width:50%">&nbsp;</th>
+														</tr>
+														</thead>
+													</table>
+													<p>&nbsp;</p>
+													<table border="1" width="600">
+														<thead>
+														<tr style="background:#e9e9e9">
+															<th class="center">No.</th>
+															<th class="center">Photo File Name</th>
+															<th class="center">Description</th>
+														</tr>
+														</thead>
+														<tbody>
+														<tr>
+															<td class="center">2</td>
+															<td class="center">GPS Coordinate</td>
+															<td class="center">Photo of GPS showing Longitude and Latitude on site</td>
+														</tr>
+														</tbody>
+													</table>
+												</div>
+											</section>
+											<p style="margin-bottom:50px"></p>
+											{# Page 23 #}
+											<section class="secPrint" id="13">
+												<img src="{{ app.request.basepath }}/assets/dist/img/xl-logo.png" alt="" class="logo-kiri" height="64">
+												<img src="{{ app.request.basepath }}/assets/dist/img/huawei-logo.png" alt="" class="logo-kanan" height="64">
+												<p style="margin-top:140px"></p>
+												<div style="margin-left: 100px">
+													{# DUAL TAB #}
+													<table border="2"  width="600">
+														<thead>
+														<tr style="height:300px">
+															<th style="width:50%">&nbsp;</th>
+															<th style="width:50%">&nbsp;</th>
+														</tr>
+														</thead>
+													</table>
+													<p>&nbsp;</p>
+													<table border="1" width="600">
+														<thead>
+														<tr style="background:#e9e9e9">
+															<th class="center">No.</th>
+															<th class="center">Photo File Name</th>
+															<th class="center">Description</th>
+														</tr>
+														</thead>
+														<tbody>
+														<tr>
+															<td class="center">3</td>
+															<td class="center">Shelter View</td>
+															<td class="center">Photo of Outside and inside of the shelter ( Equipment in shelter taken from shelter door )</td>
+														</tr>
+														</tbody>
+													</table>
+													<p>&nbsp;</p>
+													{# DUAL TAB #}
+													<table border="2"  width="600">
+														<thead>
+														<tr style="height:300px">
+															<th style="width:50%">&nbsp;</th>
+															<th style="width:50%">&nbsp;</th>
+														</tr>
+														</thead>
+													</table>
+													<p>&nbsp;</p>
+													<table border="1" width="600">
+														<thead>
+														<tr style="background:#e9e9e9">
+															<th class="center">No.</th>
+															<th class="center">Photo File Name</th>
+															<th class="center">Description</th>
+														</tr>
+														</thead>
+														<tbody>
+														<tr>
+															<td class="center">4</td>
+															<td class="center">Overview of inside the cabinet</td>
+															<td class="center">Photo of overall BTS cabinet showing all modules</td>
+														</tr>
+														</tbody>
+													</table>
+												</div>
+											</section>
+											<p style="margin-bottom:50px"></p>
+											{# Page 24 #}
+											<section class="secPrint" id="13">
+												<img src="{{ app.request.basepath }}/assets/dist/img/xl-logo.png" alt="" class="logo-kiri" height="64">
+												<img src="{{ app.request.basepath }}/assets/dist/img/huawei-logo.png" alt="" class="logo-kanan" height="64">
+												<p style="margin-top:140px"></p>
+												<div style="margin-left: 100px">
+													{# SINGLE TAB #}
+													<table border="2"  width="600">
+														<thead>
+														<tr style="height:300px">
+															<th>&nbsp;</th>
+														</tr>
+														</thead>
+													</table>
+													<p>&nbsp;</p>
+													<table border="1" width="600">
+														<thead>
+														<tr style="background:#e9e9e9">
+															<th class="center">No.</th>
+															<th class="center">Photo File Name</th>
+															<th class="center">Description</th>
+														</tr>
+														</thead>
+														<tbody>
+														<tr>
+															<td class="center">5</td>
+															<td class="center">FEP Indoor View</td>
+															<td class="center">Photo of FEP from taken from inside the shelter</td>
+														</tr>
+														</tbody>
+													</table>
+													<p>&nbsp;</p>
+													{# SINGLE TAB #}
+													<table border="2"  width="600">
+														<thead>
+														<tr style="height:300px">
+															<th>&nbsp;</th>
+														</tr>
+														</thead>
+													</table>
+													<p>&nbsp;</p>
+													<table border="1" width="600">
+														<thead>
+														<tr style="background:#e9e9e9">
+															<th class="center">No.</th>
+															<th class="center">Photo File Name</th>
+															<th class="center">Description</th>
+														</tr>
+														</thead>
+														<tbody>
+														<tr>
+															<td class="center">6</td>
+															<td class="center">FEP Outdoor View</td>
+															<td class="center">Photo of FEP from taken from outside the shelter</td>
+														</tr>
+														</tbody>
+													</table>
+
+												</div>
+											</section>
+											<p style="margin-bottom:50px"></p>
+											{# Page 25 #}
+											<section class="secPrint" id="13">
+												<img src="{{ app.request.basepath }}/assets/dist/img/xl-logo.png" alt="" class="logo-kiri" height="64">
+												<img src="{{ app.request.basepath }}/assets/dist/img/huawei-logo.png" alt="" class="logo-kanan" height="64">
+												<p style="margin-top:140px"></p>
+												<div style="margin-left: 100px">
+													{# SINGLE TAB #}
+													<table border="2"  width="600">
+														<thead>
+														<tr style="height:300px">
+															<th>&nbsp;</th>
+														</tr>
+														</thead>
+													</table>
+													<p>&nbsp;</p>
+													<table border="1" width="600">
+														<thead>
+														<tr style="background:#e9e9e9">
+															<th class="center">No.</th>
+															<th class="center">Photo File Name</th>
+															<th class="center">Description</th>
+														</tr>
+														</thead>
+														<tbody>
+														<tr>
+															<td class="center">7</td>
+															<td class="center">Feeder Indoor Installation</td>
+															<td class="center">Photo of feeder installation include, label feeder, connection between feeder and Jumper Indoor</td>
+														</tr>
+														</tbody>
+													</table>
+													<p>&nbsp;</p>
+													{# SINGLE TAB #}
+													<table border="2"  width="600">
+														<thead>
+														<tr style="height:300px">
+															<th>&nbsp;</th>
+														</tr>
+														</thead>
+													</table>
+													<p>&nbsp;</p>
+													<table border="1" width="600">
+														<thead>
+														<tr style="background:#e9e9e9">
+															<th class="center">No.</th>
+															<th class="center">Photo File Name</th>
+															<th class="center">Description</th>
+														</tr>
+														</thead>
+														<tbody>
+														<tr>
+															<td class="center">8</td>
+															<td class="center">Feeder Bending</td>
+															<td class="center">Photo of feeder bending at horizontal &amp; vertical tray. (Side view)</td>
+														</tr>
+														</tbody>
+													</table>
+
+												</div>
+											</section>
+											<p style="margin-bottom:50px"></p>
+											{# Page 26 #}
+											<section class="secPrint" id="13">
+												<img src="{{ app.request.basepath }}/assets/dist/img/xl-logo.png" alt="" class="logo-kiri" height="64">
+												<img src="{{ app.request.basepath }}/assets/dist/img/huawei-logo.png" alt="" class="logo-kanan" height="64">
+												<p style="margin-top:140px"></p>
+												<div style="margin-left:100px">
+													{# SINGLE TAB #}
+													<table border="2"  width="600">
+														<thead>
+														<tr style="height:300px">
+															<th>&nbsp;</th>
+														</tr>
+														</thead>
+													</table>
+													<p>&nbsp;</p>
+													<table border="1" width="600">
+														<thead>
+														<tr style="background:#e9e9e9">
+															<th class="center">No.</th>
+															<th class="center">Photo File Name</th>
+															<th class="center">Description</th>
+														</tr>
+														</thead>
+														<tbody>
+														<tr>
+															<td class="center">9</td>
+															<td class="center">Internal Grounding Bar (IGB)</td>
+															<td class="center">Photo of Indoor Grounding bar including the grounding cable connections and labels</td>
+														</tr>
+														</tbody>
+													</table>
+													<p>&nbsp;</p>
+													{# SINGLE TAB #}
+													<table border="2"  width="600">
+														<thead>
+														<tr style="height:300px">
+															<th>&nbsp;</th>
+														</tr>
+														</thead>
+													</table>
+													<p>&nbsp;</p>
+													<table border="1" width="600">
+														<thead>
+														<tr style="background:#e9e9e9">
+															<th class="center">No.</th>
+															<th class="center">Photo File Name</th>
+															<th class="center">Description</th>
+														</tr>
+														</thead>
+														<tbody>
+														<tr>
+															<td class="center">10</td>
+															<td class="center">External GB at Shelter</td>
+															<td class="center">Photo of outdoor grounding bar at installed below FEP bar including the grounding cable connections and labels</td>
+														</tr>
+														</tbody>
+													</table>
+
+												</div>
+											</section>
+											<p style="margin-bottom:50px"></p>
+											{# Page 27 #}
+											<section class="secPrint" id="13">
+												<img src="{{ app.request.basepath }}/assets/dist/img/xl-logo.png" alt="" class="logo-kiri" height="64">
+												<img src="{{ app.request.basepath }}/assets/dist/img/huawei-logo.png" alt="" class="logo-kanan" height="64">
+												<p style="margin-top:140px"></p>
+												<div style="margin-left:100px">
+													{# SINGLE TAB #}
+													<table border="2"  width="600">
+														<thead>
+														<tr style="height:300px">
+															<th>&nbsp;</th>
+														</tr>
+														</thead>
+													</table>
+													<p>&nbsp;</p>
+													<table border="1" width="600">
+														<thead>
+														<tr style="background:#e9e9e9">
+															<th class="center">No.</th>
+															<th class="center">Photo File Name</th>
+															<th class="center">Description</th>
+														</tr>
+														</thead>
+														<tbody>
+														<tr>
+															<td class="center">11</td>
+															<td class="center">Alarm Box</td>
+															<td class="center">Photo of Alarm Box showing the incoming cable connection and alarm indicators.</td>
+														</tr>
+														</tbody>
+													</table>
+													<p>&nbsp;</p>
+													{# DUAL TAB #}
+													<table border="2"  width="600">
+														<thead>
+														<tr style="height:300px">
+															<th style="width:50%">&nbsp;</th>
+															<th style="width:50%">&nbsp;</th>
+														</tr>
+														</thead>
+													</table>
+													<p>&nbsp;</p>
+													<table border="1" width="600">
+														<thead>
+														<tr style="background:#e9e9e9">
+															<th class="center">No.</th>
+															<th class="center">Photo File Name</th>
+															<th class="center">Description</th>
+														</tr>
+														</thead>
+														<tbody>
+														<tr>
+															<td class="center">12</td>
+															<td class="center">ACPDB Internal View</td>
+															<td class="center">Photo of ACPDB, door of ACPDB must be open</td>
+														</tr>
+														</tbody>
+													</table>
+												</div>
+											</section>
+											<p style="margin-bottom:50px"></p>
+											{# Page 28 #}
+											<section class="secPrint" id="13">
+												<img src="{{ app.request.basepath }}/assets/dist/img/xl-logo.png" alt="" class="logo-kiri" height="64">
+												<img src="{{ app.request.basepath }}/assets/dist/img/huawei-logo.png" alt="" class="logo-kanan" height="64">
+												<p style="margin-top:140px"></p>
+												<div style="margin-left:100px">
+													{# SINGLE TAB #}
+													<table border="2"  width="600">
+														<thead>
+														<tr style="height:300px">
+															<th>&nbsp;</th>
+														</tr>
+														</thead>
+													</table>
+													<p>&nbsp;</p>
+													<table border="1" width="600">
+														<thead>
+														<tr style="background:#e9e9e9">
+															<th class="center">No.</th>
+															<th class="center">Photo File Name</th>
+															<th class="center">Description</th>
+														</tr>
+														</thead>
+														<tbody>
+														<tr>
+															<td class="center">13</td>
+															<td class="center">MCB at DCPDB</td>
+															<td class="center">Photo of the all the MCB in DCPDB in including labels. ( Macro mode )</td>
+														</tr>
+														</tbody>
+													</table>
+													<p>&nbsp;</p>
+													{# SINGLE TAB #}
+													<table border="2"  width="600">
+														<thead>
+														<tr style="height:300px">
+															<th>&nbsp;</th>
+														</tr>
+														</thead>
+													</table>
+													<p>&nbsp;</p>
+													<table border="1" width="600">
+														<thead>
+														<tr style="background:#e9e9e9">
+															<th class="center">No.</th>
+															<th class="center">Photo File Name</th>
+															<th class="center">Description</th>
+														</tr>
+														</thead>
+														<tbody>
+														<tr>
+															<td class="center">14</td>
+															<td class="center">Rectifier Cabinet</td>
+															<td class="center">Photo of rectifier</td>
+														</tr>
+														</tbody>
+													</table>
+
+												</div>
+											</section>
+											<p style="margin-bottom:50px"></p>
+											{# Page 29 #}
+											<section class="secPrint" id="13">
+												<img src="{{ app.request.basepath }}/assets/dist/img/xl-logo.png" alt="" class="logo-kiri" height="64">
+												<img src="{{ app.request.basepath }}/assets/dist/img/huawei-logo.png" alt="" class="logo-kanan" height="64">
+												<p style="margin-top:140px"></p>
+												<div style="margin-left: 100px">
+													{# SINGLE TAB #}
+													<table border="2"  width="600">
+														<thead>
+														<tr style="height:300px">
+															<th>&nbsp;</th>
+														</tr>
+														</thead>
+													</table>
+													<p>&nbsp;</p>
+													<table border="1" width="600">
+														<thead>
+														<tr style="background:#e9e9e9">
+															<th class="center">No.</th>
+															<th class="center">Photo File Name</th>
+															<th class="center">Description</th>
+														</tr>
+														</thead>
+														<tbody>
+														<tr>
+															<td class="center">15</td>
+															<td class="center">MCB at Rectifier Cabinet</td>
+															<td class="center">Photo of the all the MCB in rectifier including labels ( Macro Mode )</td>
+														</tr>
+														</tbody>
+													</table>
+													<p>&nbsp;</p>
+													{# SINGLE TAB #}
+													<table border="2"  width="600">
+														<thead>
+														<tr style="height:300px">
+															<th>&nbsp;</th>
+														</tr>
+														</thead>
+													</table>
+													<p>&nbsp;</p>
+													<table border="1" width="600">
+														<thead>
+														<tr style="background:#e9e9e9">
+															<th class="center">No.</th>
+															<th class="center">Photo File Name</th>
+															<th class="center">Description</th>
+														</tr>
+														</thead>
+														<tbody>
+														<tr>
+															<td class="center">16</td>
+															<td class="center">Rack 19</td>
+															<td class="center">Photo of 19's Rack</td>
+														</tr>
+														</tbody>
+													</table>
+												</div>
+											</section>
+											<p style="margin-bottom:50px"></p>
+											{# Page 30 #}
+											<section class="secPrint" id="13">
+												<img src="{{ app.request.basepath }}/assets/dist/img/xl-logo.png" alt="" class="logo-kiri" height="64">
+												<img src="{{ app.request.basepath }}/assets/dist/img/huawei-logo.png" alt="" class="logo-kanan" height="64">
+												<p style="margin-top:140px"></p>
+												<div style="margin-left: 100px">
+													{# DUAL TAB #}
+													<table border="2"  width="600">
+														<thead>
+														<tr style="height:300px">
+															<th style="width:50%">&nbsp;</th>
+															<th style="width:50%">&nbsp;</th>
+														</tr>
+														</thead>
+													</table>
+													<p>&nbsp;</p>
+													<table border="1" width="600">
+														<thead>
+														<tr style="background:#e9e9e9">
+															<th class="center">No.</th>
+															<th class="center">Photo File Name</th>
+															<th class="center">Description</th>
+														</tr>
+														</thead>
+														<tbody>
+														<tr>
+															<td class="center">17</td>
+															<td class="center">Antenna Mechanical &amp; Electrical Tilting Sector 1</td>
+															<td class="center">Photo of angle meter placed at the back of the antenna clearly shows the degree of tilt &amp; photo of electrical tilting</td>
+														</tr>
+														</tbody>
+													</table>
+													<p>&nbsp;</p>
+													{# DUAL TAB #}
+													<table border="2"  width="600">
+														<thead>
+														<tr style="height:300px">
+															<th style="width:50%">&nbsp;</th>
+															<th style="width:50%">&nbsp;</th>
+														</tr>
+														</thead>
+													</table>
+													<p>&nbsp;</p>
+													<table border="1" width="600">
+														<thead>
+														<tr style="background:#e9e9e9">
+															<th class="center">No.</th>
+															<th class="center">Photo File Name</th>
+															<th class="center">Description</th>
+														</tr>
+														</thead>
+														<tbody>
+														<tr>
+															<td class="center">18</td>
+															<td class="center">Antenna Mechanical &amp; Electrical Tiltin Sector 2</td>
+															<td class="center">Photo of angle meter placed at the back of the antenna clearly shows the degree of tilt &amp; photo of electrical tilting ( Macro Mode )</td>
+														</tr>
+														</tbody>
+													</table>
+												</div>
+											</section>
+											<p style="margin-bottom:50px"></p>
+											{# Page 31 #}
+											<section class="secPrint" id="13">
+												<img src="{{ app.request.basepath }}/assets/dist/img/xl-logo.png" alt="" class="logo-kiri" height="64">
+												<img src="{{ app.request.basepath }}/assets/dist/img/huawei-logo.png" alt="" class="logo-kanan" height="64">
+												<p style="margin-top:140px"></p>
+												<div style="margin-left: 100px">
+													{# DUAL TAB #}
+													<table border="2"  width="600">
+														<thead>
+														<tr style="height:300px">
+															<th style="width:50%">&nbsp;</th>
+															<th style="width:50%">&nbsp;</th>
+														</tr>
+														</thead>
+													</table>
+													<p>&nbsp;</p>
+													<table border="1" width="600">
+														<thead>
+														<tr style="background:#e9e9e9">
+															<th class="center">No.</th>
+															<th class="center">Photo File Name</th>
+															<th class="center">Description</th>
+														</tr>
+														</thead>
+														<tbody>
+														<tr>
+															<td class="center">19</td>
+															<td class="center">Antenna Mechanical &amp; Electrical Tiltin Sector 3</td>
+															<td class="center">Photo of angle meter placed at the back of the antenna clearly shows the degree of tilt &amp; photo of electrical tilting ( Macro Mode )</td>
+														</tr>
+														</tbody>
+													</table>
+													<p>&nbsp;</p>
+													{# DUAL TAB #}
+													<table border="2"  width="600">
+														<thead>
+														<tr style="height:300px">
+															<th style="width:50%">&nbsp;</th>
+															<th style="width:50%">&nbsp;</th>
+														</tr>
+														</thead>
+													</table>
+													<p>&nbsp;</p>
+													<table border="1" width="600">
+														<thead>
+														<tr style="background:#e9e9e9">
+															<th class="center">No.</th>
+															<th class="center">Photo File Name</th>
+															<th class="center">Description</th>
+														</tr>
+														</thead>
+														<tbody>
+														<tr>
+															<td class="center">20</td>
+															<td class="center">Azimuth &amp; Panoramic Sector 1</td>
+															<td class="center">Photo of panoramic sector 1</td>
+														</tr>
+														</tbody>
+													</table>
+												</div>
+											</section>
+											<p style="margin-bottom:50px"></p>
+											{# Page 32 #}
+											<section class="secPrint" id="13">
+												<img src="{{ app.request.basepath }}/assets/dist/img/xl-logo.png" alt="" class="logo-kiri" height="64">
+												<img src="{{ app.request.basepath }}/assets/dist/img/huawei-logo.png" alt="" class="logo-kanan" height="64">
+												<p style="margin-top:140px"></p>
+												<div style="margin-left: 100px">
+													{# DUAL TAB #}
+													<table border="2"  width="600">
+														<thead>
+														<tr style="height:300px">
+															<th style="width:50%">&nbsp;</th>
+															<th style="width:50%">&nbsp;</th>
+														</tr>
+														</thead>
+													</table>
+													<p>&nbsp;</p>
+													<table border="1" width="600">
+														<thead>
+														<tr style="background:#e9e9e9">
+															<th class="center">No.</th>
+															<th class="center">Photo File Name</th>
+															<th class="center">Description</th>
+														</tr>
+														</thead>
+														<tbody>
+														<tr>
+															<td class="center">21</td>
+															<td class="center">Azimuth &amp; Panoramic Sector 2</td>
+															<td class="center">Photo of panoramic sector 2</td>
+														</tr>
+														</tbody>
+													</table>
+													<p>&nbsp;</p>
+													{# DUAL TAB #}
+													<table border="2"  width="600">
+														<thead>
+														<tr style="height:300px">
+															<th style="width:50%">&nbsp;</th>
+															<th style="width:50%">&nbsp;</th>
+														</tr>
+														</thead>
+													</table>
+													<p>&nbsp;</p>
+													<table border="1" width="600">
+														<thead>
+														<tr style="background:#e9e9e9">
+															<th class="center">No.</th>
+															<th class="center">Photo File Name</th>
+															<th class="center">Description</th>
+														</tr>
+														</thead>
+														<tbody>
+														<tr>
+															<td class="center">22</td>
+															<td class="center">Azimuth &amp; Panoramic Sector 3</td>
+															<td class="center">Photo of panoramic sector 3</td>
+														</tr>
+														</tbody>
+													</table>
+												</div>
+											</section>
+											<p style="margin-bottom:50px"></p>
+											{# Page 33 #}
+											<section class="secPrint" id="13">
+												<img src="{{ app.request.basepath }}/assets/dist/img/xl-logo.png" alt="" class="logo-kiri" height="64">
+												<img src="{{ app.request.basepath }}/assets/dist/img/huawei-logo.png" alt="" class="logo-kanan" height="64">
+												<p style="margin-top:140px"></p>
+												<div style="margin-left: 100px">
+													{# SINGLE TAB #}
+													<table border="2"  width="600">
+														<thead>
+														<tr style="height:300px">
+															<th>&nbsp;</th>
+														</tr>
+														</thead>
+													</table>
+													<p>&nbsp;</p>
+													<table border="1" width="600">
+														<thead>
+														<tr style="background:#e9e9e9">
+															<th class="center">No.</th>
+															<th class="center">Photo File Name</th>
+															<th class="center">Description</th>
+														</tr>
+														</thead>
+														<tbody>
+														<tr>
+															<td class="center">23</td>
+															<td class="center">Labelling of CPRI</td>
+															<td class="center">Labelling of the (CPRI) cable to BBU</td>
+														</tr>
+														</tbody>
+													</table>
+													<p>&nbsp;</p>
+													{# DUAL TAB #}
+													<table border="2"  width="600">
+														<thead>
+														<tr style="height:300px">
+															<th style="width:50%">&nbsp;</th>
+															<th style="width:50%">&nbsp;</th>
+														</tr>
+														</thead>
+													</table>
+													<p>&nbsp;</p>
+													<table border="1" width="600">
+														<thead>
+														<tr style="background:#e9e9e9">
+															<th class="center">No.</th>
+															<th class="center">Photo File Name</th>
+															<th class="center">Photo File Name</th>
+														</tr>
+														</thead>
+														<tbody>
+														<tr>
+															<td class="center">24</td>
+															<td class="center">Connection of CPRI Cable to RRU Sec 1</td>
+															<td class="center">Connection of CPRI Cable to RRU Sec 2</td>
+														</tr>
+														</tbody>
+													</table>
+												</div>
+											</section>
+											<p style="margin-bottom:50px"></p>
+											{# Page 34 #}
+											<section class="secPrint" id="13">
+												<img src="{{ app.request.basepath }}/assets/dist/img/xl-logo.png" alt="" class="logo-kiri" height="64">
+												<img src="{{ app.request.basepath }}/assets/dist/img/huawei-logo.png" alt="" class="logo-kanan" height="64">
+												<p style="margin-top:140px"></p>
+												<div style="margin-left: 100px ">
+													{# DUAL TAB #}
+													<table border="2"  width="600">
+														<thead>
+														<tr style="height:300px">
+															<th style="width:50%">&nbsp;</th>
+															<th style="width:50%">&nbsp;</th>
+														</tr>
+														</thead>
+													</table>
+													<p>&nbsp;</p>
+													<table border="1" width="600">
+														<thead>
+														<tr style="background:#e9e9e9">
+															<th class="center">No.</th>
+															<th class="center">Photo File Name</th>
+															<th class="center">Photo File Name</th>
+														</tr>
+														</thead>
+														<tbody>
+														<tr>
+															<td class="center">25</td>
+															<td class="center">Connection of CPRI Cable to RRU Sec 3</td>
+															<td class="center">Grounding Cable to Bus Bar</td>
+														</tr>
+														</tbody>
+													</table>
+												</div>
+											</section>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}
+{% block customJS %}
+	<script>
+		function print(printed) {
+			var isi = document.getElementById(printed);
+			var popupWin = window.open('', '_blank', 'width=1000,height=700');
+			popupWin.document.open()
+			// popupWin.document.write('<html><head><link rel="stylesheet" type="text/css" href="{{ app.request.basepath }}assets/bootstrap/css/bootstrap.min.css" /><link rel="stylesheet" type="text/css" href="{{ app.request.basepath }}assets/dist/css/global.css" /></head><body>' + isi.innerHTML + '</body></html>');
+			popupWin.document.write('<html><head><link rel="stylesheet" type="text/css" href="{{ app.request.basepath }}assets/bootstrap/css/bootstrap.min.css" /><link rel="stylesheet" type="text/css" href="{{ app.request.basepath }}assets/dist/css/global.css" /></head><body  onload="window.print();window.close();">' + isi.innerHTML + '</body></html>');
+			popupWin.document.close();
+		}
+	</script>
+{% endblock %}

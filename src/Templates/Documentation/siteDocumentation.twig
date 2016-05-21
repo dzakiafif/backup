@@ -1,0 +1,173 @@
+{% extends 'layouts/head.twig' %}
+{% block content %}
+    <section id="content" class="table-layout animated fadeIn borderedBackground">
+        <div id="printed-area">
+            <div class="container-fluid">
+                {#{{ dump(infoSite) }}#}
+                <div class="row">
+                    <div class="col-md-11 center-block">
+                        <p><strong>M-BTS PHOTO CHECKLIST (2G) INDOOR</strong></p>
+                    </div>
+                </div>
+                <br/>
+                <form enctype='application/json' id="myForm" action="siteDocumentationAfter" method="post">
+                    <div class="padding:30px 10px 10px 10px;background-color: #fff;margin-top: 10px;border:6px solid rgba(204, 204, 204,0.5)">
+                        <div class="panel panel-visible" id="spy2">
+                            <table class="table table-striped table-hover table-bordered" id="datatable2" cellspacing="0" width="100%">
+                                <thead>
+                                <tr>
+                                    <th colspan="3">
+                                            SITE : {{ infoSite.siteName }}
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th style="text-align: center;">Point</th>
+                                    <th style="text-align: center;">Item</th>
+                                    <th style="text-align: center;">2G</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Site Location</td>
+                                    <td><input type="checkbox" name="c[1]" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>GPS Coordinate</td>
+                                    <td><input type="checkbox" name="c[2]" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Shelter View</td>
+                                    <td><input type="checkbox" name="c[3]" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Overview of inside the cabinet</td>
+                                    <td><input type="checkbox" name="c[4]" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>FEP Indoor View</td>
+                                    <td><input type="checkbox" name="c[5]" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>FEP Outdoor View</td>
+                                    <td><input type="checkbox" name="c[6]" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>Feeder Indoor Installation</td>
+                                    <td><input type="checkbox" name="c[7]" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>Feeder Bending</td>
+                                    <td><input type="checkbox" name="c[8]" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>Internal Grounding Bar(IGB)</td>
+                                    <td><input type="checkbox" name="c[9]" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>External GB at Shelter</td>
+                                    <td><input type="checkbox" name="c[10]" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>11</td>
+                                    <td>Alarm Box</td>
+                                    <td><input type="checkbox" name="c[11]" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>12</td>
+                                    <td>ACPDB Internal View</td>
+                                    <td><input type="checkbox" name="c[12]" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>13</td>
+                                    <td>MCB at DCPDB</td>
+                                    <td><input type="checkbox" name="c[13]" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>14</td>
+                                    <td>Rectifler Cabinet</td>
+                                    <td><input type="checkbox" name="c[14]" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>15</td>
+                                    <td>MCB at Rectifler Cabinet</td>
+                                    <td><input type="checkbox" name="c[15]" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>16</td>
+                                    <td>Rack 19</td>
+                                    <td><input type="checkbox" name="c[16]" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>17</td>
+                                    <td>Antenna Mechanical &amp; Electrical Tilting Sector 1</td>
+                                    <td><input type="checkbox" name="c[17]" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>18</td>
+                                    <td>Antenna Mechanical &amp; Electrical Tilting Sector 2</td>
+                                    <td><input type="checkbox" name="c[18]" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>19</td>
+                                    <td>Antenna Mechanical &amp; Electrical Tilting Sector 3</td>
+                                    <td><input type="checkbox" name="c[19]" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>20</td>
+                                    <td>Azimuth &amp; Panoramic Sector 1</td>
+                                    <td><input type="checkbox" name="c[20]" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>21</td>
+                                    <td>Azimuth &amp; Panoramic Sector 2</td>
+                                    <td><input type="checkbox" name="c[21]" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>22</td>
+                                    <td>Azimuth &amp; Panoramic Sector 3</td>
+                                    <td><input type="checkbox" name="c[22]" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>23</td>
+                                    <td>Labelling of CPRI</td>
+                                    <td><input type="checkbox" name="c[23]" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>24</td>
+                                    <td>Connection of CPRI Cable to RRU Sec 1&amp;2</td>
+                                    <td><input type="checkbox" name="c[24]" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>25</td>
+                                    <td>Connection of CPRI Cable to RRU Sec 3&amp;Busbar</td>
+                                    <td><input type="checkbox" name="c[25]" value="1"></td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                            <br>
+                            <div class="row"  style="margin-right: 30px">
+                                <div class="col-md-10">&nbsp;</div>
+
+                                <div class="col-md-2"><input type="submit" class="btn btn-primary btn-block btn-flat" value="SUBMIT"></div>
+                            </div>
+                            <p></p>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

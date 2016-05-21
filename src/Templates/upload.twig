@@ -1,0 +1,207 @@
+{% extends 'layouts/head.twig' %}
+{% block content %}
+    <section id="content" class="table-layout animated fadeIn">
+        <div class="container-fluid">
+            <br>
+            <div class="row">
+                <div class="col-md-3">
+                    &nbsp;
+                </div>
+                <div class="col-md-6 center-block">
+                    <div class="f-center">
+                        <i class="imoon imoon-5x imoon-image"></i>
+                        <h1> Upload File</h1>
+                        <p>Please verify before execute !</p>
+                        <p>&nbsp;</p>
+                    </div>
+                    <div class="panel" style="border:6px solid rgba(204, 204, 204,0.5)">
+                        <div class="panel-heading">
+                            <span class="panel-title"><i class="imoon imoon-quill"></i> Input File</span>
+                        </div>
+                        <div class="panel-body">
+                            {{ form_start(form, {'method': 'POST', 'action': 'upload','attr': {'class': 'form-horizontal'}}) }}
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <span class="append-icon right"></span>
+                                    {{ form_row(form.siteLocation) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <span class="append-icon right"></span>
+                                    {{ form_row(form.gpsCoordinate) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <span class="append-icon right"></span>
+                                    {{ form_row(form.shelterView) }}
+                                </div>
+                            </div>
+                           <div class="form-group">
+                               <div class="col-lg-12">
+                                    <span class="append-icon right"></span>
+                                    {{ form_row(form.fepIndoor) }}
+                               </div>
+                           </div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <span class="append-icon right"></span>
+                                    {{ form_row(form.fepOutdoor) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <span class="append-icon right"></span>
+                                    {{ form_row(form.feederIndoor) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <span class="append-icon right"></span>
+                                    {{ form_row(form.feederBreeding) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <span class="append-icon right"></span>
+                                    {{ form_row(form.internalGrounding) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <span class="append-icon right"></span>
+                                    {{ form_row(form.externalGb) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <span class="append-icon right"></span>
+                                    {{ form_row(form.alarmBox) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <span class="append-icon right"></span>
+                                    {{ form_row(form.acpdbInternal) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <span class="append-icon right"></span>
+                                    {{ form_row(form.mcbAt) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <span class="append-icon right"></span>
+                                    {{ form_row(form.rectifierCabinet) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <span class="append-icon right"></span>
+                                    {{ form_row(form.mcbAtRectifier) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <span class="append-icon right"></span>
+                                    {{ form_row(form.rack) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <span class="append-icon right"></span>
+                                    {{ form_row(form.antennaMechanicalSectorA) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <span class="append-icon right"></span>
+                                    {{ form_row(form.antennaMechanicalSectorB) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <span class="append-icon right"></span>
+                                    {{ form_row(form.antennaMechanicalSectorC) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <span class="append-icon right"></span>
+                                    {{ form_row(form.azimuthSectorA) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <span class="append-icon right"></span>
+                                    {{ form_row(form.azimuthSectorB) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <span class="append-icon right"></span>
+                                    {{ form_row(form.azimuthSectorC) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <span class="append-icon right"></span>
+                                    {{ form_row(form.labellingOfCpri) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <span class="append-icon right"></span>
+                                    {{ form_row(form.connectionOfCpriSectorA) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <span class="append-icon right"></span>
+                                    {{ form_row(form.connectionOfCpriSectorB) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <span class="append-icon right"></span>
+                                    {{ form_row(form.connectionOFCpriSectorC) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <span class="append-icon right"></span>
+                                    {{ form_row(form.groundingCable) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <span class="append-icon right"></span>
+                                    {{ form_row(form.overviewInside) }}
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom:0 !important;">
+                                <div class="col-lg-12">
+                                    {{ form_row(form.kirim) }}
+                                </div>
+                            </div>
+                        </div>
+                        {{ form_end(form) }}
+
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="col-md-3">
+                &nbsp;
+            </div>
+
+        </div>
+
+        </div>
+    </section>
+{% endblock %}

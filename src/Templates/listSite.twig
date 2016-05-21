@@ -1,0 +1,139 @@
+{% extends 'layouts/head.twig' %}
+{% block content %}
+    <section id="content" class="table-layout animated fadeIn borderedBackground">
+
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-11 center-block">
+                    <div class="col-md-12">
+                        <div class="f-center">
+                            <i class="imoon-3x imoon imoon-user3"></i>
+                            <h1> List Site</h1>
+                            <p>Manage and Modify site account</p>
+                        </div>
+                        {% for message in app.session.getFlashBag.get('message_success') %}
+                            <div class="alert alert-success alert-dismissable">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="fa fa-times"></i></button>
+                                <span style="color:#444">{{ message}}</span>
+                            </div>
+                        {% endfor %}
+                        <div style="padding:30px 10px 10px 10px;background-color: #fff;margin-top: 10px;border:6px solid rgba(204, 204, 204,0.5)">
+
+
+                            <div class="panel panel-visible" id="spy2">
+
+                                <div class="panel-body pn table-responsive">
+                                    {% if ((app.session.get('role')['value']) == 0) %}
+                                        <a href="{{ ('/newSite') }}" class="btn btn-primary" style="margin:0 0 15px 5px;"><i class="glyphicons glyphicons-user_add"></i> &nbsp;New Site</a>
+                                    {% endif %}
+                                    <table class="table table-striped table-hover table-responsive table-bordered" id="datatable2" cellspacing="0" width="100%">
+
+                                        <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Region</th>
+                                            <th>Cluster</th>
+                                            <th>Prodef</th>
+                                            <th>site_id</th>
+                                            <th>site_name</th>
+                                            <th>Tower_id</th>
+                                            {#<th>Tower_owner</th>#}
+                                            <th>Address</th>
+                                            <th>Fop</th>
+                                            {#<th>Spv</th>#}
+                                            <th>Longitude</th>
+                                            <th>Latitude</th>
+                                            <th>Existing_System</th>
+                                            <th>Remark</th>
+                                            <th>Status</th>
+                                            {#<th>Subcont</th>#}
+
+
+                                            {% if ((app.session.get('role')['value']) == 0) %}
+                                                <th>Operation</th>
+                                            {% endif %}
+
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% if (siteList|length > 0)%}
+                                        {% set i = 1 %}
+                                        {% for list in siteList %}
+
+                                            <tr>
+                                                <td>{{ i }}</td>
+                                                {% if (list.regional == 0) %}
+                                                <td>Bali</td>
+                                                {% elseif (list.regional == 1) %}
+                                                <td>Lombok</td>
+                                                {% else %}
+                                                <td>Jawa</td>
+                                                {% endif %}
+                                                <td>{{ list.poc }}</td>
+                                                <td>{{ list.prodef }}</td>
+                                                <td>{{ list.siteId }}</td>
+                                                <td>{{ list.siteName }}</td>
+                                                <td>{{ list.towerId }}</td>
+                                                {#<td>{{ list.towerOwner }}</td>#}
+                                                <td>{{ list.address }}</td>
+                                                {% if (list.fop == 0) %}
+                                                <td>NURUL AMINULLAH (+6281933155295)</td>
+                                                {% elseif (list.fop == 1) %}
+                                                <td>M MAISUN (+6281915940909</td>
+                                                {% elseif (list.fop == 2) %}
+                                                <td>JAKA SUTARJA (+6281806751538)</td>
+                                                {% elseif (list.fop == 3) %}
+                                                <td>HERRY SETYAWAN PUTRA (+62817369001)</td>
+                                                {% else %}
+                                                <td>GREGORIUS ERSON KOE (+628175738260)</td>
+                                                {% endif %}
+                                                {#<td>{{ list.spv }}</td>#}
+                                                <td>{{ list.longitude }}</td>
+                                                <td>{{ list.latitude }}</td>
+                                                <td>{{ list.existingSystem }}</td>
+                                                <td>{{ list.remark }}</td>
+                                                {% if (list.stats == 0) %}
+                                                <td>Indoor</td>
+                                                {% elseif (list.stats == 1) %}
+                                                <td>Outdoor</td>
+                                                {% else %}
+                                                <td>Outdoor(Enclosure)</td>
+                                                {% endif %}
+                                                {#<td>{{ list.subcont }}</td>#}
+
+                                                {% if (app.session.get('role')['value'] == 0) %}
+                                                    <td>
+                                                        <a href="/deleteSite/{{ list.id }}" title="Delete Account">
+                                                            <i class="imoon imoon-remove" style="color: #EC6F5A"></i>
+                                                        </a>
+                                                        &nbsp;
+                                                        <a href="#" title="Edit Account">
+                                                            <i class="imoon imoon-quill" style="color:#9b59b6;"></i>
+                                                        </a>
+                                                    </td>
+                                                {% endif %}
+
+
+                                            </tr>
+
+                                            {% set i = i + 1 %}
+                                        {% endfor %}
+                                        </tbody>
+                                        {% else %}
+                                            <tbody>
+                                            <tr>
+                                                <td colspan="10" style="text-align: center" class="primary">Tidak ada site</td>
+                                            </tr>
+                                            </tbody>
+                                        {% endif %}
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
