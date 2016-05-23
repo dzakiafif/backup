@@ -1,0 +1,68 @@
+{% extends 'layouts/head.twig' %}
+{% block content %}
+    <section id="content" class="table-layout animated fadeIn borderedBackground">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-11 center-block">
+                    <div class="col-md-12">
+                        <div class="f-center">
+                            <i class="imoon-3x imoon imoon-user3"></i>
+                            <h1> List User</h1>
+                            <p>Manage and Modify user account</p>
+                        </div>
+                        {% for message in app.session.getFlashBag.get('message_success') %}
+                            <div class="alert alert-success alert-dismissable">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="fa fa-times"></i></button>
+                                <span style="color:#444">{{ message}}</span>
+                            </div>
+                        {% endfor %}
+                        <div style="padding:30px 10px 10px 10px;background-color: #fff;margin-top: 10px;border:6px solid rgba(204, 204, 204,0.5)">
+                            <div class="panel panel-visible" id="spy2">
+                                <div class="panel-body pn">
+                                    <table class="table table-striped table-hover table-bordered" id="datatable2" cellspacing="0" width="100%">
+                                        <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Komentar</th>
+                                            <th>created at</th>
+                                            {% if ((app.session.get('role')['value']) == 0) %}
+                                                <th>Operation</th>
+                                            {% endif %}
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% if (remarkList|length > 0)%}
+                                        {% set i = 1 %}
+                                        {% for list in remarkList %}
+                                            <tr>
+                                                <td>{{ i }}</td>
+                                                <td>{{ list.komentar }}</td>
+                                                <td>{{ list.createdAt|date('d M Y') }}</td>
+                                                {% if (app.session.get('role')['value'] == 0) %}
+                                                    <td>
+                                                        <a href="/deleteRemark/{{ list.id }}" title="Delete Remark">
+                                                            <i class="imoon imoon-remove" style="color: #EC6F5A"></i>
+                                                        </a>
+                                                    </td>
+                                                {% endif %}
+                                            </tr>
+                                            {% set i = i + 1 %}
+                                        {% endfor %}
+                                        </tbody>
+                                        {% else %}
+                                            <tbody>
+                                            <tr>
+                                                <td colspan="10" style="text-align: center" class="primary">Tidak ada Remark</td>
+                                            </tr>
+                                            </tbody>
+                                        {% endif %}
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

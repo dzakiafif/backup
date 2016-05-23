@@ -5,8 +5,8 @@
          
 -------------------------------------------------------------- */
 @media print {
-    .page-break	{ 
-        display: block; 
+    .page-break	{
+        display: block;
         page-break-before: always; }
     body{
         -webkit-transform-origin: 0 0;
@@ -22,15 +22,15 @@
         display: none;
     }
 }
-body { 
+body {
     width:100% !important;
     margin:0 !important;
     padding:0 !important;
-    line-height: 1.1; 
-    font-family: Garamond,"Times New Roman", serif; 
-    color: #000; 
-    background: none; 
-    font-size: 14pt; 
+    line-height: 1.1;
+    font-family: Garamond,"Times New Roman", serif;
+    color: #000;
+    background: none;
+    font-size: 14pt;
     -webkit-transform-origin: 0 0;
     -moz-transform-origin: 0 0;
 }
@@ -45,7 +45,7 @@ h4,h5,h6{font-size:14pt;}
 
 p, h2, h3 { orphans: 3; widows: 3; }
 
-code { font: 12pt Courier, monospace; } 
+code { font: 12pt Courier, monospace; }
 blockquote { margin: 1.2em; padding: 1em;  font-size: 12pt; }
 hr { background-color: #ccc; }
 
@@ -67,14 +67,14 @@ a[href$=".jpg"]:after, a[href$=".jpeg"]:after, a[href$=".gif"]:after, a[href$=".
 a[href^="#"]:after, a[href^="javascript:"]:after {content: "";}
 
 /* Table */
-table { margin: 1px; text-align:left; width:100%} 
+table { margin: 1px; text-align:left; width:100%}
 /*th { border-top: 1px solid #333;  font-weight: bold; text-align: center }
 td { border-bottom: 1px solid #333; }
 th,td { padding: 4px 10px; }*/
 tfoot { font-style: italic; }
 caption { background: #fff; margin-bottom:2em; text-align:left; }
 thead {display: table-header-group;}
-img,tr {page-break-inside: avoid;} 
+img,tr {page-break-inside: avoid;}
 
 span.label{width: 180px;display: inline-table;}
 .kiri{float: left;padding:2px 10px;}

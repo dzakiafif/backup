@@ -18,9 +18,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Yanna\bts\Domain\Entity\Documentation;
 use Yanna\bts\Domain\Entity\EngineerDua;
 use Yanna\bts\Domain\Entity\Site;
+use Yanna\bts\Domain\Entity\Remark;
 use Yanna\bts\Domain\Services\EngineerServices;
 use Yanna\bts\Http\Form\gmapForm;
 use Yanna\bts\Http\Form\loginForm;
+use Yanna\bts\Http\Form\RemarkForm;
 use Yanna\bts\Http\Form\selectSiteAfterLoginForm;
 use Yanna\bts\Domain\Entity\User;
 use Yanna\bts\Domain\Entity\Engineer;
@@ -76,8 +78,11 @@ class AppController implements ControllerProviderInterface
         $controller->match('/printReport', [$this, 'printReportBeforeAction'])
             ->bind('printReportAllBefore');
 
-        $controller->get('/reviewAll',[$this,'reviewAllAction'])
+        $controller->match('/reviewAll',[$this,'reviewAllAction'])
             ->bind('reviewAll');
+
+        $controller->get('/reviewAllAfter',[$this,'reviewAllAfterAction'])
+            ->bind('reviewAllAfter');
 
         $controller->get('/printReportAfter',[$this, 'printReportAction'])
             ->bind('printReportAllAfter');
@@ -98,11 +103,20 @@ class AppController implements ControllerProviderInterface
         $controller->get('/listUser', [$this, 'showAllUser'])
             ->bind('listUser');
 
+        $controller->get('/listRemark',[$this,'showAllRemark'])
+            ->bind('listRemark');
+
+        $controller->get('/deleteRemark{id}',[$this,'deleteRemarkAction'])
+            ->bind('deleteRemark');
+
         $controller->get('/deleteUser/{id}', [$this, 'deleteUserAction'])
             ->bind('deleteUser');
 
         $controller->get('/deleteSite/{id}', [$this, 'deleteSiteAction'])
             ->bind('deleteSite');
+
+        $controller->get('/editUser{id}',[$this,'editUserAction'])
+            ->bind('editUser');
 
         $controller->match('/newSite', [$this, 'newSiteAction'])
             ->bind('newInputSite');
@@ -173,6 +187,9 @@ class AppController implements ControllerProviderInterface
          */
         $controller->get('/btsForm', [$this, 'btsFormAction'])
             ->bind('btsForm');
+
+        $controller->match('/newRemark',[$this,'newRemarkAction'])
+            ->bind('newRemark');
 
         $controller->get('/btsCommissioningForm', [$this, 'btsCommissioningAction'])
             ->bind('btsCommissioning');
@@ -422,6 +439,14 @@ class AppController implements ControllerProviderInterface
         }
     }
 
+    public function checkRemarkException()
+    {
+        $infoRules = $this->app['session']->get('role');
+        if($infoRules['value'] !== 1){
+            return $this->app->redirect($this->app['url_generator']->generate('errorPage'));
+        }
+    }
+
     public function errorPageAction()
     {
         return $this->app['twig']->render('error404.twig');
@@ -469,6 +494,50 @@ class AppController implements ControllerProviderInterface
 
         return $this->app->redirect($this->app['url_generator']->generate('listUser'));
     }
+
+    public function deleteRemarkAction()
+    {
+        $remark = $this->app['remark.repository']->findById($this->app['request']->get('id'));
+
+        $this->app['orm.em']->remove($remark);
+        $this->app['orm.em']->flush();
+
+     return $this->app->remark($this->app['url_generator']->generator('listRemark'));
+    }
+
+    public function newRemarkAction(Request $request)
+    {
+        $newRemarkForm = new RemarkForm();
+
+        $formBuilder = $this->app['form.factory']->create($newRemarkForm, $newRemarkForm);
+
+        if ($request->getMethod() === 'GET') {
+            return $this->app['twig']->render('newRemark.twig', ['form' => $formBuilder->createView()]);
+        }
+
+        $formBuilder->handleRequest($request);
+
+        if (!$formBuilder->isValid()) {
+            return $this->app['twig']->render('newRemark.twig', ['form' => $formBuilder->createView()]);
+        }
+
+        $dataRemark = Remark::create($newRemarkForm->getKomentar());
+
+        $this->app['orm.em']->persist($dataRemark);
+        $this->app['orm.em']->flush();
+
+        $this->app['session']->getFlashBag()->add(
+            'message_success', 'Remark Created Successfully'
+        );
+        return $this->app->redirect($this->app['url_generator']->generate('listRemark'));
+    }
+
+    public function showAllRemark(){
+        $remark = $this->app['remark.repository']->findAll();
+
+       return $this->app['twig']->render('listRemark.twig',['remarkList'=>$remark]);
+    }
+
 
     public function newSiteAction(Request $request)
     {
@@ -816,8 +885,23 @@ class AppController implements ControllerProviderInterface
 
     public function reviewAllAction()
     {
+        $engineerInfo = $this->app['engineer.repository']->findByFormId($this->app['session']->get('siteSelect')['value']);
+        $siteInfo = $this->app['site.repository']->findBySiteName($engineerInfo->getSiteName());
+
+        if ($this->app['request']->getMethod() === 'POST') {
+            $this->app['session']->set('siteSelect', ['value' => $this->app['request']->get('site_name')]);
+
+            return $this->app->redirect($this->app['url_generator']->generate('reviewAllAfter'));
+        }
+
+        return $this->app['twig']->render('printReport.twig', ['infoSite' => $siteInfo]);
+    }
+
+
+    public function reviewAllAfterAction()
+    {
         if ($this->app['session']->get('siteSelect')['value'] == null) {
-            return $this->app->redirect($this->app['url_generator']->generate('printReportAllBefore'));
+            return $this->app->redirect($this->app['url_generator']->generate('reviewAll'));
         }
 
         $engineerInfo = $this->app['engineer.repository']->findByFormId($this->app['session']->get('siteSelect')['value']);
