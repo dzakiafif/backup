@@ -16,6 +16,7 @@ use Silex\ControllerProviderInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Yanna\bts\Domain\Entity\Documentation;
+use Yanna\bts\Domain\Entity\Dokumen;
 use Yanna\bts\Domain\Entity\EngineerDua;
 use Yanna\bts\Domain\Entity\Site;
 use Yanna\bts\Domain\Entity\Remark;
@@ -223,8 +224,11 @@ class AppController implements ControllerProviderInterface
         $controller->get('/showJson', [$this, 'showJsonAction'])
             ->bind('showJsonSite');
 //
-//        $controller->match('/upload', [$this, 'photoAction'])
-//            ->bind('uploadFile');
+        $controller->match('/upload', [$this, 'photoAction'])
+            ->bind('uploadFile');
+
+        $controller->get('/listPhoto',[$this,'showAllPhoto'])
+            ->bind('listPhoto');
 
         $controller->get('/map', [$this, 'gmapAction'])
             ->bind('gmap');
@@ -485,6 +489,13 @@ class AppController implements ControllerProviderInterface
         return $this->app['twig']->render('listUser.twig', ['userList' => $user]);
     }
 
+    public function showAllPhoto()
+    {
+        $photo = $this->app['dokumen.repository']->findAll();
+
+        return $this->app['twig']->render('listPhoto.twig',['photoList'=>$photo]);
+    }
+
     public function deleteUserAction()
     {
         $user = $this->app['user.repository']->findById($this->app['request']->get('id'));
@@ -502,7 +513,7 @@ class AppController implements ControllerProviderInterface
         $this->app['orm.em']->remove($remark);
         $this->app['orm.em']->flush();
 
-     return $this->app->redirect($this->app['url_generator']->generator('listRemark'));
+     return $this->app->redirect($this->app['url_generator']->generate('listRemark'));
     }
 
     public function newRemarkAction(Request $request)
@@ -598,150 +609,41 @@ class AppController implements ControllerProviderInterface
 //        return var_dump($site);
     }
 
-//    public function photoAction(Request $request)
-//    {
-//        $photoForm = new photoForm();
-//        $formBuilder = $this->app['form.factory']->create($photoForm, $photoForm);
-//
-//        if ($request->getMethod() === 'GET') {
-//            return $this->app['twig']->render('upload.twig', ['form' => $formBuilder->createView()]);
-//        }
-//
-//        $formBuilder->handleRequest($request);
-//
-//        if (!$formBuilder->isValid()) {
-//            return $this->app['twig']->render('upload.twig', ['form' => $formBuilder->createView()]);
-//        }
-//
-//        $user = $this->app['user.repository']->findByUsername(
-//            $this->app['session']->get('username')['value']
-//        );
-//
-//        $files = new ArrayCollection();
-//
-//        $dokumen = User::create($user,$files);
-//        $dokumen = [];
-//        $files->add(Dokumen::create(
-//            'Site Location', $photoForm->getSiteLocation(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'GPS Coordinate', $photoForm->getGpsCoordinate(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'Shelter View', $photoForm->getShelterView(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'Overview of inside the cabinet', $photoForm->getOverviewInside(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'FEP Indoor View', $photoForm->getFepIndoor(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'FEP Outdoor View', $photoForm->getFepOutdoor(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'Feeder Indoor Installation', $photoForm->getFeederIndoor(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'Feeder Bending', $photoForm->getFeederBreeding(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'Internal Grounding Bar (IGB)', $photoForm->getInternalGrounding(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'External GB at Shelter', $photoForm->getExternalGb(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'Alarm Box', $photoForm->getAlarmBox(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'ACPDB Internal View', $photoForm->getAcpdbInternal(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'MCB at DCPDB', $photoForm->getMcbAt(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'Rectifier Cabinet', $photoForm->getRectifierCabinet(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'MCB at Rectifier Cabinet', $photoForm->getMcbAtRectifier(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'Rack 19', $photoForm->getRack(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'Antenna Mechanical Electrical Tilting Sector 1', $photoForm->getAntennaMechanicalSectorA(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'Antenna Mechanical Electrical Tilting Sector 2', $photoForm->getAntennaMechanicalSectorB(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'Antenna Mechanical Electrical Tilting Sector 3', $photoForm->getAntennaMechanicalSectorC(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'Azimuth & Panoramic Sector 1', $photoForm->getAzimuthSectorA(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'Azimuth & Panoramic Sector 2', $photoForm->getAzimuthSectorB(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'Azimuth $ Panoramic Sector 3', $photoForm->getAzimuthSectorC(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'Connection Of CPRI Cable to RRU Sec 1', $photoForm->getConnectionOfCpriSectorA(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'Connection Of CPRI Cable to RRU Sec 2', $photoForm->getConnectionOfCpriSectorB(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'Connection Of CPRI Cable to RRU SEC 3', $photoForm->getConnectionOfCpriSectorC(), $dokumen
-//        ));
-//
-//        $dokumen->setDokumen($files);
-//
-//        $this->app['orm.em']->persist($dokumen);
-//        $this->app['orm.em']->flush();
-//
-//        $dirName = $this->app['dokumen.path'] . '/' . $dokumen->getId();
-//        mkdir($dirName, 0755);
-//
-//        foreach ($files as $dokumen) {
-//            /**
-//             * @var Dokumen $dokumen
-//             */
-//            $dokumen->getFile()->move($dirName, $dokumen->getFileName());
-//        }
-//
-//        $this->app['session']->getFlashBag()->add(
-//            'message_success', 'sukses upload file'
-//        );
-//
-//        return $this->app['twig']->render('listPhoto.twig', ['form' => $formBuilder->createView()]);
-//    }
+    public function photoAction(Request $request)
+    {
+        $photoForm = new photoForm();
+        $formBuilder = $this->app['form.factory']->create($photoForm, $photoForm);
+
+        if ($request->getMethod() === 'GET') {
+            return $this->app['twig']->render('upload.twig', ['form' => $formBuilder->createView()]);
+        }
+
+        $formBuilder->handleRequest($request);
+
+        if (!$formBuilder->isValid()) {
+            return $this->app['twig']->render('upload.twig', ['form' => $formBuilder->createView()]);
+        }
+
+        $dataDokumen = Dokumen::create($photoForm->getUsername(),$photoForm->getSiteLocation(),$photoForm->getShelterView(),$photoForm->getOverviewInside(),$photoForm->getFepIndoor(),$photoForm->getFepOutdoor(),$photoForm->getFeederIndoor(),$photoForm->getFeederBreeding(),$photoForm->getInternalGrounding(),$photoForm->getExternalGb(),$photoForm->getAlarmBox(),$photoForm->getAcpdbInternal(),$photoForm->getMcbAt(),$photoForm->getRectifierCabinet(),$photoForm->getMcbAtRectifier(),$photoForm->getRack(),$photoForm->getAntennaMechanicalSectorA(),$photoForm->getAntennaMechanicalSectorB(),$photoForm->getAntennaMechanicalSectorC(),$photoForm->getAzimuthSectorA(),$photoForm->getAzimuthSectorB(),$photoForm->getAzimuthSectorC(),$photoForm->getLabellingOfCpri(),$photoForm->getConnectionOfCpriSectorA(),$photoForm->getConnectionOfCpriSectorB(),$photoForm->getConnectionOfCpriSectorC(),$photoForm->getGroundingCable());
+        $this->app['orm.em']->persist($dataDokumen);
+        $this->app['orm.em']->flush();
+
+        $dirName = $this->app['dokumen.path'] . '/' . $dataDokumen->getId();
+        mkdir($dirName, 0755);
+
+        foreach ($dataDokumen as $coba) {
+            /**
+             * @var Dokumen $dokumen
+             */
+            $coba->getFile()->move($dirName, $coba->getFileName());
+        }
+
+        $this->app['session']->getFlashBag()->add(
+            'message_success', 'sukses upload file'
+        );
+
+        return $this->app->redirect($this->app['url_generator']->generate('listPhoto'));
+    }
 
     public function jsonJawabanAction(Request $request)
     {
