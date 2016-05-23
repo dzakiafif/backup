@@ -106,7 +106,7 @@ class AppController implements ControllerProviderInterface
         $controller->get('/listRemark',[$this,'showAllRemark'])
             ->bind('listRemark');
 
-        $controller->get('/deleteRemark{id}',[$this,'deleteRemarkAction'])
+        $controller->get('/deleteRemark/{id}',[$this,'deleteRemarkAction'])
             ->bind('deleteRemark');
 
         $controller->get('/deleteUser/{id}', [$this, 'deleteUserAction'])
@@ -502,7 +502,7 @@ class AppController implements ControllerProviderInterface
         $this->app['orm.em']->remove($remark);
         $this->app['orm.em']->flush();
 
-     return $this->app->remark($this->app['url_generator']->generator('listRemark'));
+     return $this->app->redirect($this->app['url_generator']->generator('listRemark'));
     }
 
     public function newRemarkAction(Request $request)
