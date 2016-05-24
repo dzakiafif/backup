@@ -9,28 +9,24 @@
 
 namespace Yanna\bts\Http\Controller;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Silex\Application;
-use Silex\ControllerCollection;
 use Silex\ControllerProviderInterface;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Yanna\bts\Domain\Entity\Documentation;
+use Yanna\bts\Domain\Entity\Engineer;
 use Yanna\bts\Domain\Entity\EngineerDua;
 use Yanna\bts\Domain\Entity\Site;
+use Yanna\bts\Domain\Entity\User;
 use Yanna\bts\Domain\Services\EngineerServices;
+use Yanna\bts\Domain\Services\userPasswordMatcher;
 use Yanna\bts\Http\Form\gmapForm;
 use Yanna\bts\Http\Form\loginForm;
 use Yanna\bts\Http\Form\selectSiteAfterLoginForm;
-use Yanna\bts\Domain\Entity\User;
-use Yanna\bts\Domain\Entity\Engineer;
-use Yanna\bts\Http\Form\photoForm;
-use Yanna\bts\Domain\Services\userPasswordMatcher;
-//use Yanna\bts\Domain\Services\UserServices;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Yanna\bts\Http\Form\siteForm;
-use Yanna\bts\Http\Form\selectSiteForm;
+use Yanna\bts\Http\Form\UpdateUserForm;
 use Yanna\bts\Http\Form\userForm;
+
+//use Yanna\bts\Domain\Services\UserServices;
 
 class AppController implements ControllerProviderInterface
 {
@@ -76,10 +72,10 @@ class AppController implements ControllerProviderInterface
         $controller->match('/printReport', [$this, 'printReportBeforeAction'])
             ->bind('printReportAllBefore');
 
-        $controller->get('/reviewAll',[$this,'reviewAllAction'])
+        $controller->get('/reviewAll', [$this, 'reviewAllAction'])
             ->bind('reviewAll');
 
-        $controller->get('/printReportAfter',[$this, 'printReportAction'])
+        $controller->get('/printReportAfter', [$this, 'printReportAction'])
             ->bind('printReportAllAfter');
 
         /**
@@ -94,6 +90,10 @@ class AppController implements ControllerProviderInterface
         $controller->match('/newUser', [$this, 'newUserAction'])
             ->before([$this, 'checkUserException'])
             ->bind('newInputUser');
+
+        $controller->match('/updateUser/{id}', [$this, 'updateUserAction'])
+//            ->before([$this, 'checkUserException'])
+            ->bind('updateUser');
 
         $controller->get('/listUser', [$this, 'showAllUser'])
             ->bind('listUser');
@@ -122,7 +122,7 @@ class AppController implements ControllerProviderInterface
         $controller->get('/formInstallation', [$this, 'installationChecklistAction'])
             ->bind('installationChecklist');
 
-        $controller->get('/formEnvironment',[$this,'externalChecklistAction'])
+        $controller->get('/formEnvironment', [$this, 'externalChecklistAction'])
             ->bind('externalChecklist');
 
         $controller->post('/formEnvironment', [$this, 'environmentMonitoringAction'])
@@ -154,7 +154,7 @@ class AppController implements ControllerProviderInterface
         $controller->get('/reviewFirstDocument', [$this, 'reviewFirstDocAction'])
             ->bind('reviewFirstDocument');
 
-        $controller->get('/reviewSecondDocument',[$this,'reviewSecondDocAction'])
+        $controller->get('/reviewSecondDocument', [$this, 'reviewSecondDocAction'])
             ->bind('reviewSecondDocument');
 
         $controller->match('/siteDocumentation', [$this, 'siteDocumentationBeforeAction'])
@@ -199,7 +199,6 @@ class AppController implements ControllerProviderInterface
             ->bind('reviewDocDocument');
 
 
-
         $controller->get('/punchListForm', [$this, 'punchListAction'])
             ->bind('punchListSummary');
 
@@ -219,7 +218,7 @@ class AppController implements ControllerProviderInterface
     {
         $docData = $this->app['documentation.repository']->findByFormId($this->app['request']->get('id'));
         $docFormState = unserialize($docData->formState);
-        return $this->app['twig']->render('Vd/reviewDoc.twig', ['infoForm' => $docData,'revDoc'=>$docFormState]);
+        return $this->app['twig']->render('Vd/reviewDoc.twig', ['infoForm' => $docData, 'revDoc' => $docFormState]);
 
     }
 
@@ -310,7 +309,7 @@ class AppController implements ControllerProviderInterface
             return $this->app->redirect($this->app['url_generator']->generate('home'));
         }
 
-        if (!($this->app['session']->get('role') == 3) && !($request->getPathInfo() === '/siteSelect')) {
+        if ( ! ($this->app['session']->get('role') == 3) && ! ($request->getPathInfo() === '/siteSelect')) {
             return $this->app->redirect($this->app['url_generator']->generate('home'));
         }
     }
@@ -321,7 +320,7 @@ class AppController implements ControllerProviderInterface
             return $this->app->redirect($this->app['url_generator']->generate('home'));
         }
 
-        if (!$this->app['session']->has('uname') && !($request->getPathInfo() === '/login')) {
+        if ( ! $this->app['session']->has('uname') && ! ($request->getPathInfo() === '/login')) {
             $this->app['session']->getFlashBag()->add(
                 'message_error', 'Please Login First'
             );
@@ -340,7 +339,7 @@ class AppController implements ControllerProviderInterface
 
         // $this->app['orm.em']->persist($informasi);
         // $this->app['orm.em']->flush($informasi);
-        $formId = substr(strtoupper(($this->app['session']->get('uname')['value'])),0,3) . date("Ymdhis");
+        $formId = substr(strtoupper(($this->app['session']->get('uname')['value'])), 0, 3) . date("Ymdhis");
 
         // return $this->app->redirect($this->app['url_generator']->generate('home'));
         // 
@@ -362,7 +361,7 @@ class AppController implements ControllerProviderInterface
 
         $formBuilder->handleRequest($request);
 
-        if (!$formBuilder->isValid()) {
+        if ( ! $formBuilder->isValid()) {
             return $this->app['twig']->render('login.twig', ['form' => $formBuilder->createView()]);
         }
 
@@ -375,7 +374,7 @@ class AppController implements ControllerProviderInterface
             return $this->app['twig']->render('login.twig', ['form' => $formBuilder->createView()]);
         }
 
-        if (!(new UserPasswordMatcher($loginForm->getPassword(), $user))->match()) {
+        if ( ! (new UserPasswordMatcher($loginForm->getPassword(), $user))->match()) {
             $this->app['session']->getFlashBag()->add(
                 'message_error', 'Incorrect Username or Password given'
             );
@@ -384,13 +383,12 @@ class AppController implements ControllerProviderInterface
         }
         $role = $request->get('role');
 
-        if (!($user->getRole() == $role)) {
+        if ( ! ($user->getRole() == $role)) {
             $this->app['session']->getFlashBag()->add(
                 'message_error', 'Role Salah'
             );
             return $this->app['twig']->render('login.twig', ['form' => $formBuilder->createView()]);
         }
-
 
 
         $this->app['session']->set('role', ['value' => $user->getRole()]);
@@ -438,7 +436,7 @@ class AppController implements ControllerProviderInterface
 
         $formBuilder->handleRequest($request);
 
-        if (!$formBuilder->isValid()) {
+        if ( ! $formBuilder->isValid()) {
             return $this->app['twig']->render('newUser.twig', ['form' => $formBuilder->createView()]);
         }
 
@@ -450,6 +448,47 @@ class AppController implements ControllerProviderInterface
         $this->app['session']->getFlashBag()->add(
             'message_success', 'Account Created Successfully'
         );
+        return $this->app->redirect($this->app['url_generator']->generate('listUser'));
+    }
+
+    public function updateUserAction(Request $request, $id)
+    {
+        $em = $this->app['orm.em'];
+        $user = $em->getRepository('Yanna\bts\Domain\Entity\User')->findById($id);
+//        var_dump($user);
+
+        $updateUserForm = new UpdateUserForm();
+        $updateUserForm->setId($user->getId());
+//        $updateUserForm->setName($user->getName());
+        $updateUserForm->setUsername($user->getUsername());
+        $updateUserForm->setRole($user->getRole());
+
+        $formBuilder = $this->app['form.factory']->create($updateUserForm, $updateUserForm);
+
+        if ($request->getMethod() === 'GET') {
+            return $this->app['twig']->render('updateUser.twig', [
+                'form' => $formBuilder->createView(),
+                'id' => $id,
+                'actions' => '/updateUser/' . $id,
+            ]);
+        }
+
+        $formBuilder->handleRequest($request);
+
+        if ( ! $formBuilder->isValid()) {
+            return $this->app['twig']->render('updateUser.twig', [
+                'form' => $formBuilder->createView(),
+                'actions' => '/updateUser/' . $id,
+            ]);
+        }
+
+        $user->update($user, $updateUserForm->getName(), $updateUserForm->getUsername(), $updateUserForm->getPassword(), $updateUserForm->getRole());
+        $em->flush();
+
+        $this->app['session']->getFlashBag()->add(
+            'message_success', 'Account Successfully Updated'
+        );
+
         return $this->app->redirect($this->app['url_generator']->generate('listUser'));
     }
 
@@ -481,7 +520,7 @@ class AppController implements ControllerProviderInterface
 
         $formBuilder->handleRequest($request);
 
-        if (!$formBuilder->isValid()) {
+        if ( ! $formBuilder->isValid()) {
             return $this->app['twig']->render('newSite.twig', ['form' => $formBuilder->createView()]);
         }
 
@@ -523,7 +562,7 @@ class AppController implements ControllerProviderInterface
             return $this->app->json($site);
         }
 
-        if($request->getMethod() === 'POST'){
+        if ($request->getMethod() === 'POST') {
             return $this->app->json($site);
         }
 //        return var_dump($site);
@@ -707,17 +746,17 @@ class AppController implements ControllerProviderInterface
     public function externalChecklistAction(Request $request)
     {
         $siteId = $this->app['session']->get('site')['value'];
-        if($this->app['session']->get('site')['value'] == null){
+        if ($this->app['session']->get('site')['value'] == null) {
             return $this->app->redirect($this->app['url_generator']->generate('selectSiteAfterLogin'));
-        }else{
+        } else {
             if ($this->app['session']->get('tempFormId')['value'] == null) {
                 return $this->app->redirect($this->app['url_generator']->generate('installationChecklist'));
             } else {
                 $siteInformation = $this->app['site.repository']->findById($siteId);
-                $form=[];
-                return $this->app['twig']->render('Engineer/environmentMonitoringForm.twig',[
+                $form = [];
+                return $this->app['twig']->render('Engineer/environmentMonitoringForm.twig', [
                     'form' => $form,
-                    'siteInfo'=>$siteInformation
+                    'siteInfo' => $siteInformation
                 ]);
             }
         }
@@ -727,7 +766,6 @@ class AppController implements ControllerProviderInterface
     {
 
     }
-
 
 
     /**
@@ -865,7 +903,7 @@ class AppController implements ControllerProviderInterface
     public function installationProccessAction(Request $request)
     {
         $engineerFlush = new Engineer();
-        $formId = substr(strtoupper(($this->app['session']->get('uname')['value'])),0,3) . date("Ymdhis") . 'EN';
+        $formId = substr(strtoupper(($this->app['session']->get('uname')['value'])), 0, 3) . date("Ymdhis") . 'EN';
         $uname = $this->app['session']->get('uname')['value'];
         $formState = $request->get('c');
         $siteName = $this->app['site.repository']->findById($this->app['session']->get('site')['value']);
@@ -955,7 +993,7 @@ class AppController implements ControllerProviderInterface
 
         $formBuilder->handleRequest($request);
 
-        if (!$formBuilder->isValid()) {
+        if ( ! $formBuilder->isValid()) {
             return $this->app['twig']->render('gmap.twig', ['form' => $formBuilder->createView()]);
         }
 
