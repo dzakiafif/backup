@@ -89,6 +89,28 @@ class User
     }
 
     /**
+     * @param $updatedAt
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updateAt = $updatedAt;
+    }
+
+    public static function update(User $user, string $name, string $username, string $password, int $role)
+    {
+        $userInfo = $user;
+
+        $userInfo->setName($name);
+        $userInfo->setUsername($username);
+        $userInfo->setPassword($password);
+        $userInfo->setRole($role);
+        $userInfo->setCreatedAt(new \DateTime());
+        $userInfo->setUpdatedAt(new \DateTime());
+
+        return $userInfo;
+    }
+
+    /**
      * @return int
      */
     public function getId()
@@ -201,17 +223,8 @@ class User
     }
 
     /**
-     * @param $updatedAt
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updateAt = $updatedAt;
-    }
-
-      /**
      * @param Paket $paket
      */
-
 
     /**
      * @PrePersist

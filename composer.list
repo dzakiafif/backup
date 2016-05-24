@@ -16,7 +16,7 @@ doctrine/orm                           v2.5.4   MIT
 ircmaxell/password-compat              v1.0.4   MIT           
 laravel/homestead                      v3.0.2   MIT           
 monolog/monolog                        1.19.0   MIT           
-paragonie/random_compat                v1.4.1   MIT           
+paragonie/random_compat                v2.0.2   MIT           
 phpdocumentor/reflection-docblock      2.0.4    MIT           
 phpspec/php-diff                       v1.0.2   BSD-3-Clause  
 phpspec/phpspec                        2.5.0    MIT           
@@ -45,12 +45,12 @@ symfony/http-kernel                    v3.0.6   MIT
 symfony/intl                           v3.0.6   MIT           
 symfony/locale                         v2.8.6   MIT           
 symfony/options-resolver               v2.8.6   MIT           
-symfony/polyfill-intl-icu              v1.1.1   MIT           
-symfony/polyfill-mbstring              v1.1.1   MIT           
-symfony/polyfill-php55                 v1.1.1   MIT           
-symfony/polyfill-php56                 v1.1.1   MIT           
-symfony/polyfill-php70                 v1.1.1   MIT           
-symfony/polyfill-util                  v1.1.1   MIT           
+symfony/polyfill-intl-icu              v1.2.0   MIT           
+symfony/polyfill-mbstring              v1.2.0   MIT           
+symfony/polyfill-php55                 v1.2.0   MIT           
+symfony/polyfill-php56                 v1.2.0   MIT           
+symfony/polyfill-php70                 v1.2.0   MIT           
+symfony/polyfill-util                  v1.2.0   MIT           
 symfony/process                        v3.0.6   MIT           
 symfony/property-access                v3.0.6   MIT           
 symfony/property-info                  v3.0.6   MIT           
