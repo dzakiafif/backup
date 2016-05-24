@@ -1,9 +1,101 @@
 {% extends 'layouts/head.twig' %}
 {% block content %}
-    <section id="content" class="table-layout animated fadeIn">
+    <section id="content" class="table-layout animated fadeIn borderedBackground">
         <div class="container-fluid">
             <div class="row">
-
+                <div class="col-md-11 center-block">
+                    <div class="col-md-12">
+                        <div class="f-center">
+                            <i class="imoon-3x imoon imoon-user3"></i>
+                            <h1> List User</h1>
+                            <p>Manage and Modify user account</p>
+                        </div>
+                        {% for message in app.session.getFlashBag.get('message_success') %}
+                            <div class="alert alert-success alert-dismissable">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="fa fa-times"></i></button>
+                                <span style="color:#444">{{ message}}</span>
+                            </div>
+                        {% endfor %}
+                        <div style="padding:30px 10px 10px 10px;background-color: #fff;margin-top: 10px;border:6px solid rgba(204, 204, 204,0.5)">
+                            <div class="panel panel-visible" id="spy2">
+                                <div class="panel-body pn">
+                                    {% if ((app.session.get('role')['value']) == 0) %}
+                                        <a href="{{ ('/newUser') }}" class="btn btn-primary" style="margin:0 0 15px 5px;"><i class="glyphicons glyphicons-user_add"></i> &nbsp;New User</a>
+                                    {% endif %}
+                                    <table class="table table-striped table-hover table-bordered" id="datatable2" cellspacing="0" width="100%">
+                                        <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Description</th>
+                                            <th>Filename</th>
+                                            <th>Created Date</th>
+                                            {% if ((app.session.get('role')['value']) == 0) %}
+                                                <th>Operation</th>
+                                            {% endif %}
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% if (photoList|length > 0)%}
+                                        {% set i = 1 %}
+                                        {% for list in photoList %}
+                                            <tr>
+                                                <td>{{ i }}</td>
+                                                <td>{{ list.siteLocation }}</td>
+                                                <td>{{ list.gpsCoordinate }}</td>
+                                                <td>{{ list.shelterView }}</td>
+                                                <td>{{ list.fepIndoor }}</td>
+                                                <td>{{ list.fepOutdoor }}</td>
+                                                <td>{{ list.overviewInside }}</td>
+                                                <td>{{ list.feederIndoor }}</td>
+                                                <td>{{ list.feederBreeding }}</td>
+                                                <td>{{ list.internalGrounding }}</td>
+                                                <td>{{ list.externalGb }}</td>
+                                                <td>{{ list.alarmBox }}</td>
+                                                <td>{{ list.acpdbInternal }}</td>
+                                                <td>{{ list.mcbAt }}</td>
+                                                <td>{{ list.rectifierCabinet }}</td>
+                                                <td>{{ list.mcbAtRectifier }}</td>
+                                                <td>{{ list.rack }}</td>
+                                                <td>{{ list.antennaMechanicalSectorA }}</td>
+                                                <td>{{ list.antennamechanicalSectorB }}</td>
+                                                <td>{{ list.antennamechanicalSectorC }}</td>
+                                                <td>{{ list.azimuthSectorA }}</td>
+                                                <td>{{ list.azimuthSectorB }}</td>
+                                                <td>{{ list.azimuthSectorC }}</td>
+                                                <td>{{ list.labellingOfCpri }}</td>
+                                                <td>{{ list.connectionOfCpriSectorA }}</td>
+                                                <td>{{ list.connectionOfCpriSectorB }}</td>
+                                                <td>{{ list.connectionOfCpriSectorC }}</td>
+                                                <td>{{ list.groundingCable }}</td>
+                                                <td>{{ list.createdAt|date('d M Y') }}</td>
+                                                {% if (app.session.get('role')['value'] == 0) %}
+                                                    <td>
+                                                        <a href="/deleteUser/{{ list.id }}" title="Delete Account">
+                                                            <i class="imoon imoon-remove" style="color: #EC6F5A"></i>
+                                                        </a>
+                                                        &nbsp;
+                                                        <a href="#" title="Edit Account">
+                                                            <i class="imoon imoon-quill" style="color:#9b59b6;"></i>
+                                                        </a>
+                                                    </td>
+                                                {% endif %}
+                                            </tr>
+                                            {% set i = i + 1 %}
+                                        {% endfor %}
+                                        </tbody>
+                                        {% else %}
+                                            <tbody>
+                                            <tr>
+                                                <td colspan="10" style="text-align: center" class="primary">Tidak ada User</td>
+                                            </tr>
+                                            </tbody>
+                                        {% endif %}
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

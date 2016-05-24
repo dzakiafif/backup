@@ -14,6 +14,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 class photoForm extends AbstractType {
 
     /**
+     * @var string
+     */
+    private $username;
+
+    /**
      * @var UploadedFile
      */
     private $siteLocation;
@@ -151,6 +156,14 @@ class photoForm extends AbstractType {
     public function buildForm(FormBuilderInterface $builder,array $options)
     {
         $builder->add(
+            'username',
+            'text',
+            [
+                'constraints' => new Assert\NotBlank(),
+                'label' => false,
+                'attr' => ['class'=>'form-control','placeholder'=>'input username','required'=>'required']
+            ]
+        )->add(
             'siteLocation',
             'file',
             [
@@ -509,6 +522,15 @@ class photoForm extends AbstractType {
         return 'photo_form';
     }
 
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    public function setUsername($username)
+    {
+        $this->username = $username;
+    }
     /**
      * @return UploadedFile
      */

@@ -88,6 +88,14 @@ $app['engineerdua.repository'] = function () use ($app){
 $app['documentation.repository'] = function () use ($app){
     return $app['orm.em']->getRepository(\Yanna\bts\Domain\Entity\Documentation::class);
 };
+
+$app['remark.repository'] = function () use ($app) {
+    return $app['orm.em']->getRepository(\Yanna\bts\Domain\Entity\Remark::class);
+};
+
+$app['dokumen.repository'] = function () use ($app) {
+    return $app['orm.em']->getRepository(\Yanna\bts\Domain\Entity\Dokumen::class);
+};
 //$app['form.extensions'] = $app->share($app->extend('form.extensions', function ($extensions) use ($app) {
 //    $manager = new \Yanna\bts\Http\Form\Extensions\Doctrine\Bridge\ManagerRegistry(null, array(), array('default'), null, null, '\Doctrine\ORM\Proxy\Proxy');
 //    $manager->setContainer($app);
