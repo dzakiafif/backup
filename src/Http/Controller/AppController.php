@@ -91,7 +91,7 @@ class AppController implements ControllerProviderInterface
             ->before([$this, 'checkUserException'])
             ->bind('newInputUser');
 
-        $controller->match('/updateUser/{id}', [$this, 'updateUserAction'])
+        $controller->match('/updateUser', [$this, 'updateUserAction'])
 //            ->before([$this, 'checkUserException'])
             ->bind('updateUser');
 
@@ -133,6 +133,13 @@ class AppController implements ControllerProviderInterface
 
         $controller->post('/formInstallation', [$this, 'installationProccessAction'])
             ->bind('formInstalationProccess');
+
+        $controller->match('/uploadImageAfter', [$this, 'uploadImageAction'])
+            ->bind('uploadImageAfter');
+
+        $controller->match('/uploadImage', [$this, 'uploadImageBeforeAction'])
+            ->bind('uploadImageBefore');
+
 
 
         /**
@@ -451,8 +458,9 @@ class AppController implements ControllerProviderInterface
         return $this->app->redirect($this->app['url_generator']->generate('listUser'));
     }
 
-    public function updateUserAction(Request $request, $id)
+    public function updateUserAction(Request $request)
     {
+        $id = $request->get('id');
         $em = $this->app['orm.em'];
         $user = $em->getRepository('Yanna\bts\Domain\Entity\User')->findById($id);
 //        var_dump($user);
@@ -491,6 +499,33 @@ class AppController implements ControllerProviderInterface
 
         return $this->app->redirect($this->app['url_generator']->generate('listUser'));
     }
+
+//    public function updateUserAction(Request $request)
+//    {
+//        $updateUserForm = new UpdateUserForm();
+//        $formBuilder = $this->app['form.factory']->create($updateUserForm, $updateUserForm);
+//
+//        if ($request->getMethod() === 'GET') {
+//            return $this->app['twig']->render('updateUser.twig', ['form' => $formBuilder->createView()]);
+//        }
+//
+//        $formBuilder->handleRequest($request);
+//
+//        if ( ! $formBuilder->isValid()) {
+//            return $this->app['twig']->render('updateUser.twig', ['form' => $formBuilder->createView()]);
+//        }
+//
+//        $dataUser = User::update($updateUserForm->getName(), $updateUserForm->getUsername(), $updateUserForm->getPassword(), $updateUserForm->getRole());
+//
+//        $this->app['orm.em']->persist($dataUser);
+//        $this->app['orm.em']->flush();
+//
+//        $this->app['session']->getFlashBag()->add(
+//            'message_success', 'Account Created Successfully'
+//        );
+//        return $this->app->redirect($this->app['url_generator']->generate('listUser'));
+//    }
+
 
     public function showAllUser()
     {
@@ -568,150 +603,262 @@ class AppController implements ControllerProviderInterface
 //        return var_dump($site);
     }
 
-//    public function photoAction(Request $request)
-//    {
-//        $photoForm = new photoForm();
-//        $formBuilder = $this->app['form.factory']->create($photoForm, $photoForm);
-//
-//        if ($request->getMethod() === 'GET') {
-//            return $this->app['twig']->render('upload.twig', ['form' => $formBuilder->createView()]);
-//        }
-//
-//        $formBuilder->handleRequest($request);
-//
-//        if (!$formBuilder->isValid()) {
-//            return $this->app['twig']->render('upload.twig', ['form' => $formBuilder->createView()]);
-//        }
-//
-//        $user = $this->app['user.repository']->findByUsername(
-//            $this->app['session']->get('username')['value']
-//        );
-//
-//        $files = new ArrayCollection();
-//
-//        $dokumen = User::create($user,$files);
-//        $dokumen = [];
-//        $files->add(Dokumen::create(
-//            'Site Location', $photoForm->getSiteLocation(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'GPS Coordinate', $photoForm->getGpsCoordinate(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'Shelter View', $photoForm->getShelterView(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'Overview of inside the cabinet', $photoForm->getOverviewInside(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'FEP Indoor View', $photoForm->getFepIndoor(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'FEP Outdoor View', $photoForm->getFepOutdoor(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'Feeder Indoor Installation', $photoForm->getFeederIndoor(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'Feeder Bending', $photoForm->getFeederBreeding(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'Internal Grounding Bar (IGB)', $photoForm->getInternalGrounding(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'External GB at Shelter', $photoForm->getExternalGb(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'Alarm Box', $photoForm->getAlarmBox(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'ACPDB Internal View', $photoForm->getAcpdbInternal(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'MCB at DCPDB', $photoForm->getMcbAt(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'Rectifier Cabinet', $photoForm->getRectifierCabinet(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'MCB at Rectifier Cabinet', $photoForm->getMcbAtRectifier(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'Rack 19', $photoForm->getRack(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'Antenna Mechanical Electrical Tilting Sector 1', $photoForm->getAntennaMechanicalSectorA(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'Antenna Mechanical Electrical Tilting Sector 2', $photoForm->getAntennaMechanicalSectorB(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'Antenna Mechanical Electrical Tilting Sector 3', $photoForm->getAntennaMechanicalSectorC(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'Azimuth & Panoramic Sector 1', $photoForm->getAzimuthSectorA(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'Azimuth & Panoramic Sector 2', $photoForm->getAzimuthSectorB(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'Azimuth $ Panoramic Sector 3', $photoForm->getAzimuthSectorC(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'Connection Of CPRI Cable to RRU Sec 1', $photoForm->getConnectionOfCpriSectorA(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'Connection Of CPRI Cable to RRU Sec 2', $photoForm->getConnectionOfCpriSectorB(), $dokumen
-//        ));
-//
-//        $files->add(Dokumen::create(
-//            'Connection Of CPRI Cable to RRU SEC 3', $photoForm->getConnectionOfCpriSectorC(), $dokumen
-//        ));
-//
-//        $dokumen->setDokumen($files);
-//
-//        $this->app['orm.em']->persist($dokumen);
-//        $this->app['orm.em']->flush();
-//
-//        $dirName = $this->app['dokumen.path'] . '/' . $dokumen->getId();
-//        mkdir($dirName, 0755);
-//
-//        foreach ($files as $dokumen) {
-//            /**
-//             * @var Dokumen $dokumen
-//             */
-//            $dokumen->getFile()->move($dirName, $dokumen->getFileName());
-//        }
-//
-//        $this->app['session']->getFlashBag()->add(
-//            'message_success', 'sukses upload file'
-//        );
-//
-//        return $this->app['twig']->render('listPhoto.twig', ['form' => $formBuilder->createView()]);
-//    }
+    public function uploadImageBeforeAction(Request $request)
+    {
+        $siteInfo = $this->app['documentation.repository']->findAll();
+
+        if ($request->getMethod() === 'POST') {
+            $this->app['session']->set('imageSelectSite', ['value' => $request->get('site_name')]);
+
+            return $this->app->redirect($this->app['url_generator']->generate('uploadImageAfter'));
+        }
+
+        return $this->app['twig']->render('Engineer/uploadImageBefore.twig',
+            [
+                'infoSite' => $siteInfo
+            ]
+        );
+    }
+
+    public function uploadImageAction(Request $request)
+    {
+        $siteInfo = $this->app['documentation.repository']->findByFormId($this->app['session']->get('imageSelectSite')['value']);
+
+        $files = new ArrayCollection();
+        if ($request->getMethod() === 'POST') {
+
+            $files->add(Document::create(
+                'Site Location',
+                $request->get('image1_1'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            $files->add(Document::create(
+                'Gps Coordinate',
+                $request->get('image2_1'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            $files->add(Document::create(
+                'Gps Coordinate',
+                $request->get('image2_2'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            $files->add(Document::create(
+                'Shelter View',
+                $request->get('image3_1'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            $files->add(Document::create(
+                'Shelter View',
+                $request->get('image3_2'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            $files->add(Document::create(
+                'Overview of inside the cabinet',
+                $request->get('image4_1'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            $files->add(Document::create(
+                'Overview of inside the cabinet',
+                $request->get('image4_2'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            $files->add(Document::create(
+                'FEP Indoor View',
+                $request->get('image5_1'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            $files->add(Document::create(
+                ' FEP Outdoor View',
+                $request->get('image6_1'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            $files->add(Document::create(
+                'Feeder Indoor Installation',
+                $request->get('image7_1'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            $files->add(Document::create(
+                'Alarm Box',
+                $request->get('image8_1'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            $files->add(Document::create(
+                'ACPDB Internal',
+                $request->get('image9_1'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            $files->add(Document::create(
+                'MCB at DCPDB',
+                $request->get('image10_1'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            $files->add(Document::create(
+                'Rectifier Cabinet',
+                $request->get('image11_1'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            $files->add(Document::create(
+                'MCB at Rectifier Cabinet',
+                $request->get('image12_1'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            $files->add(Document::create(
+                'Rack 19',
+                $request->get('image12_2'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            $files->add(Document::create(
+                'Antenna Mechanical & Electrical Tilting Sector 1',
+                $request->get('image13_1'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            $files->add(Document::create(
+                'Antenna Mechanical & Electrical Tiltin Sector 2',
+                $request->get('image14_1'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            $files->add(Document::create(
+                'Antenna Mechanical & Electrical Tiltin Sector 3',
+                $request->get('image15_1'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            $files->add(Document::create(
+                'Azimuth & Panoramic Sector 1',
+                $request->get('image16_1'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            $files->add(Document::create(
+                'Azimuth & Panoramic Sector 2',
+                $request->get('image17_1'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            $files->add(Document::create(
+                'Site Location',
+                $request->get('image17_2'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            $files->add(Document::create(
+                'Azimuth & Panoramic Sector 3',
+                $request->get('image18_1'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            $files->add(Document::create(
+                'Labelling of CPRI',
+                $request->get('image18_2'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            $files->add(Document::create(
+                'Site Location',
+                $request->get('image19_1'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            $files->add(Document::create(
+                'Site Location',
+                $request->get('image19_2'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            $files->add(Document::create(
+                'Site Location',
+                $request->get('image20_1'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            $files->add(Document::create(
+                'Site Location',
+                $request->get('image20_2'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            $files->add(Document::create(
+                'Site Location',
+                $request->get('image21_1'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            $files->add(Document::create(
+                'Site Location',
+                $request->get('image21_2'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            $files->add(Document::create(
+                'Site Location',
+                $request->get('image22_1'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            $files->add(Document::create(
+                'Site Location',
+                $request->get('image22_2'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            $files->add(Document::create(
+                'Site Location',
+                $request->get('image23_1'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            $files->add(Document::create(
+                'Site Location',
+                $request->get('image24_1'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            $files->add(Document::create(
+                'Site Location',
+                $request->get('image24_2'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            $files->add(Document::create(
+                'Site Location',
+                $request->get('image25_1'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            $files->add(Document::create(
+                'Site Location',
+                $request->get('image25_2'),
+                $this->app['session']->get('imageSelectSite')['value']
+            ));
+
+            foreach ($files as $dokumen) {
+                $this->app['orm.em']->persist($dokumen);
+                $this->app['orm.em']->flush();
+
+                return 'OK';
+            }
+        }
+
+        return $this->app['twig']->render('Engineer/uploadImageAfter.twig', ['infoSite' => $siteInfo]);
+    }
 
     public function jsonJawabanAction(Request $request)
     {

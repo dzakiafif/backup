@@ -1,35 +1,33 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: afif
- * Date: 23/05/2016
- * Time: 19:15
+ * User: NecKomp
+ * Date: 5/24/2016
+ * Time: 7:24 PM
  */
 
 namespace Yanna\bts\Domain\Repository;
 
 use Doctrine\ORM\EntityRepository;
-use Yanna\bts\Domain\Contracts\Repository\DokumenRepositroyInterface;
-use Yanna\bts\Domain\Entity\Dokumen;
-
-class DoctrineDokumenRepository extends EntityRepository implements DokumenRepositroyInterface {
-
+use Yanna\bts\Domain\Contracts\Repository\DocumentRepositoryInterface;
+use Yanna\bts\Domain\Entity\Document;
+class DoctrineDokumenRepository extends EntityRepository implements DocumentRepositoryInterface {
 
     /**
      * @param $id
-     * @return Dokumen
+     * @return Document
      */
     public function findById($id)
     {
-       return $this->find($id);
+        return $this->find($id);
     }
 
     /**
-     * @param $fileName
-     * @return Dokumen
+     * @param $formId
+     * @return Document
      */
-    public function findByUsername($username)
+    public function findByFormId($formId)
     {
-       return $this->findOneBy(['username'=>$username]);
+        return $this->findBy(['formId'=>$formId]);
     }
 }

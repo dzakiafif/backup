@@ -1,0 +1,38 @@
+{% extends 'layouts/head.twig' %}
+{% block content %}
+    <section id="content" class="table-layout animated fadeIn borderedBackground">
+        <div class="container-fluid">
+            <div class="f-center">
+                <br>
+                <i class="fa fa-5x fa-globe"></i>
+            </div>
+            <h1 class="center">Please Select Site</h1>
+            <br>
+            <div class="row">
+                <div class="col-md-3">&nbsp;</div>
+                <div class="col-md-6">
+                    <div class="login-box-body center">
+                        <form method="post">
+                            <div class="form-group">
+                                <select class="form-control" id="site_name" name="site_name" onchange="detailForm()">
+                                    {% for info in infoSite %}
+                                        <option value="{{ info.formId }}">{{ info.siteName }} - {{ info.formId }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <input type="submit" value="Select Site" class="btn btn-primary btn-flat btn-lg btn-block">
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-3">&nbsp;</div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block customJS %}
+    <script>
+        function detailForm() {
+            $('#detailForm').css('display','block');
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,241 @@
+{% extends 'layouts/head.twig' %}
+
+{% block content %}
+    <section id="content">
+        <div class="container-fluid">
+            <br>
+            <div class="center">
+                <i class="fa fa-5x fa-image"></i><br>
+                <h1>{{ infoSite.siteName }}</h1>
+                <h4>{{ infoSite.formId }}</h4>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-1">&nbsp;</div>
+                <div class="col-md-10">
+                    <div class="box box-primary">
+                        <div class="row">
+                            <div class="col-md-1">&nbsp;</div>
+                            <div class="col-md-10 center">
+                                <br>
+                                <form method="post" class="form-group">
+                                    {#<div class="input-group">#}
+                                    {#<div class="input-group-addon">#}
+                                    {#<i class="fa fa-file"></i>#}
+                                    {#</div>#}
+                                    {#<input type="text" class="form-control" value="{{ infoSite.formId }}" disabled>#}
+                                    {#</div>#}
+                                    <br>
+                                    <div class="input-group form-control">
+                                        <label class="left">1. Site Location : Photo of overal site view (Zoom Out)</label>
+                                        <div class="input-group">
+                                            <input name="image1_1" type="file">
+                                        </div>
+                                    </div>
+                                    <p>&nbsp;</p>
+                                    <div class="input-group form-control">
+                                        <label class="left">2. GPS Coordinate : Photo of GPS showing Longitude and Latitude on site</label>
+                                        <div class="input-group">
+                                            <input name="image2_1" type="file">
+                                            <br>
+                                            <input name="image2_2" type="file">
+                                        </div>
+                                    </div>
+                                    <p>&nbsp;</p>
+                                    <div class="input-group form-control">
+                                        <label class="left">3. Shelter View : Photo of Outside and inside of the shelter ( Equipment in shelter taken from shelter door )</label>
+                                        <div class="input-group">
+                                            <input name="image3_1" type="file">
+                                            <br>
+                                            <input name="image3_2" type="file">
+                                        </div>
+                                    </div>
+                                    <p>&nbsp;</p>
+                                    <div class="input-group form-control">
+                                        <label class="left">4. Overview of inside the cabinet : Photo of overall BTS cabinet showing all modules</label>
+                                        <div class="input-group">
+                                            <input name="image4_1" type="file">
+                                            <br>
+                                            <input name="image4_2" type="file">
+                                        </div>
+                                    </div>
+                                    <p>&nbsp;</p>
+                                    <div class="input-group form-control">
+                                        <label class="left">5. FEP Indoor View : Photo of FEP taken from inside the shelter</label>
+                                        <div class="input-group">
+                                            <input name="image5_1" type="file">
+                                        </div>
+                                    </div>
+                                    <p>&nbsp;</p>
+                                    <div class="input-group form-control">
+                                        <label class="left">6. FEP Outdoor View : Photo FEP taken from outside the shelter</label>
+                                        <div class="input-group">
+                                            <input name="image6_1" type="file">
+                                        </div>
+                                    </div>
+                                    <p>&nbsp;</p>
+                                    <div class="input-group form-control">
+                                        <label class="left">7. Feeder Indoor Installation : Photo of Feeder Installation Include, Feeder Label, connection between feeder and Jumper Indoor</label>
+                                        <div class="input-group">
+                                            <input name="image7_1" type="file">
+                                        </div>
+                                    </div>
+                                    <p>&nbsp;</p>
+                                    <div class="input-group form-control">
+                                        <label class="left">8. Feeder Bending : Photo of Feeder bending at horizontal &amp; vertical tray (Side View)</label>
+                                        <div class="input-group">
+                                            <input name="image8_1" type="file">
+                                        </div>
+                                    </div>
+                                    <p>&nbsp;</p>
+                                    <div class="input-group form-control">
+                                        <label class="left">9. Internal Grounding : Photo of Indoor Grounding bar including the grounding cable connection and labels</label>
+                                        <div class="input-group">
+                                            <input name="image9_1" type="file">
+                                        </div>
+                                    </div>
+                                    <p>&nbsp;</p>
+                                    <div class="input-group form-control">
+                                        <label class="left">10. External GB at Shelter : Photo of outdoor grounding bar at installed below FEP bar including the grounding cable connections and labels</label>
+                                        <div class="input-group">
+                                            <input name="image10_1" type="file">
+                                        </div>
+                                    </div>
+                                    <p>&nbsp;</p>
+                                    <div class="input-group form-control">
+                                        <label class="left">11. Alarm Box : Photo of Alarm Box showing the incoming cable connection and alarm indicators.</label>
+                                        <div class="input-group">
+                                            <input name="image11_1" type="file">
+                                        </div>
+                                    </div>
+                                    <p>&nbsp;</p>
+                                    <div class="input-group form-control">
+                                        <label class="left">12. ACPDB Internal View : Photo of ACPDB, door of ACPDB must be open</label>
+                                        <div class="input-group">
+                                            <input name="image12_1" type="file">
+                                            <br>
+                                            <input name="image12_2" type="file">
+                                        </div>
+                                    </div>
+                                    <p>&nbsp;</p>
+                                    <div class="input-group form-control">
+                                        <label class="left">13. MCB at DCPDB : Photo of the all the MCB in DCPDB in including labels. ( Macro mode )</label>
+                                        <div class="input-group">
+                                            <input name="image13_1" type="file">
+                                        </div>
+                                    </div>
+                                    <p>&nbsp;</p>
+                                    <div class="input-group form-control">
+                                        <label class="left">14. Rectifier Cabinet : Photo of Rectifier</label>
+                                        <div class="input-group">
+                                            <input name="image14_1" type="file">
+                                        </div>
+                                    </div>
+                                    <p>&nbsp;</p>
+                                    <div class="input-group form-control">
+                                        <label class="left">15. MCB at Rectifier Cabinet : Photo of the all the MCB in recrifier including labels ( Macro Mode )</label>
+                                        <div class="input-group">
+                                            <input name="image15_1" type="file">
+                                        </div>
+                                    </div>
+                                    <p>&nbsp;</p>
+                                    <div class="input-group form-control">
+                                        <label class="left">16. Rack 19 : Photo of 19's Rack.</label>
+                                        <div class="input-group">
+                                            <input name="image16_1" type="file">
+                                        </div>
+                                    </div>
+                                    <p>&nbsp;</p>
+                                    <div class="input-group form-control">
+                                        <label class="left">17. Antenna Mechanical &amp; Electrical tilting Sector 1 :  Photo of angle meter placed at the back of the antenna clearly shows the degree of tilt & photo of electrical tilting</label>
+                                        <div class="input-group">
+                                            <input name="image17_1" type="file">
+                                            <br>
+                                            <input name="image17_2" type="file">
+                                        </div>
+                                    </div>
+                                    <p>&nbsp;</p>
+                                    <div class="input-group form-control">
+                                        <label class="left">18.Antenna Mechanical &amp; Electrical tilting Sector 2 : Photo of angle meter placed at the back of the antenna clearly shows the degree of tilt & photo of electrical tilting ( Macro Mode )</label>
+                                        <div class="input-group">
+                                            <input name="image18_1" type="file">
+                                            <br>
+                                            <input name="image18_2" type="file">
+                                        </div>
+                                    </div>
+                                    <p>&nbsp;</p>
+                                    <div class="input-group form-control">
+                                        <label class="left">19. Antenna Mechanical &amp; Electrical tilting Sector 3 : Photo of overall BTS cabinet showing all modules</label>
+                                        <div class="input-group">
+                                            <input name="image19_1" type="file">
+                                            <br>
+                                            <input name="image19_2" type="file">
+                                        </div>
+                                    </div>
+                                    <p>&nbsp;</p>
+                                    <div class="input-group form-control">
+                                        <label class="left">20. Azimuth & Panoramic Sector 1 : Photo of panoramic sector 1</label>
+                                        <div class="input-group">
+                                            <input name="image20_1" type="file">
+                                            <br>
+                                            <input name="image20_2" type="file">
+                                        </div>
+                                    </div>
+                                    <p>&nbsp;</p>
+                                    <div class="input-group form-control">
+                                        <label class="left">21. Azimuth & Panoramic Sector 2 : Photo of panoramic sector 2</label>
+                                        <div class="input-group">
+                                            <input name="image21_1" type="file">
+                                            <br>
+                                            <input name="image21_2" type="file">
+                                        </div>
+                                    </div>
+                                    <p>&nbsp;</p>
+                                    <div class="input-group form-control">
+                                        <label class="left">22. Azimuth & Panoramic Sector 3 : Photo of panoramic sector 3</label>
+                                        <div class="input-group">
+                                            <input name="image22_1" type="file">
+                                            <br>
+                                            <input name="image22_2" type="file">
+                                        </div>
+                                    </div>
+                                    <p>&nbsp;</p>
+                                    <div class="input-group form-control">
+                                        <label class="left">23. Labelling of CPRI : Labelling of the (CPRI) cable to BBU</label>
+                                        <div class="input-group">
+                                            <input name="image23_1" type="file">
+                                        </div>
+                                    </div>
+                                    <p>&nbsp;</p>
+                                    <div class="input-group form-control">
+                                        <label class="left">24 Connection of CPRI Cable to RRU Sec 1 : Connection of CPRI Cable to RRU Sec 2</label>
+                                        <div class="input-group">
+                                            <input name="image24_1" type="file">
+                                            <br>
+                                            <input name="image24_2" type="file">
+                                        </div>
+                                    </div>
+                                    <p>&nbsp;</p>
+                                    <div class="input-group form-control">
+                                        <label class="left">25. Connection of CPRI Cable to RRU Sec 3 : Grounding Cable to Bus Bar</label>
+                                        <div class="input-group">
+                                            <input name="image25_1" type="file">
+                                            <br>
+                                            <input name="image25_2" type="file">
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <input name="kirim" type="submit" class="btn btn-primary btn-flat" value="Submit Photo Information">
+                                    <p>&nbsp;</p>
+                                    <p>&nbsp;</p>
+                                </form>
+                            </div>
+                            <div class="col-md-1">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">&nbsp;</div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
