@@ -104,11 +104,11 @@
 
                                                 {% if (app.session.get('role')['value'] == 0) %}
                                                     <td>
-                                                        <a href="/deleteSite/{{ list.id }}" title="Delete Account">
+                                                        <a href="/deleteSite/{{ list.id }}" title="Delete Site">
                                                             <i class="imoon imoon-remove" style="color: #EC6F5A"></i>
                                                         </a>
                                                         &nbsp;
-                                                        <a href="#" title="Edit Account">
+                                                        <a href="/updateSite?id={{ list.id }}" title="Edit Site">
                                                             <i class="imoon imoon-quill" style="color:#9b59b6;"></i>
                                                         </a>
                                                     </td>

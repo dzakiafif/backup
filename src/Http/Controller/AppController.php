@@ -25,7 +25,8 @@ use Yanna\bts\Http\Form\selectSiteAfterLoginForm;
 use Yanna\bts\Http\Form\siteForm;
 use Yanna\bts\Http\Form\UpdateUserForm;
 use Yanna\bts\Http\Form\userForm;
-
+use Yanna\bts\Http\Form\RemarkForm;
+use Yanna\bts\Domain\Entity\Remark;
 //use Yanna\bts\Domain\Services\UserServices;
 
 class AppController implements ControllerProviderInterface
@@ -109,6 +110,20 @@ class AppController implements ControllerProviderInterface
 
         $controller->get('/listSite', [$this, 'showAllSite'])
             ->bind('listSite');
+
+           $controller->get('/deleteRemark/{id}',[$this,'deleteRemarkAction'])
+            ->bind('deleteRemark');
+   
+
+
+        $controller->get('/listRemark',[$this,'showAllRemark'])
+            ->bind('listRemark');   
+
+        $controller->match('/updateUser', [$this, 'updateUserAction'])
+            ->bind('updateUser');
+        
+        $controller->match('/updateSite',[$this,'updateSiteAction'])
+            ->bind('updateSite');    
 
 
         /**
@@ -211,6 +226,11 @@ class AppController implements ControllerProviderInterface
 
         $controller->get('/showJson', [$this, 'showJsonAction'])
             ->bind('showJsonSite');
+
+
+        $controller->match('/newRemark',[$this,'newRemarkAction'])
+            ->bind('newRemark');
+                
 //
 //        $controller->match('/upload', [$this, 'photoAction'])
 //            ->bind('uploadFile');
@@ -458,73 +478,31 @@ class AppController implements ControllerProviderInterface
         return $this->app->redirect($this->app['url_generator']->generate('listUser'));
     }
 
-    public function updateUserAction(Request $request)
+     public function updateUserAction(Request $request)
     {
-        $id = $request->get('id');
-        $em = $this->app['orm.em'];
-        $user = $em->getRepository('Yanna\bts\Domain\Entity\User')->findById($id);
-//        var_dump($user);
-
-        $updateUserForm = new UpdateUserForm();
-        $updateUserForm->setId($user->getId());
-//        $updateUserForm->setName($user->getName());
-        $updateUserForm->setUsername($user->getUsername());
-        $updateUserForm->setRole($user->getRole());
-
-        $formBuilder = $this->app['form.factory']->create($updateUserForm, $updateUserForm);
+        $userInfo = $this->app['user.repository']->findById($request->get('id'));
 
         if ($request->getMethod() === 'GET') {
-            return $this->app['twig']->render('updateUser.twig', [
-                'form' => $formBuilder->createView(),
-                'id' => $id,
-                'actions' => '/updateUser/' . $id,
-            ]);
+            return $this->app['twig']->render('updateUser.twig', ['infoUser' => $userInfo]);
         }
 
-        $formBuilder->handleRequest($request);
+        if ($request->getMethod() === 'POST') {
+            $em = $this->app['orm.em'];
 
-        if ( ! $formBuilder->isValid()) {
-            return $this->app['twig']->render('updateUser.twig', [
-                'form' => $formBuilder->createView(),
-                'actions' => '/updateUser/' . $id,
-            ]);
+            $userSomething = $em->getRepository('Yanna\bts\Domain\Entity\User')->findById($request->get('id'));
+
+            $userSomething->setId($request->get('id'));
+            $userSomething->setName($request->get('full-name'));
+            $userSomething->setRole($request->get('role'));
+            $userSomething->setPassword($request->get('password'));
+            $userSomething->setUpdatedAt(new \DateTime());
+
+            $em->flush();
+
+            return $this->app->redirect($this->app['url_generator']->generate('listUser'));
         }
 
-        $user->update($user, $updateUserForm->getName(), $updateUserForm->getUsername(), $updateUserForm->getPassword(), $updateUserForm->getRole());
-        $em->flush();
-
-        $this->app['session']->getFlashBag()->add(
-            'message_success', 'Account Successfully Updated'
-        );
-
-        return $this->app->redirect($this->app['url_generator']->generate('listUser'));
     }
-
-//    public function updateUserAction(Request $request)
-//    {
-//        $updateUserForm = new UpdateUserForm();
-//        $formBuilder = $this->app['form.factory']->create($updateUserForm, $updateUserForm);
-//
-//        if ($request->getMethod() === 'GET') {
-//            return $this->app['twig']->render('updateUser.twig', ['form' => $formBuilder->createView()]);
-//        }
-//
-//        $formBuilder->handleRequest($request);
-//
-//        if ( ! $formBuilder->isValid()) {
-//            return $this->app['twig']->render('updateUser.twig', ['form' => $formBuilder->createView()]);
-//        }
-//
-//        $dataUser = User::update($updateUserForm->getName(), $updateUserForm->getUsername(), $updateUserForm->getPassword(), $updateUserForm->getRole());
-//
-//        $this->app['orm.em']->persist($dataUser);
-//        $this->app['orm.em']->flush();
-//
-//        $this->app['session']->getFlashBag()->add(
-//            'message_success', 'Account Created Successfully'
-//        );
-//        return $this->app->redirect($this->app['url_generator']->generate('listUser'));
-//    }
 
 
     public function showAllUser()
@@ -542,6 +520,49 @@ class AppController implements ControllerProviderInterface
         $this->app['orm.em']->flush();
 
         return $this->app->redirect($this->app['url_generator']->generate('listUser'));
+    }
+
+    public function newRemarkAction(Request $request)
+    {
+        $newRemarkForm = new RemarkForm();
+
+        $formBuilder = $this->app['form.factory']->create($newRemarkForm, $newRemarkForm);
+
+        if ($request->getMethod() === 'GET') {
+            return $this->app['twig']->render('newRemark.twig', ['form' => $formBuilder->createView()]);
+        }
+
+        $formBuilder->handleRequest($request);
+
+        if (!$formBuilder->isValid()) {
+            return $this->app['twig']->render('newRemark.twig', ['form' => $formBuilder->createView()]);
+        }
+
+        $dataRemark = Remark::create($newRemarkForm->getKomentar());
+
+        $this->app['orm.em']->persist($dataRemark);
+        $this->app['orm.em']->flush();
+
+        $this->app['session']->getFlashBag()->add(
+            'message_success', 'Remark Created Successfully'
+        );
+        return $this->app->redirect($this->app['url_generator']->generate('listRemark'));
+    }
+
+    public function showAllRemark(){
+        $remark = $this->app['remark.repository']->findAll();
+
+       return $this->app['twig']->render('listRemark.twig',['remarkList'=>$remark]);
+    }
+
+     public function deleteRemarkAction()
+    {
+        $remark = $this->app['remark.repository']->findById($this->app['request']->get('id'));
+
+        $this->app['orm.em']->remove($remark);
+        $this->app['orm.em']->flush();
+
+     return $this->app->redirect($this->app['url_generator']->generate('listRemark'));
     }
 
     public function newSiteAction(Request $request)
@@ -568,6 +589,43 @@ class AppController implements ControllerProviderInterface
             'message_success', 'Site Created Successfully'
         );
         return $this->app->redirect($this->app['url_generator']->generate('listSite'));
+    }
+
+     public function updateSiteAction(Request $request)
+    {
+        $siteInfo = $this->app['site.repository']->findById($request->get('id'));
+
+        if ($request->getMethod() === 'GET') {
+            return $this->app['twig']->render('updateSite.twig', ['infoSite' => $siteInfo]);
+        }
+
+        if ($request->getMethod() === 'POST') {
+            $em = $this->app['orm.em'];
+
+            $siteSomething = $em->getRepository('Yanna\bts\Domain\Entity\Site')->findById($request->get('id'));
+
+            $siteSomething->setId($request->get('id'));
+            $siteSomething->setRegional($request->get('regional'));
+            $siteSomething->setPoc($request->get('poc'));
+            $siteSomething->setProdef($request->get('prodef'));
+            $siteSomething->setSiteId($request->get('site_id'));
+            $siteSomething->setSiteName($request->get('site_name'));
+            $siteSomething->setTowerId($request->get('tower_id'));
+            $siteSomething->setAddress($request->get('address'));
+            $siteSomething->setFop($request->get('fop'));
+            $siteSomething->setLongitude($request->get('longitude'));
+            $siteSomething->setLatitude($request->get('latitude'));
+            $siteSomething->setExistingSystem($request->get('existing_system'));
+            $siteSomething->setRemark($request->get('remark'));
+            $siteSomething->setStats($request->get('stats'));
+            
+
+            $em->flush();
+
+            return $this->app->redirect($this->app['url_generator']->generate('listSite'));
+        }
+
+
     }
 
     public function deleteSiteAction()
