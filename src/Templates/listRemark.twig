@@ -38,7 +38,7 @@
                                                 <td>{{ i }}</td>
                                                 <td>{{ list.komentar }}</td>
                                                 <td>{{ list.createdAt|date('d M Y') }}</td>
-                                                {% if (app.session.get('role')['value'] == 0) %}
+                                                {% if (app.session.get('role')['value'] < 2) %}
                                                     <td>
                                                         <a href="/deleteRemark/{{ list.id }}" title="Delete Remark">
                                                             <i class="imoon imoon-remove" style="color: #EC6F5A"></i>
