@@ -2524,7 +2524,7 @@
 															<th>2</th>
 															<th>2</th>
 															<th>65035</th>
-															<th>L1</th>
+															<th>L2</th>
 															<th>&nbsp;</th>
 															<th>Open</th>
 															{% if infoEngineerDua[1] is defined %}
@@ -2552,7 +2552,7 @@
 															<th>3</th>
 															<th>3</th>
 															<th>65037</th>
-															<th>L1</th>
+															<th>L3</th>
 															<th>&nbsp;</th>
 															<th>Open</th>
 															{% if infoEngineerDua[2] is defined %}
@@ -2580,7 +2580,7 @@
 															<th>4</th>
 															<th>4</th>
 															<th>65039</th>
-															<th>L1</th>
+															<th>MSP Fail</th>
 															<th>&nbsp;</th>
 															<th>Open</th>
 															{% if infoEngineerDua[3] is defined %}
@@ -2604,16 +2604,464 @@
 															{% endif %}
 															<th>&nbsp;</th>
 														</tr>
+                                                        <tr>
+                                                            <th>5</th>
+                                                            <th>5</th>
+                                                            <th>65041</th>
+                                                            <th>DC Alarm Fan</th>
+                                                            <th>&nbsp;</th>
+                                                            <th>Open</th>
+                                                            {% if infoEngineerDua[4] is defined %}
+                                                                {% if (infoEngineerDua[4] == 2) %}
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"></td>
+                                                                {% elseif (infoEngineerDua[4] == 1) %}
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                    <td class="rd"></td>
+                                                                {% else %}
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                {% endif %}
+                                                            {% else %}
+                                                                <td class="rd"></td>
+                                                                <td class="rd"></td>
+                                                                <td class="rd"></td>
+                                                            {% endif %}
+                                                            <th>&nbsp;</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>6</th>
+                                                            <th>6</th>
+                                                            <th>65043</th>
+                                                            <th>AC Remove</th>
+                                                            <th>&nbsp;</th>
+                                                            <th>Open</th>
+                                                            {% if infoEngineerDua[5] is defined %}
+                                                                {% if (infoEngineerDua[5] == 2) %}
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"></td>
+                                                                {% elseif (infoEngineerDua[5] == 1) %}
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                    <td class="rd"></td>
+                                                                {% else %}
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                {% endif %}
+                                                            {% else %}
+                                                                <td class="rd"></td>
+                                                                <td class="rd"></td>
+                                                                <td class="rd"></td>
+                                                            {% endif %}
+                                                            <th>&nbsp;</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>7</th>
+                                                            <th>7</th>
+                                                            <th>65045</th>
+                                                            <th>Genset Running</th>
+                                                            <th>&nbsp;</th>
+                                                            <th>Open</th>
+                                                            {% if infoEngineerDua[6] is defined %}
+                                                                {% if (infoEngineerDua[6] == 2) %}
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"></td>
+                                                                {% elseif (infoEngineerDua[6] == 1) %}
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                    <td class="rd"></td>
+                                                                {% else %}
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                {% endif %}
+                                                            {% else %}
+                                                                <td class="rd"></td>
+                                                                <td class="rd"></td>
+                                                                <td class="rd"></td>
+                                                            {% endif %}
+                                                            <th>&nbsp;</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>8</th>
+                                                            <th>8</th>
+                                                            <th>65047</th>
+                                                            <th>Genset Failed</th>
+                                                            <th>&nbsp;</th>
+                                                            <th>Open</th>
+                                                            {% if infoEngineerDua[7] is defined %}
+                                                                {% if (infoEngineerDua[7] == 2) %}
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"></td>
+                                                                {% elseif (infoEngineerDua[7] == 1) %}
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                    <td class="rd"></td>
+                                                                {% else %}
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                {% endif %}
+                                                            {% else %}
+                                                                <td class="rd"></td>
+                                                                <td class="rd"></td>
+                                                                <td class="rd"></td>
+                                                            {% endif %}
+                                                            <th>&nbsp;</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>9</th>
+                                                            <th>9</th>
+                                                            <th>65049</th>
+                                                            <th>Rectifier Fail</th>
+                                                            <th>&nbsp;</th>
+                                                            <th>Open</th>
+                                                            {% if infoEngineerDua[8] is defined %}
+                                                                {% if (infoEngineerDua[8] == 2) %}
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"></td>
+                                                                {% elseif (infoEngineerDua[8] == 1) %}
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                    <td class="rd"></td>
+                                                                {% else %}
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                {% endif %}
+                                                            {% else %}
+                                                                <td class="rd"></td>
+                                                                <td class="rd"></td>
+                                                                <td class="rd"></td>
+                                                            {% endif %}
+                                                            <th>&nbsp;</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>10</th>
+                                                            <th>10</th>
+                                                            <th>65053</th>
+                                                            <th>Rectifier High</th>
+                                                            <th>&nbsp;</th>
+                                                            <th>Open</th>
+                                                            {% if infoEngineerDua[9] is defined %}
+                                                                {% if (infoEngineerDua[9] == 2) %}
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"></td>
+                                                                {% elseif (infoEngineerDua[9] == 1) %}
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                    <td class="rd"></td>
+                                                                {% else %}
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                {% endif %}
+                                                            {% else %}
+                                                                <td class="rd"></td>
+                                                                <td class="rd"></td>
+                                                                <td class="rd"></td>
+                                                            {% endif %}
+                                                            <th>&nbsp;</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>11</th>
+                                                            <th>11</th>
+                                                            <th>65051</th>
+                                                            <th>Rectifier Low</th>
+                                                            <th>&nbsp;</th>
+                                                            <th>Open</th>
+                                                            {% if infoEngineerDua[10] is defined %}
+                                                                {% if (infoEngineerDua[10] == 2) %}
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"></td>
+                                                                {% elseif (infoEngineerDua[10] == 1) %}
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                    <td class="rd"></td>
+                                                                {% else %}
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                {% endif %}
+                                                            {% else %}
+                                                                <td class="rd"></td>
+                                                                <td class="rd"></td>
+                                                                <td class="rd"></td>
+                                                            {% endif %}
+                                                            <th>&nbsp;</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>12</th>
+                                                            <th>12</th>
+                                                            <th>65055</th>
+                                                            <th>Fence Break</th>
+                                                            <th>&nbsp;</th>
+                                                            <th>Open</th>
+                                                            {% if infoEngineerDua[11] is defined %}
+                                                                {% if (infoEngineerDua[11] == 2) %}
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"></td>
+                                                                {% elseif (infoEngineerDua[11] == 1) %}
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                    <td class="rd"></td>
+                                                                {% else %}
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                {% endif %}
+                                                            {% else %}
+                                                                <td class="rd"></td>
+                                                                <td class="rd"></td>
+                                                                <td class="rd"></td>
+                                                            {% endif %}
+                                                            <th>&nbsp;</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>13</th>
+                                                            <th>13</th>
+                                                            <th>65057</th>
+                                                            <th>Battery Low</th>
+                                                            <th>&nbsp;</th>
+                                                            <th>Open</th>
+                                                            {% if infoEngineerDua[12] is defined %}
+                                                                {% if (infoEngineerDua[12] == 2) %}
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"></td>
+                                                                {% elseif (infoEngineerDua[12] == 1) %}
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                    <td class="rd"></td>
+                                                                {% else %}
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                {% endif %}
+                                                            {% else %}
+                                                                <td class="rd"></td>
+                                                                <td class="rd"></td>
+                                                                <td class="rd"></td>
+                                                            {% endif %}
+                                                            <th>&nbsp;</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>14</th>
+                                                            <th>14</th>
+                                                            <th>65059</th>
+                                                            <th>Grounding Cut</th>
+                                                            <th>&nbsp;</th>
+                                                            <th>Open</th>
+                                                            {% if infoEngineerDua[13] is defined %}
+                                                                {% if (infoEngineerDua[13] == 2) %}
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"></td>
+                                                                {% elseif (infoEngineerDua[13] == 1) %}
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                    <td class="rd"></td>
+                                                                {% else %}
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                {% endif %}
+                                                            {% else %}
+                                                                <td class="rd"></td>
+                                                                <td class="rd"></td>
+                                                                <td class="rd"></td>
+                                                            {% endif %}
+                                                            <th>&nbsp;</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>15</th>
+                                                            <th>15</th>
+                                                            <th>65060</th>
+                                                            <th>Door Open BTS</th>
+                                                            <th>&nbsp;</th>
+                                                            <th>Open</th>
+                                                            {% if infoEngineerDua[14] is defined %}
+                                                                {% if (infoEngineerDua[14] == 2) %}
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"></td>
+                                                                {% elseif (infoEngineerDua[14] == 1) %}
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                    <td class="rd"></td>
+                                                                {% else %}
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                {% endif %}
+                                                            {% else %}
+                                                                <td class="rd"></td>
+                                                                <td class="rd"></td>
+                                                                <td class="rd"></td>
+                                                            {% endif %}
+                                                            <th>&nbsp;</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>16</th>
+                                                            <th>16</th>
+                                                            <th>65062</th>
+                                                            <th>Door Open Shelter</th>
+                                                            <th>&nbsp;</th>
+                                                            <th>Open</th>
+                                                            {% if infoEngineerDua[15] is defined %}
+                                                                {% if (infoEngineerDua[15] == 2) %}
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"></td>
+                                                                {% elseif (infoEngineerDua[15] == 1) %}
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                    <td class="rd"></td>
+                                                                {% else %}
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                {% endif %}
+                                                            {% else %}
+                                                                <td class="rd"></td>
+                                                                <td class="rd"></td>
+                                                                <td class="rd"></td>
+                                                            {% endif %}
+                                                            <th>&nbsp;</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>19</th>
+                                                            <th>19</th>
+                                                            <th>65066</th>
+                                                            <th>Rectifler Door Open</th>
+                                                            <th>&nbsp;</th>
+                                                            <th>Open</th>
+                                                            {% if infoEngineerDua[16] is defined %}
+                                                                {% if (infoEngineerDua[16] == 2) %}
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"></td>
+                                                                {% elseif (infoEngineerDua[18] == 1) %}
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                    <td class="rd"></td>
+                                                                {% else %}
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                {% endif %}
+                                                            {% else %}
+                                                                <td class="rd"></td>
+                                                                <td class="rd"></td>
+                                                                <td class="rd"></td>
+                                                            {% endif %}
+                                                            <th>&nbsp;</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>&nbsp;</th>
+                                                            <th>&nbsp;</th>
+                                                            <th>25671</th>
+                                                            <th>Smoke</th>
+                                                            <th>&nbsp;</th>
+                                                            <th>Open</th>
+                                                            {% if infoEngineerDua[17] is defined %}
+                                                                {% if (infoEngineerDua[17] == 2) %}
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"></td>
+                                                                {% elseif (infoEngineerDua[17] == 1) %}
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                    <td class="rd"></td>
+                                                                {% else %}
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                {% endif %}
+                                                            {% else %}
+                                                                <td class="rd"></td>
+                                                                <td class="rd"></td>
+                                                                <td class="rd"></td>
+                                                            {% endif %}
+                                                            <th>&nbsp;</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>&nbsp;</th>
+                                                            <th>&nbsp;</th>
+                                                            <th>25670</th>
+                                                            <th>Water</th>
+                                                            <th>&nbsp;</th>
+                                                            <th>Open</th>
+                                                            {% if infoEngineerDua[18] is defined %}
+                                                                {% if (infoEngineerDua[18] == 2) %}
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"></td>
+                                                                {% elseif (infoEngineerDua[18] == 1) %}
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                    <td class="rd"></td>
+                                                                {% else %}
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                {% endif %}
+                                                            {% else %}
+                                                                <td class="rd"></td>
+                                                                <td class="rd"></td>
+                                                                <td class="rd"></td>
+                                                            {% endif %}
+                                                            <th>&nbsp;</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>&nbsp;</th>
+                                                            <th>&nbsp;</th>
+                                                            <th>65054</th>
+                                                            <th>High Temp Humidity</th>
+                                                            <th>&nbsp;</th>
+                                                            <th>Open</th>
+                                                            {% if infoEngineerDua[19] is defined %}
+                                                                {% if (infoEngineerDua[19] == 2) %}
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"></td>
+                                                                {% elseif (infoEngineerDua[21] == 1) %}
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                    <td class="rd"></td>
+                                                                {% else %}
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"></td>
+                                                                    <td class="rd"><i class="fa fa-check"></i></td>
+                                                                {% endif %}
+                                                            {% else %}
+                                                                <td class="rd"></td>
+                                                                <td class="rd"></td>
+                                                                <td class="rd"></td>
+                                                            {% endif %}
+                                                            <th>&nbsp;</th>
+                                                        </tr>
 														</tbody>
 													</table>
-													<p>&nbsp;</p>
-													<p>Notes :</p>
-													<div style="margin-left:10px">
-														<p>1. The Alarm items from the 1th to 5th need be provided and tested,</p>
-														<p>2. The 6th and 7th alarm will be test if there is Gunset and the alarm port is be provided and is available.</p>
-														<p>3. The other actual Items of External alarms depend on the how many items that could be provided by PT. XL AXIATA</p>
-														<p>4. The "N/A" will be filled if the signal of alarms is not be provided or it is not be available in the current network.</p>
-													</div>
+													{#<p>&nbsp;</p>#}
+													{#<p>Notes :</p>#}
+													{#<div style="margin-left:10px">#}
+														{#<p>1. The Alarm items from the 1th to 5th need be provided and tested,</p>#}
+														{#<p>2. The 6th and 7th alarm will be test if there is Gunset and the alarm port is be provided and is available.</p>#}
+														{#<p>3. The other actual Items of External alarms depend on the how many items that could be provided by PT. XL AXIATA</p>#}
+														{#<p>4. The "N/A" will be filled if the signal of alarms is not be provided or it is not be available in the current network.</p>#}
+													{#</div>#}
 												</div>
 											</section>
 											<p style="margin-bottom:50px"></p>
